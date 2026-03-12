@@ -27,8 +27,8 @@ CursorRow=13
 TopLine=1
 LeftChar=1
 [Editor_5]
-CursorCol=1
-CursorRow=1
+CursorCol=5
+CursorRow=18
 TopLine=1
 LeftChar=1
 [Editor_6]
@@ -53,11 +53,17 @@ TopLine=17
 LeftChar=1
 [Editor_10]
 CursorCol=1
-CursorRow=1
-TopLine=1
+CursorRow=52
+TopLine=28
 LeftChar=1
 [Editor_11]
+<<<<<<< Updated upstream
 CursorCol=7
 CursorRow=34
 TopLine=12
+=======
+CursorCol=1
+CursorRow=33
+TopLine=9
+>>>>>>> Stashed changes
 LeftChar=1

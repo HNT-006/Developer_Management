@@ -6,6 +6,7 @@ CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
 OBJ      = main.o Developer.o Project.o FileHelper.o ConsoleIO.o Operations.o
 LINKOBJ  = main.o Developer.o Project.o FileHelper.o ConsoleIO.o Operations.o
+<<<<<<< Updated upstream
 LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -g3
 INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
 CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
@@ -13,6 +14,15 @@ BIN      = Developer_Management.exe
 CXXFLAGS = $(CXXINCS) -m32 -g3 -g3
 CFLAGS   = $(INCS) -m32 -g3 -g3
 DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\DevCpp.exe INTERNAL_DEL
+=======
+LIBS     = -L"D:/SE201125_Duy/Chuyen_nganh_1/PRF192/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -g3
+INCS     = -I"D:/SE201125_Duy/Chuyen_nganh_1/PRF192/Dev-Cpp/TDM-GCC-64/include" -I"D:/SE201125_Duy/Chuyen_nganh_1/PRF192/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/SE201125_Duy/Chuyen_nganh_1/PRF192/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"D:/SE201125_Duy/Chuyen_nganh_1/PRF192/Dev-Cpp/TDM-GCC-64/include" -I"D:/SE201125_Duy/Chuyen_nganh_1/PRF192/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/SE201125_Duy/Chuyen_nganh_1/PRF192/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"D:/SE201125_Duy/Chuyen_nganh_1/PRF192/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = Developer_Management.exe
+CXXFLAGS = $(CXXINCS) -m32 -g3
+CFLAGS   = $(INCS) -m32 -g3
+DEL      = D:\SE201125_Duy\Chuyen_nganh_1\PRF192\Dev-Cpp\devcpp.exe INTERNAL_DEL
+>>>>>>> Stashed changes
 
 .PHONY: all all-before all-after clean clean-custom
 
