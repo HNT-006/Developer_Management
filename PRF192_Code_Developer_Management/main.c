@@ -105,6 +105,30 @@ int main(int argc, char *argv[]) {
 					SubMENU_PROJECT();
 					choice2 = printfChoice();
 					
+					switch(choice2){
+						case 1:{
+							bool tieptuc = true;
+							do{
+								clearSystem();
+ 	    	    			    printf("Add new Project\n");
+ 	    	    			// Gan tieptuc cho ContinueOrNot
+								tieptuc = ContinueOrNot();
+							} while (tieptuc);
+							break;
+						}
+						
+						case 2:{
+							printf("Assign Project\n");
+							pauseSystem();
+							break;
+						}
+						
+						case 3:{ 
+						    printf();
+							pauseSystem();
+							break;
+						}
+					}
 				}while (maintain2);
 				
 				break;
