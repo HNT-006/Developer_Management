@@ -28,6 +28,7 @@ typedef struct{
 //======================= CHỈ CẦN LẤY VÀ SÀI THÔI
 extern int DevCount;
 extern int ProCount;
-extern Developer developers[MAX_DEV];
-extern Project projects[MAX_PRO];
+extern Developer ListDev[MAX_DEV];
+extern Project ListPro[MAX_PRO];
 
+#endif
