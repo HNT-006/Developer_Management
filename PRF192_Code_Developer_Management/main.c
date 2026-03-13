@@ -167,7 +167,11 @@ int main(int argc, char *argv[]) {
 						}
 						
 						case 3:{ 
+<<<<<<< HEAD
+						    printf("Display\n");
+=======
 						    
+>>>>>>> d5048850c9accad2b2f982585f98a085f80f14f3
 							pauseSystem();
 							break;
 						}
