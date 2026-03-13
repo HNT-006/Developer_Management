@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5048850c9accad2b2f982585f98a085f80f14f3
 #include "Operations.h"
 #include "Common.h"
 #include <stdio.h>
@@ -6,17 +10,17 @@
 
 /*========================= findDevByName function =========================*/
 // Trả về: index nếu tìm thấy | -1 nếu không tìm thấy | -2 nếu Name không hợp lệ
-int findDevByName(char Name[], Developer developers[], int DevCount)
+int findDevByName(char Name[], Developer ListDev[], int DevCount)
 {
     // Kiểm tra format tên
-    if (!validName(Name))
+//    if (!validName(Name))
     {
         return -2; // Name không hợp lệ
     }
 
     for (int i = 0; i < DevCount; i++)
     {
-        if (strcmp(developers[i].Name, Name) == 0)
+        if (strcmp(ListDev[i].Name, Name) == 0)
         {
             return i; // Tìm thấy, trả về vị trí
         }
@@ -29,10 +33,10 @@ int findDevByName(char Name[], Developer developers[], int DevCount)
 /*========================= findDevByID function =========================*/
 
 // Trả về: index nếu tìm thấy | -1 nếu không tìm thấy | -2 nếu ID không hợp lệ
-int findDevByID(char ID[], Developer developers[], int DevCount)
+int findDevByID(char ID[], Developer ListDev[], int DevCount)
 {
     // Kiểm tra format ID
-    if (!validID(ID))
+//    if (!validID(ID))
     {
         return -2; // ID không hợp lệ
     }
@@ -40,7 +44,7 @@ int findDevByID(char ID[], Developer developers[], int DevCount)
     // Duyệt mảng từ 0 -> DevCount - 1
     for (int i = 0; i < DevCount; i++)
     {
-        if (strcmp(developers[i].ID, ID) == 0)
+        if (strcmp(ListDev[i].ID, ID) == 0)
         {
             return i; // Tìm thấy, trả về vị trí
         }
@@ -51,6 +55,7 @@ int findDevByID(char ID[], Developer developers[], int DevCount)
 
 /*========================= validBirthDay function =========================*/
 
+<<<<<<< HEAD
 int validBirthDay (char BirthDay[]) {
 	// Kiểm tra xem độ dài có đúng 8 kí tự hay chưa
 	if (strlen(BirthDay) != 8) {
@@ -253,4 +258,6 @@ void sortBySalary(Developer ListDev[], int DevCount)
 
 
 
+=======
+>>>>>>> d5048850c9accad2b2f982585f98a085f80f14f3
 
