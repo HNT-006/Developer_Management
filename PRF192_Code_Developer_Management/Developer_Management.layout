@@ -43,9 +43,15 @@ CursorRow=26
 TopLine=1
 LeftChar=1
 [Editor_6]
+<<<<<<< HEAD
 CursorCol=5
 CursorRow=187
 TopLine=180
+=======
+CursorCol=28
+CursorRow=34
+TopLine=31
+>>>>>>> d5048850c9accad2b2f982585f98a085f80f14f3
 LeftChar=1
 [Editor_7]
 CursorCol=1
