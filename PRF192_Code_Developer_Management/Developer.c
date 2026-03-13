@@ -5,10 +5,8 @@
 
 #include "Developer.h"
 #include "Common.h"
- listdev
- listpro
 
-void addDeveloper(Developer listdev[],int *DevCount)
+void addDeveloper(Developer ListDev[],int *DevCount)
 {
     if(DevCount >= MAX_DEV)
     {
@@ -17,30 +15,30 @@ void addDeveloper(Developer listdev[],int *DevCount)
     }
 
     printf("Enter ID: ");
-    scanf("%6[^\n]", listdev[DevCount].ID);
+    scanf("%6[^\n]", ListDev[DevCount].ID);
     getchar();
 
     printf("Enter Name: ");
-    scanf("%19[^\n]", listdev[DevCount].Name);
+    scanf("%19[^\n]", ListDev[DevCount].Name);
     getchar();
 
     printf("Enter Birth Date (YYYYMMDD): ");
-    scanf("%8[^\n]", listdev[DevCount].BirthDate);
+    scanf("%8[^\n]", ListDev[DevCount].BirthDate);
     getchar();
 
     printf("Enter Language: ");
-    scanf("%19[^\n]", listdev[DevCount].Language);
+    scanf("%19[^\n]", ListDev[DevCount].Language);
     getchar();
 
     printf("Enter Salary: ");
-    scanf("%lf", &listdev[DevCount].Salary);
+    scanf("%lf", &ListDev[DevCount].Salary);
     getchar();
 
     (*DevCount)++;   // tăng số developer
 }
 
 ////  nhap vao id
-void inputID(char id[7])
+void inputID(char id[])
 {
 	scanf("%[^\n]",id);
 	getchar();
@@ -49,7 +47,7 @@ void inputID(char id[7])
 
 
 ////// kiem tra xem ID co hop le hay khong
-int validateID(char id[7]) {
+int validateID(char id[]) {
     if (strlen(id) != 6)
         return 0;
 
@@ -67,26 +65,26 @@ int validateID(char id[7]) {
 }
 
 //////// hien thi ra man hinh thong tin cua dev sau khi nhap ID
-void displaydev(Developer listdev[],int DevCount,char id[7])
+void displaydev(Developer ListDev[],int DevCount,char id[])
 {
     if (validateID(id))
     {
     	for (int i=0;i<DevCount;i++)
     	{
-    	   if (strcmp(id,listdev[i].ID)==0)
+    	   if (strcmp(id,ListDev[i].ID)==0)
     	   {
-    	   	printf("ID: %s | Name: %s | BirthDate: %s | Language: %s | Salary: %.2lf\n",listdev[i].ID,listdev[i].Name,listdev[i].BirthDate,listdev[i].Language,listdev[i].Salary);
+    	   	printf("ID: %s | Name: %s | BirthDate: %s | Language: %s | Salary: %.2lf\n",ListDev[i].ID,ListDev[i].Name,ListDev[i].BirthDate,ListDev[i].Language,ListDev[i].Salary);
 		   }
 		}
 	}
 }
 
 
-void displayAllDev(Developer listdev[],int Devcount)
+void displayAllDev(Developer ListDev[],int Devcount)
 {
 	for(int i=0;i<DevCount;i++)
 	{
-	   printf("ID: %s | Name: %s | BirthDate: %s | Language: %s | Salary: %.2lf\n",listdev[i].ID,listdev[i].Name,listdev[i].BirthDate,listdev[i].Language,listdev[i].Salary);
+	   printf("ID: %s | Name: %s | BirthDate: %s | Language: %s | Salary: %.2lf\n",ListDev[i].ID,ListDev[i].Name,ListDev[i].BirthDate,ListDev[i].Language,ListDev[i].Salary);
 	}
 }
 

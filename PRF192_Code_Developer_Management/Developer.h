@@ -1,13 +1,15 @@
 #ifndef DEVELOPER_H
 #define DEVELOPER_H
 
-#include
+#include "Common.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+void addDeveloper(Developer ListDev[],int *DevCount);
 
-void addDeveloper();
+void inputID(char id[]);
 
-void inputID();
-
-int validateID();
+int validateID(char id[]);
 
 void displaydev();
 
