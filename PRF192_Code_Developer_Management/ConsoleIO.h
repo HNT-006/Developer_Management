@@ -25,4 +25,5 @@ int printfChoice();
 void MAIN_MENU();
 void SubMENU_DEV();
 void SubMENU_PROJECT();
+void SubMENU_UPDATE();
 #endif 
