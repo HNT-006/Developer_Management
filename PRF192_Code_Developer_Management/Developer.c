@@ -8,14 +8,14 @@
 
 void addDeveloper(Developer ListDev[],int *DevCount)
 {
-    if(DevCount >= MAX_DEV)
+    if(*DevCount >= MAX_DEV)
     {
         printf("Developer list is full!\n");
         return;
     }
 
     printf("Enter ID: ");
-    scanf("%6[^\n]", ListDev[DevCount].ID);
+    scanf("%6[^\n]", ListDev[*DevCount].ID);
     getchar();
 
     printf("Enter Name: ");
