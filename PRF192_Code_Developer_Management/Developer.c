@@ -19,19 +19,19 @@ void addDeveloper(Developer ListDev[],int *DevCount)
     getchar();
 
     printf("Enter Name: ");
-    scanf("%19[^\n]", ListDev[DevCount].Name);
+    scanf("%19[^\n]", ListDev[*DevCount].Name);
     getchar();
 
     printf("Enter Birth Date (YYYYMMDD): ");
-    scanf("%8[^\n]", ListDev[DevCount].BirthDate);
+    scanf("%8[^\n]", ListDev[*DevCount].BirthDate);
     getchar();
 
     printf("Enter Language: ");
-    scanf("%19[^\n]", ListDev[DevCount].Language);
+    scanf("%19[^\n]", ListDev[*DevCount].Language);
     getchar();
 
     printf("Enter Salary: ");
-    scanf("%lf", &ListDev[DevCount].Salary);
+    scanf("%lf", &ListDev[*DevCount].Salary);
     getchar();
 
     (*DevCount)++;   // tăng số developer
