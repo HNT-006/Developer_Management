@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> d5048850c9accad2b2f982585f98a085f80f14f3
 #include "Operations.h"
 #include "Common.h"
 #include <stdio.h>
@@ -55,7 +52,6 @@ int findDevByID(char ID[], Developer ListDev[], int DevCount)
 
 /*========================= validBirthDay function =========================*/
 
-<<<<<<< HEAD
 int validBirthDay (char BirthDay[]) {
 	// Kiểm tra xem độ dài có đúng 8 kí tự hay chưa
 	if (strlen(BirthDay) != 8) {
@@ -165,7 +161,7 @@ int validName(char Name[]) {
 }
 
 /*========================= calculateTotalExperience function =========================*/
-int calculateTotalExperience (int ProCount) {
+int calculateTotalExperience (Project ListPro[], int ProCount) {
 	if (ProCount==0) return 0;
 	
 	int total =0;
@@ -254,10 +250,4 @@ void sortBySalary(Developer ListDev[], int DevCount)
 
 
 
-
-
-
-
-=======
->>>>>>> d5048850c9accad2b2f982585f98a085f80f14f3
 
