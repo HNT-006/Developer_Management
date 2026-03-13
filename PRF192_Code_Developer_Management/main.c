@@ -124,7 +124,7 @@ int main(int argc, char *argv[]) {
 						}
 						
 						case 3:{ 
-						    printf();
+						    
 							pauseSystem();
 							break;
 						}
