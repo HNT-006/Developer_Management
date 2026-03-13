@@ -1,4 +1,3 @@
-
 #ifndef OPERATION_H
 #define OPERATION_H
 #include "Common.h"
@@ -8,11 +7,11 @@
 #include <ctype.h>
 
 /*========================= Find functions =========================*/
-int findDevByName(char Name[], Developer developers[], int DevCount);
-int findDevByID (char ID[], Developer developers[], int DevCount);
+int findDevByName(char Name[], Developer ListDev[], int DevCount);
+int findDevByID (char ID[], Developer ListDev[], int DevCount);
 /*========================= Sort functions =========================*/
-void sortByID (Developer developers[],  int DevCount, char ID []);
-void sortBySalary (Developer developers[], int DevCount, double Salary[]);
+void sortByID (Developer ListDev[],  int DevCount, char ID []);
+void sortBySalary (Developer ListDev[], int DevCount, double Salary[]);
 /*========================= Calculate functions =========================*/
 int calculateTotalExperience (int duration, int ProCount);
 /*========================= Validate functions =========================*/
@@ -23,3 +22,4 @@ int validName (char Name[]);
 #endif 
 
 // tìm kiếm, sắp xếp, tính toán, xác thực (vận hành chung). Cá nhân Tuấn làm
+

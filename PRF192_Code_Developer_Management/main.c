@@ -15,8 +15,8 @@
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 //==============KHAI BAO BIEN =====================
-Developer developers[MAX_DEV];
-Project projects[MAX_PRO];
+Developer ListDev[MAX_DEV];
+Project ListPro[MAX_PRO];
 int DevCount = 0;
 int ProCount = 0;
 
