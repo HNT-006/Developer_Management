@@ -21,6 +21,11 @@ typedef struct{
 	char NamePro[20];
     int Duration;  //So thang hoan thanh Project
     char StartDate[9];  // Ngay thang nam bat dau
+    
+    char Members[300][7];
+    int MemberCount;
+
+} Project;
 } Project;
 
 //============ EXTERN: CHỈ THÔNG BÁO LÀ CÁC BIẾN NÀY SẼ ĐƯỢC KHAI BÁO Ở MAIN.C
