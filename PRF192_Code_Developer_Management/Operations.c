@@ -240,7 +240,7 @@ void quicksortBySalary(Developer ListDev[], int l, int r)
     quicksortBySalary(ListDev, l, p - 1);
     quicksortBySalary(ListDev, p + 1, r);
 }
-/*------------------------- qsortBySalary function -------------------------*/
+/*------------------------- sortBySalary function -------------------------*/
 void sortBySalary(Developer ListDev[], int DevCount)
 {
     if (DevCount <= 1) return;
