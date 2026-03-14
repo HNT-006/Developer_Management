@@ -7,8 +7,8 @@
 #include "Common.h"
 #include "Operations.h"
 
-void addDeveloper(Developer ListDev[],int *DevCount)
-{
+void addDeveloper(Developer ListDev[],int *DevCount){
+	
     if(*DevCount >= MAX_DEV)
     {
         printf("Developer list is full!\n");
