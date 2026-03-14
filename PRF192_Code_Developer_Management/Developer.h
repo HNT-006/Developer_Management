@@ -6,6 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+
+static int demDev = 0;
+
 void addDeveloper(Developer ListDev[],int *DevCount);
 
 void inputID(char ID[]);
@@ -27,7 +30,7 @@ void updateID(Developer ListDev[],int DevCount,char ID[]);
 
 void updateLanguage(Developer ListDev[],int DevCount,char ID[]);
 
-void updateBirthday(Developer ListDev[],int DevCount,char ID[])
+void updateBirthday(Developer ListDev[],int DevCount,char ID[]);
 
 
     /// TOTAL EXPERIENCE
