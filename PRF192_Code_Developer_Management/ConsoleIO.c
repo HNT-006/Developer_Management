@@ -30,7 +30,7 @@ void toLowerCase(char *str) {
 bool ContinueOrNot() {
     char choice[20];
 
-    printf("Do you want to continue? -_?\n");
+    printf("Do you want to continue to ADD?\n");
     printf("Enter Yes (Y) or No (N)\n");
 
     while (true) {
@@ -43,8 +43,8 @@ bool ContinueOrNot() {
         } else if (strcmp(choice, "n") == 0 || strcmp(choice, "no") == 0) {
             return false;
         } else {
-            printf("-_- Your choice is invalide \"_- !!\n");
-			printf("You should enter again -3- \n");
+            printf("Your choice is invalid\n");
+            printf("Please enter again\n");
             continue;
         }
     }
@@ -87,12 +87,5 @@ void SubMENU_PROJECT(){
 	printf("4. Exit\n");
 }
 
-void SubMENU_UPDATE(){
-	printf("\t=============UPDATE ELEMENT DETAILS=============\n");
-	printf("1. Update Name Developert\n");
-	printf("2. Update Programming Lanaguage Developer\n");
-	printf("3. Update the Birth day for Developer\n");
-	printf("4. Update Salary for Developer\n");
-	printf("5. Exit\n");
-}
+
 
