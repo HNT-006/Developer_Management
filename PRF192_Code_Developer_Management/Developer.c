@@ -26,7 +26,13 @@ void addDeveloper(Developer ListDev[],int *DevCount){
         printf("Developer list is full!\n");
         return;
     }
+<<<<<<< HEAD
     getchar();
+=======
+    
+    demDev++
+    snprintf(ListDev[Devcount].ID, sizeof(ListDev[Devcount].ID), "DEV%03d", demDev);
+>>>>>>> 8edff95c23197880d681b4d213f503aef6856e47
     
     printf("Enter ID: ");
     scanf("%6[^\n]", ListDev[*DevCount].ID);

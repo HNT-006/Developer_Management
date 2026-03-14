@@ -6,6 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+
+static int demDev = 0;
+
 void addDeveloper(Developer ListDev[],int *DevCount);
 
 void inputID(char ID[]);
