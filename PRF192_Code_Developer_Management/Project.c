@@ -8,6 +8,46 @@
 #include "Operations.h"
 #include "Project.h"
 
+//typedef struct{
+//	char IDPro[7];
+//	char NamePro[20];
+//    int Duration;  //So thang hoan thanh Project
+//    char StartDate[9];  // Ngay thang nam bat dau
+//    
+//    char Members[MAX_DEV][7];  //Luu so luong ID DEV thuc hien + Do dai cua ID DEV
+//    int MemberCount;
+//
+//} Project;
+
+char* readString(char str[]){
+	scanf("%[^\n]", str);
+	return str;
+}
+
+void addnewProject(){
+	if ((ProCount) >= MAX_PRO){
+		printf("THE NUMBER OF PROJECT IN LIST PROJECT IS FULL (MAXIMUM 50) -_-\n");
+		return;
+	}
+	
+	demPro++; 
+	Project* p = &ListPro[ProCount];
+	
+	sprintf(p->IDPro, sizeof(p->IDPro), "PRO%03d", demPro);
+	
+	printf("Enter Name Project: ");
+	p->NamePro = readString(p->NamePro);
+	
+	printf("Enter Duration (THE NUMBER OF MONTH, DEV HAVE TO FINISH PROJECT): ");
+	p->Duration = readInt(p->Duration);
+	
+	printf("Enter StartDate (DATE, DEV START TO WORK): ");
+	p->StartDate = readString(p->StartDate);
+	
+	p->MemberCount = 0;
+	printf("Add new Project Successfully ^v^\n");
+}
+
 // Ham kiem tra Dev đã có trong project chưa
 int isDevInProject(Project ListPro[], int proIndex, char devID[])  
 {
@@ -22,8 +62,7 @@ int isDevInProject(Project ListPro[], int proIndex, char devID[])
     return 0;
 }
 
-void assignDevToProject()
-{
+void assignProjecttoDev(){
     char devID[7];
     char proID[7];
 

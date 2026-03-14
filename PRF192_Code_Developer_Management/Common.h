@@ -22,11 +22,11 @@ typedef struct{
     int Duration;  //So thang hoan thanh Project
     char StartDate[9];  // Ngay thang nam bat dau
     
-    char Members[300][7];
+    char Members[MAX_DEV][7];  //Luu so luong ID DEV thuc hien + Do dai cua ID DEV
     int MemberCount;
 
 } Project;
-} Project;
+
 
 //============ EXTERN: CHỈ THÔNG BÁO LÀ CÁC BIẾN NÀY SẼ ĐƯỢC KHAI BÁO Ở MAIN.C
 //===================== KHÔNG KHAI BÁO TIẾP CỦA CÁC FILE KHÁC.
@@ -35,5 +35,4 @@ extern int DevCount;
 extern int ProCount;
 extern Developer ListDev[MAX_DEV];
 extern Project ListPro[MAX_PRO];
-
 #endif

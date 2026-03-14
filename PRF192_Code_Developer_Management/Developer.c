@@ -7,8 +7,8 @@
 #include "Common.h"
 #include "Operations.h"
 
-void addDeveloper(Developer ListDev[],int *DevCount)
-{
+void addDeveloper(Developer ListDev[],int *DevCount){
+	
     if(*DevCount >= MAX_DEV)
     {
         printf("Developer list is full!\n");
@@ -72,7 +72,7 @@ void displaydev(Developer ListDev[],int DevCount,char ID[])
     {
     	for (int i=0;i<DevCount;i++)
     	{
-    	   if (strcmp(id,ListDev[i].ID)==0)
+    	   if (strcmp(ID,ListDev[i].ID)==0)
     	   {
     	   	printf("ID: %s | Name: %s | BirthDate: %s | Language: %s | Salary: %.2lf\n",ListDev[i].ID,ListDev[i].Name,ListDev[i].BirthDate,ListDev[i].Language,ListDev[i].Salary);
 		   }
@@ -190,7 +190,7 @@ void updateLanguage(Developer ListDev[],int DevCount,char ID[])
 // update Birthday
 void updateBirthday(Developer ListDev[],int DevCount,char ID[])
 {
-       int index=findDevByID(ID,ListDev,DevCount);
+    int index = findDevByID(ID,ListDev,DevCount);
 	if (index < 0)
       {
         printf("ID not found!\n");
@@ -204,9 +204,9 @@ void updateBirthday(Developer ListDev[],int DevCount,char ID[])
 	
 	if (validBirthDay(newBirth))
 	{
-		strcpy(listDev[index].newBirth);
+		strcpy(ListDev[index].BirthDate, newBirth);
 		getchar();
-		printf("Update Birthday successfully")
+		printf("Update Birthday successfully");
 	}
 }
 
