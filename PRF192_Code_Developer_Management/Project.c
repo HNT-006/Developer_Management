@@ -33,7 +33,7 @@ void addnewProject(){
 	demPro++; 
 	Project* p = &ListPro[ProCount];
 	
-	sprintf(p->IDPro, sizeof(p->IDPro), "PRO%03d", demPro);
+	snprintf(p->IDPro, sizeof(p->IDPro), "PRO%03d", demPro);
 	
 	printf("Enter Name Project: ");
 	p->NamePro = readString(p->NamePro);
