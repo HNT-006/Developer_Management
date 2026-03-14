@@ -30,7 +30,11 @@ void addnewProject(){
 		return;
 	}
 	
+	demPro++; 
 	Project* p = &ListPro[ProCount];
+	
+	sprintf(p->IDPro, sizeof(p->IDPro), "PRO%03d", demPro);
+	
 	printf("Enter Name Project: ");
 	p->NamePro = readString(p->NamePro);
 	
@@ -44,9 +48,6 @@ void addnewProject(){
 	printf("Add new Project Successfully ^v^\n");
 }
 
-void assignProjecttoDev(){
-	
-=======
 // Ham kiem tra Dev đã có trong project chưa
 int isDevInProject(Project ListPro[], int proIndex, char devID[])  
 {
@@ -61,8 +62,7 @@ int isDevInProject(Project ListPro[], int proIndex, char devID[])
     return 0;
 }
 
-void assignDevToProject()
-{
+void assignProjecttoDev(){
     char devID[7];
     char proID[7];
 
