@@ -7,7 +7,7 @@
 #include "Common.h"
 #include "Operations.h"
 #include "Project.h"
-
+#include "ConsoleIO.h"
 //typedef struct{
 //	char IDPro[7];
 //	char NamePro[20];
@@ -21,6 +21,7 @@
 
 char* readString(char str[]){
 	scanf("%[^\n]", str);
+	clearBuffer();
 	return str;
 }
 
@@ -31,29 +32,29 @@ void addnewProject(){
 	}
 	
 	demPro++; 
-	Project* p = &ListPro[ProCount];
-	
-	sprintf(p->IDPro, sizeof(p->IDPro), "PRO%03d", demPro);
+	snprintf(ListPro[ProCount].IDPro, sizeof(ListPro[ProCount].IDPro), "PRO%03d", demPro);
 	
 	printf("Enter Name Project: ");
-	p->NamePro = readString(p->NamePro);
+    strcpy(ListPro[ProCount].NamePro, readString(ListPro[ProCount].NamePro));
 	
 	printf("Enter Duration (THE NUMBER OF MONTH, DEV HAVE TO FINISH PROJECT): ");
-	p->Duration = readInt(p->Duration);
+	ListPro[ProCount].Duration = readInt(ListPro[ProCount].Duration);
 	
 	printf("Enter StartDate (DATE, DEV START TO WORK): ");
-	p->StartDate = readString(p->StartDate);
+    strcpy(ListPro[ProCount].StartDate, readString(ListPro[ProCount].StartDate));
 	
-	p->MemberCount = 0;
+    ListPro[ProCount].MemberCount = 0;
 	printf("Add new Project Successfully ^v^\n");
+	
+	ProCount++;
 }
 
 // Ham kiem tra Dev đã có trong project chưa
 int isDevInProject(Project ListPro[], int proIndex, char devID[])  
 {
-    for(int i = 0; i < ListPro[proIndex].MemberCount; i++)
+    for (int i = 0; i < ListPro[proIndex].MemberCount; i++)
     {
-        if(strcmp(ListPro[proIndex].Members[i], devID) == 0)
+        if (strcmp(ListPro[proIndex].Members[i], devID) == 0)
         {
             return 1;
         }
