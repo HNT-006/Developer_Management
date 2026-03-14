@@ -9,11 +9,12 @@
 
 static int demDev = 0;
 
+
+
+//================ADDING DEVELOPER==================
 void addDeveloper(Developer ListDev[],int *DevCount);
 
-void inputID(char ID[]);
 
-int validateID(char ID[]);
 
     /// DISPLAY INFORMATION
 void displayDeveloper(Developer ListDev[],int DevCount,char ID[]);
@@ -21,12 +22,13 @@ void displayDeveloper(Developer ListDev[],int DevCount,char ID[]);
 void displayAllDev(Developer ListDev[],int Devcount);
 
  
-    /// UPDATE INFORMATION
-void deleteDev(Developer ListDev[], int *DevCount, char ID[]);
+   //DELETE DEVELOPER
+void deleteDeveloper(Developer ListDev[], int *DevCount, char ID[]);
 
+ /// UPDATE INFORMATION
 void updateSalary(Developer ListDev[],int DevCount, char ID[]);
 
-void updateID(Developer ListDev[],int DevCount,char ID[]);
+void updateName(Developer ListDev[],int DevCount,char ID[]);
 
 void updateLanguage(Developer ListDev[],int DevCount,char ID[]);
 
@@ -38,5 +40,5 @@ void totalExperience(Developer ListDev[],int DevCount,char ID[]);
 
 
 //================HAM FIND TAM THOI ==================
-int findDevbyID(Developer ListDev[], int DevCount, char ID[]);
+
 #endif

@@ -100,16 +100,17 @@ int main(int argc, char *argv[]) {
 						}
 						
 						case 3: {   //Delete Developer  --> Co Ham se nhap sau
-							printf("Delete A Dev\n");
-							printf("Delete Successfully\n");
+						    clearSystem();
+						    printf("===================DELETE SERVICES==================\n");
+						    clearBuffer();
+						    char ID[10];
+						    printfID(ID);
+						    clearBuffer();
+						    deleteDeveloper(ListDev, &DevCount, ID);
 							pauseSystem();
 							break;
 						}
 						
-//	printf("\t=============DISPLAY SERVICES=============\n");
-//	printf("1. Display Developer\n");
-//	printf("2. Display all Developer in List Developer\n");
-//	printf("3. Exit\n");
 						case 4: { //Display -> mot he thong khac nua
 						    bool tieptuc = true;
 							do{
@@ -122,23 +123,18 @@ int main(int argc, char *argv[]) {
 										char ID[7];
 										printfID(ID);
 										//NHAP XONG ID
-										printf("%-10s %-20s %-15s %-25s %-10s\n",
-                                                        "ID", 
-														"NAME DEVELOPER", 
-														"BIRTH DATE",
-														"PROGRAMMING LANGUAGE", 
-														"SALARY");
+										
+										bolder();
+                                        titile();
+                                        bolder();
 										displayDeveloper(ListDev, DevCount, ID);
 										break;
 									}
 									
 									case 2:{
-										printf("%-10s %-20s %-15s %-25s %-10s\n",
-                                                        "ID", 
-														"NAME DEVELOPER", 
-														"BIRTH DATE",
-														"PROGRAMMING LANGUAGE", 
-														"SALARY");
+										bolder();
+                                        titile();
+                                        bolder();
 										displayAllDev(ListDev, DevCount);
 										break;
 									}

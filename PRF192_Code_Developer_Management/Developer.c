@@ -5,43 +5,39 @@
 
 #include "Developer.h"
 #include "Common.h"
-//#include "Operations.h"
+#include "Operations.h"
 
 
 //==================CODE CAC HAM TAM THOI. SAU DO CO THE BO SANG OPERATIONS.C.H=======================
-int findDevbyID(Developer ListDev[], int DevCount, char ID[]){
-	for (int i = 0; i < DevCount; i++){
-		if (strcmp(ID, ListDev[i].ID) == 0) return i;
-	}
-	
-	return -1;
-}
 
 //=====================================================================================
 
-void addDeveloper(Developer ListDev[],int *DevCount){
-	
-    if(*DevCount >= MAX_DEV)
-    {
+void addDeveloper(Developer ListDev[], int *DevCount){
+
+    if(*DevCount >= MAX_DEV){
         printf("Developer list is full!\n");
         return;
     }
-<<<<<<< HEAD
-    getchar();
-=======
-    
-    demDev++
-    snprintf(ListDev[Devcount].ID, sizeof(ListDev[Devcount].ID), "DEV%03d", demDev);
->>>>>>> 8edff95c23197880d681b4d213f503aef6856e47
-    
-    printf("Enter ID: ");
-    scanf("%6[^\n]", ListDev[*DevCount].ID);
+
     getchar();
 
+    demDev++;
+    snprintf(ListDev[*DevCount].ID, sizeof(ListDev[*DevCount].ID), "DEV%03d", demDev);
+
+    bool maintain = true;
+    do{
     printf("Enter Name: ");
     scanf("%19[^\n]", ListDev[*DevCount].Name);
     getchar();
-
+    if (!validateName(ListDev[*DevCount].Name)){
+	
+    printf("THIS NAME IS INVALID -_- \n");
+    continue;
+	} else{
+		maintain = false;
+	}
+    } while (maintain);
+    
     printf("Enter Birth Date (YYYYMMDD): ");
     scanf("%8[^\n]", ListDev[*DevCount].BirthDate);
     getchar();
@@ -54,35 +50,14 @@ void addDeveloper(Developer ListDev[],int *DevCount){
     scanf("%lf", &ListDev[*DevCount].Salary);
     getchar();
 
-    (*DevCount)++;   // tăng số developer
+    (*DevCount)++;
 }
 //
 //////  nhap vao id
-void inputID(char ID[])
-{
-	scanf("%[^\n]",ID);
-	getchar();
-}
-//
+
 //
 //
 //////// kiem tra xem ID co hop le hay khong
-int validateID(char ID[]) {
-    if (strlen(ID) != 6)
-        return 0;
-
-    // Check first 3 characters
-    if (ID[0] != 'D' || ID[1] != 'E' || ID[2] != 'V')
-        return 0;
-
-    // Check last 3 characters are digits
-    if (!isdigit(ID[3]) || 
-        !isdigit(ID[4]) || 
-        !isdigit(ID[5]))
-        return 0;
-
-    return 1;
-}
 //
 ////////// hien thi ra man hinh thong tin cua dev sau khi nhap ID
 void displayDeveloper(Developer ListDev[],int DevCount,char ID[])
@@ -104,7 +79,7 @@ void displayDeveloper(Developer ListDev[],int DevCount,char ID[])
 }
 //
 //
-void displayAllDev(Developer ListDev[],int Devcount)
+void displayAllDev(Developer ListDev[],int DevCount)
 {
 	for(int i=0;i<DevCount;i++)
 	{
@@ -112,17 +87,19 @@ void displayAllDev(Developer ListDev[],int Devcount)
 	}
 }
 //
-////// =========================HAM DELETE========================
-void deleteDev(Developer ListDev[], int *DevCount, char ID[])
-{
-    int index = findDevByID(ID,ListDev,*DevCount);
 
-    if(index == -2)
+
+////// =========================HAM DELETE========================
+void deleteDeveloper(Developer ListDev[], int *DevCount, char ID[])
+{
+
+    if(!validateID(ID))
     {
         printf("Invalid ID format!\n");
         return;
     }
-
+    
+    int index = findDevbyID(ListDev, *DevCount, ID);
     if(index == -1)
     {
         printf("Developer not found!\n");
@@ -135,6 +112,12 @@ void deleteDev(Developer ListDev[], int *DevCount, char ID[])
     }
 
     (*DevCount)--;
+
+     // cập nhật lại ID
+    for(int i = 0; i < *DevCount; i++)
+    {
+        sprintf(ListDev[i].ID, "DEV%03d", i + 1);
+    }
 
     printf("Developer deleted successfully!\n");
 }
@@ -167,7 +150,7 @@ void deleteDev(Developer ListDev[], int *DevCount, char ID[])
 //}
 //
 //// update ID
-//void updateID(Developer ListDev[],int DevCount,char ID[])
+//void updateName(Developer ListDev[],int DevCount,char ID[])
 //{
 //	int index=findDevByID(ID,ListDev,DevCount);
 //	if (index < 0)
@@ -232,13 +215,13 @@ void deleteDev(Developer ListDev[], int *DevCount, char ID[])
 //		printf("Update Birthday successfully");
 //	}
 //}
-//
-//void totalExperience(Developer ListDev[],int DevCount,char ID[])
-//{
-//	int index=findDevByID(ID,ListDev,DevCount);
-//	if (index < 0)
-//      {
-//        printf("ID not found!\n");
-//        return;
-//      }
-//}
+////
+////void totalExperience(Developer ListDev[],int DevCount,char ID[])
+////{
+////	int index=findDevByID(ID,ListDev,DevCount);
+////	if (index < 0)
+////      {
+////        printf("ID not found!\n");
+////        return;
+////      }
+////}

@@ -66,13 +66,12 @@ void addnewProject(Project ListPro[]){
 	}
 	
 	demPro++; 
-<<<<<<< HEAD
+
 	snprintf(ListPro[ProCount].IDPro, sizeof(ListPro[ProCount].IDPro), "PRO%03d", demPro);
-=======
+
 	Project* p = &ListPro[ProCount];
 	
 	snprintf(p->IDPro, sizeof(p->IDPro), "PRO%03d", demPro);
->>>>>>> 8edff95c23197880d681b4d213f503aef6856e47
 	
 	printf("Enter Name Project: ");
     strcpy(ListPro[ProCount].NamePro, readString(ListPro[ProCount].NamePro));

@@ -16,7 +16,8 @@ void clearSystem(){
 }
 
 void clearBuffer() {
-    while (getchar() != '\n'); 
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
 
@@ -30,14 +31,15 @@ void toLowerCase(char *str) {
 bool ContinueOrNot() {
     char choice[20];
 
-    printf("Do you want to continue to ADD?\n");
+    printf("Do you want to continue?\n");
     printf("Enter Yes (Y) or No (N)\n");
 
     while (true) {
+        
+        readString(choice);
         clearBuffer();
-        scanf("%[^\n]", choice);
         toLowerCase(choice); // chuẩn hóa về chữ thường
-
+        
         if (strcmp(choice, "y") == 0 || strcmp(choice, "yes") == 0) {
             return true;
         } else if (strcmp(choice, "n") == 0 || strcmp(choice, "no") == 0) {
@@ -72,11 +74,27 @@ void printfID(char str[]){
 	printf("Enter ID: ");
 	str = readString(str);
 }
+
+//======================IN KHUNG VA TIEU DE CHO DISPLAY DEVELOPER=================
+void bolder(){
+	printf("\n------------------------------------------------------------------------------------------------\n");
+}
+void titile(){
+	printf("%-10s %-20s %-15s %-25s %-10s\n",
+                                                        "ID", 
+														"NAME DEVELOPER", 
+														"BIRTH DATE",
+														"PROGRAMMING LANGUAGE", 
+														"SALARY");
+}
+
+
+
 void MAIN_MENU(){
-	printf("\t=============MAIN MENU=============\n");
-	printf("\t1. Developer Services\n");
-	printf("\t2. Project Services\n");
-	printf("\t3. Exit.\n");
+	printf("\t======================MAIN MENU======================\n");
+	printf("1. Developer Services\n");
+	printf("2. Project Services\n");
+	printf("3. Exit.\n");
 }
 
 void SubMENU_DEV(){
