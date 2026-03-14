@@ -27,7 +27,7 @@ void updateID(Developer ListDev[],int DevCount,char ID[]);
 
 void updateLanguage(Developer ListDev[],int DevCount,char ID[]);
 
-void updateBirthday(Developer ListDev[],int DevCount,char ID[])
+void updateBirthday(Developer ListDev[],int DevCount,char ID[]);
 
 
     /// TOTAL EXPERIENCE

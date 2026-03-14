@@ -8,7 +8,6 @@
 #include "Operations.h"
 #include "Project.h"
 
-<<<<<<< HEAD
 //typedef struct{
 //	char IDPro[7];
 //	char NamePro[20];
@@ -19,13 +18,19 @@
 //    int MemberCount;
 //
 //} Project;
+
+char* readString(char str[]){
+	scanf("%[^\n]", str);
+	return str;
+}
+
 void addnewProject(){
-	if ((*ProCount) >= MAX_PRO){
+	if ((ProCount) >= MAX_PRO){
 		printf("THE NUMBER OF PROJECT IN LIST PROJECT IS FULL (MAXIMUM 50) -_-\n");
 		return;
 	}
 	
-	Project* p = ListPro[ProCount];
+	Project* p = &ListPro[ProCount];
 	printf("Enter Name Project: ");
 	p->NamePro = readString(p->NamePro);
 	
@@ -94,5 +99,4 @@ void assignDevToProject()
     ListPro[proIndex].MemberCount++;
 
     printf("Assign successfully!\n");
->>>>>>> ad1f6ab47a7e122a9edf8d88b25dd0a214970af7
 }
