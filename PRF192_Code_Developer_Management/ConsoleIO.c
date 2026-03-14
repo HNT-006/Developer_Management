@@ -50,6 +50,7 @@ bool ContinueOrNot() {
     }
 }
 
+//======================CAC HAM NHAP THONG TIN GOM INTERGER VA STRING========================
 int readInt(int n){
 	scanf("%d", &n);
 	
@@ -62,6 +63,15 @@ int printfChoice(){
 	return readInt(choice);
 }
 
+
+char* readString(char str[]){
+	scanf("%[^\n]", str);
+	return str;
+}
+void printfID(char str[]){
+	printf("Enter ID: ");
+	str = readString(str);
+}
 void MAIN_MENU(){
 	printf("\t=============MAIN MENU=============\n");
 	printf("\t1. Developer Services\n");
@@ -87,5 +97,20 @@ void SubMENU_PROJECT(){
 	printf("4. Exit\n");
 }
 
+void SubMENU_UPDATE(){
+	printf("\t=============UPDATE SERVICE===============\n");
+	printf("1. Update Name Developert\n");
+	printf("2. Update Programming Lanaguage Developer\n");
+	printf("3. Update the Birth day for Developer\n");
+	printf("4. Update Salary for Developer\n");
+	printf("5. Exit\n");
+}
+
+void SubMENU_DISPLAY(){
+	printf("\t=============DISPLAY SERVICES=============\n");
+	printf("1. Display Developer\n");
+	printf("2. Display all Developer in List Developer\n");
+	printf("3. Exit\n");
+}
 
 

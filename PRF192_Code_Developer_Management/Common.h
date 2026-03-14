@@ -6,7 +6,7 @@
 
 #define MAX_DEV 300
 #define MAX_PRO 50
-
+#define MAX_MEM 20
 typedef struct{
 	char ID[7];
 	char Name[20];

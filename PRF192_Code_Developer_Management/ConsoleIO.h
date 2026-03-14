@@ -21,9 +21,12 @@ void toLowerCase(char *str);
 int readInt();
 int printfChoice(); 
 
+char* readString(char str[]);
+void  printfID(char str[]);
 
 void MAIN_MENU();
 void SubMENU_DEV();
 void SubMENU_PROJECT();
 void SubMENU_UPDATE();
+void SubMENU_DISPLAY();
 #endif 

@@ -13,7 +13,7 @@ void inputID(char ID[]);
 int validateID(char ID[]);
 
     /// DISPLAY INFORMATION
-void displaydev(Developer ListDev[],int DevCount,char ID[]);
+void displayDeveloper(Developer ListDev[],int DevCount,char ID[]);
 
 void displayAllDev(Developer ListDev[],int Devcount);
 
@@ -34,5 +34,6 @@ void updateBirthday(Developer ListDev[],int DevCount,char ID[]);
 void totalExperience(Developer ListDev[],int DevCount,char ID[]);
 
 
-
+//================HAM FIND TAM THOI ==================
+int findDevbyID(Developer ListDev[], int DevCount, char ID[]);
 #endif

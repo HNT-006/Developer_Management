@@ -44,7 +44,9 @@ int main(int argc, char *argv[]) {
  	    	    			bool tieptuc = true;
 							do{
 								clearSystem();
- 	    	    			    printf("Add new Developer Successfully\n");
+								printf("\t================ADD NEW DEVELOPER================\n");
+								addDeveloper(ListDev, &DevCount);
+ 	    	    			    printf("\t================Add new Developer Successfully================\n\n");
  	    	    			// Gan tieptuc cho ContinueOrNot
 								tieptuc = ContinueOrNot();
 							} while (tieptuc);
@@ -61,15 +63,13 @@ int main(int argc, char *argv[]) {
 								
 								switch(update_choice){
 									case 1: {
+										printf("\t================UPDATE NAME FOR DEVELOPER================\n");
+										
 										printf("Update Name Developer Successfully\n");
 										pauseSystem();
 										break;
 									}
-//    printf("1. Update Name Developert\n");
-//	printf("2. Update Programming Lanaguage Developer\n");
-//	printf("3. Update the Birth day for Developer\n");
-//	printf("4. Update Salary for Developer\n");
-//	printf("5. Exit\n");
+
 									case 2: {
 										printf("Update Programming Lanaguage Developer Successfully\n");
 										pauseSystem();
@@ -106,8 +106,47 @@ int main(int argc, char *argv[]) {
 							break;
 						}
 						
+//	printf("\t=============DISPLAY SERVICES=============\n");
+//	printf("1. Display Developer\n");
+//	printf("2. Display all Developer in List Developer\n");
+//	printf("3. Exit\n");
 						case 4: { //Display -> mot he thong khac nua
-							pauseSystem();
+						    bool tieptuc = true;
+							do{
+								clearSystem();
+								SubMENU_DISPLAY();
+								int choice = printfChoice(choice);
+								clearBuffer();
+								switch(choice){
+									case 1:{
+										char ID[7];
+										printfID(ID);
+										//NHAP XONG ID
+										printf("%-10s %-20s %-15s %-25s %-10s\n",
+                                                        "ID", 
+														"NAME DEVELOPER", 
+														"BIRTH DATE",
+														"PROGRAMMING LANGUAGE", 
+														"SALARY");
+										displayDeveloper(ListDev, DevCount, ID);
+										break;
+									}
+									
+									case 2:{
+										printf("%-10s %-20s %-15s %-25s %-10s\n",
+                                                        "ID", 
+														"NAME DEVELOPER", 
+														"BIRTH DATE",
+														"PROGRAMMING LANGUAGE", 
+														"SALARY");
+										displayAllDev(ListDev, DevCount);
+										break;
+									}
+								}
+ 	    	    			// Gan tieptuc cho ContinueOrNot
+								tieptuc = ContinueOrNot();
+							} while (tieptuc);
+						    
 							break;
 						}
 						
@@ -167,11 +206,8 @@ int main(int argc, char *argv[]) {
 						}
 						
 						case 3:{ 
-<<<<<<< HEAD
+
 						    printf("Display\n");
-=======
-						    
->>>>>>> d5048850c9accad2b2f982585f98a085f80f14f3
 							pauseSystem();
 							break;
 						}

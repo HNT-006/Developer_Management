@@ -19,13 +19,47 @@
 //
 //} Project;
 
-char* readString(char str[]){
-	scanf("%[^\n]", str);
-	clearBuffer();
-	return str;
+//====================CAC HAM NHAP XUAT CO BAN ====================
+
+//================CAC HAM DUA RA LUA CHON, VA SUBMENU===============
+
+ int LuaChon_1or2(){
+	int chon;
+	
+	do{
+	scanf("%d", &chon);
+	if (chon == 1 || chon == 2) return chon;
+	else{
+		printf("Your  choice is Invalid -_-. YOU JUST CHOOSE 1 OR 2, PLEASE\n");
+		printf("IF YOU UNDERSTAND, CHOOSE AGAIN\n");
+		pauseSystem();
+		
+		continue;
+	}
+}while(true);
+	
 }
 
-void addnewProject(){
+int findNameProject(char str[], Project ListPro[]){
+	for (int i = 0; i< ProCount; i++){
+		if (strcmp(str, ListPro[i].NamePro) == 0) return i;
+	}
+	
+	return -1;
+}
+
+int findIDProject(char str[], Project ListPro[]) {
+	for (int i = 0; i< ProCount; i++){
+		if (strcmp(str, ListPro[i].IDPro) == 0) return i;
+	}
+	
+	return -1;
+}
+
+
+
+
+void addnewProject(Project ListPro[]){
 	if ((ProCount) >= MAX_PRO){
 		printf("THE NUMBER OF PROJECT IN LIST PROJECT IS FULL (MAXIMUM 50) -_-\n");
 		return;
@@ -49,55 +83,95 @@ void addnewProject(){
 	ProCount++;
 }
 
-// Ham kiem tra Dev đã có trong project chưa
-int isDevInProject(Project ListPro[], int proIndex, char devID[])  
-{
-    for (int i = 0; i < ListPro[proIndex].MemberCount; i++)
-    {
-        if (strcmp(ListPro[proIndex].Members[i], devID) == 0)
-        {
-            return 1;
-        }
-    }
 
-    return 0;
+int LuaChon_assignProjecttoDev(Project ListPro[]){
+	
+	printf("Enter Name Project or ID Project to Assign with ID Dev: ");
+	printf("\t1. Enter Name Project\n");
+	printf("\t2. Enter ID Project\n");
+    int luachon_forAssign = LuaChon_1or2();
+    
+    if (luachon_forAssign == 1){
+    	do{
+    		printf("Enter Name Project: ");
+    	    char nameProject[100];
+    	    strcpy(nameProject, readString(nameProject));
+    	
+    	    int indexN = findNameProject(nameProject, ListPro);
+    	    if (indexN == -1){
+    		    printf("Not found This Project -_-\n");
+    		    printf("Do you want to out or continue? \n");
+    		    printf("\t1. Exit\n");
+    		    printf("\t2. Continue ^v^\n");
+    		    int choice = LuaChon_1or2();
+    		    
+    		    if (choice == 1){
+    		    	printf("Thank you and Bye Bye ^^\n");
+    		    	return -1;
+				} else{
+					printf("Great choice. Continue now\n");
+					pauseSystem();
+					continue;
+				}
+		    } else{
+		    	printf("Greate. Continue now\n");
+		    	pauseSystem();
+		    	return indexN;
+			}
+		} while (true);
+    	
+    	
+	} else if (luachon_forAssign == 2){
+		do{
+    		printf("Enter ID Project: ");
+    	    char  IDProject[100];
+    	    strcpy(IDProject, readString(IDProject));
+    	
+    	    int indexI = findIDProject(IDProject, ListPro);
+    	    if (indexI == -1){
+    		    printf("Not found This Project -_-\n");
+    		    printf("Do you want to out or continue? \n");
+    		    printf("\t1. Exit\n");
+    		    printf("\t2. Continue ^v^\n");
+    		    char choice = LuaChon_1or2();
+    		    
+    		    if (choice == 1){
+    		    	printf("Thank you and Bye Bye ^^\n");
+    		    	return -1;
+				} else{
+					printf("Great choice. Continue now\n");
+					pauseSystem();
+					continue;
+				}
+		    } else{
+		    	printf("Greate. Continue now\n");
+		    	pauseSystem();
+		    	return indexI;
+			}
+		} while (true);
+    	
+    	
+	}
+	
 }
 
-void assignProjecttoDev(){
-    char devID[7];
-    char proID[7];
-
-    printf("Enter Developer ID: ");
-    scanf("%6s", devID);
-
-    int devIndex = findDevByID(devID, ListDev, DevCount);
-
-    if(devIndex < 0)
-    {
-        printf("Developer not found!\n");
-        return;
+void assignProjecttoDev(Project ListPro[], char IdDev[]){
+	int index = LuaChon_assignProjecttoDev(ListPro);
+	if (index == -1){
+		return;
+	}
+	
+	if(ListPro[index].MemberCount >= MAX_MEM){
+       printf("Project is full\n");
+       pauseSystem();
+       return;
     }
-
-    printf("Enter Project ID: ");
-    scanf("%6s", proID);
-
-    int proIndex = findProjectByID(proID, ListPro, ProCount);
-
-    if(proIndex < 0)
-    {
-        printf("Project not found!\n");
-        return;
-    }
-
-    if(isDevInProject(ListPro, proIndex, devID))
-    {
-        printf("Developer already in this project!\n");
-        return;
-    }
-
-    strcpy(ListPro[proIndex].Members[ListPro[proIndex].MemberCount], devID);
-
-    ListPro[proIndex].MemberCount++;
-
-    printf("Assign successfully!\n");
+	
+	int pos = ListPro[index].MemberCount;
+	
+	strcpy(ListPro[index].Members[pos], IdDev);
+	
+	ListPro[index].MemberCount++;
+	
+	printf("Assign Dev Successfully ^v^ \n");
 }
