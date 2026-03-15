@@ -2,11 +2,13 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "Developer.h"
 #include "Common.h"
 #include "Operations.h"
-
+#include "Project.h"
+#include "ConsoleIO.h"
 
 //==================CODE CAC HAM TAM THOI. SAU DO CO THE BO SANG OPERATIONS.C.H=======================
 
@@ -49,13 +51,14 @@ void addDeveloper(Developer ListDev[], int *DevCount){
     printf("Enter Salary: ");
     scanf("%lf", &ListDev[*DevCount].Salary);
     getchar();
-
+    
+    ListDev[*DevCount].totalExp = 0;
     (*DevCount)++;
 }
 //
 //////  nhap vao id
 
-<<<<<<< HEAD
+
 ////  nhap vao id
 //void inputIdDev(char ID[])
 //{                              ben operation dax lam
@@ -87,16 +90,13 @@ int validateID(char ID[]) {
 }
 */
 //////// hien thi ra man hinh thong tin cua dev sau khi nhap ID
-void displaydev(Developer ListDev[],int DevCount,char devID[])
-=======
+
 //
 //
 //////// kiem tra xem ID co hop le hay khong
 //
 ////////// hien thi ra man hinh thong tin cua dev sau khi nhap ID
-void displayDeveloper(Developer ListDev[],int DevCount,char devID[])
->>>>>>> f8c0fe49b384e7b65d23a43ba00eb34db9d04cae
-{
+void displayDeveloper(Developer ListDev[],int DevCount,char devID[]){
     if (validateID(devID))
     {
     	int index = findDevbyID(ListDev, DevCount, devID);
@@ -105,17 +105,17 @@ void displayDeveloper(Developer ListDev[],int DevCount,char devID[])
     		return;
 		}
 		
-		printf("%-10s %-20s %-15s %-25s %-10.2lf\n", ListDev[index].ID,
+		printf("%-10s %-20s %-15s %-25s %-10.2lf %-12d\n", ListDev[index].ID,
 												ListDev[index].Name,
 												ListDev[index].BirthDate,
 												ListDev[index].Language,
-												ListDev[index].Salary);
+												ListDev[index].Salary,
+												ListDev[index].totalExp);
 	}
 }
 //
 //
-void displayAllDev(Developer ListDev[],int DevCount)
-{
+void displayAllDev(Developer ListDev[],int DevCount){
 	for(int i=0;i<DevCount;i++)
 	{
 	   displayDeveloper(ListDev, DevCount, ListDev[i].ID);
@@ -140,6 +140,24 @@ void deleteDeveloper(Developer ListDev[], int *DevCount, char devID[])
         printf("Developer not found!\n");
         return;
     }
+    
+    //===================HÀM NÀY LÀ HÀM XÁC NHẬN DEV ĐÓ HIỆN TẠI ĐANG LÀM HAY ĐANG CÓ PROJECT
+    int found = 0;
+    int pos = 0;
+    for (int i = 0; i < ProCount; i++){
+    	if (isDevInProject(ListPro, devID, ListPro[i].IDPro, ProCount)){
+    		found = 1;
+    		pos = findProjectbyID(ListPro[i].IDPro, ListPro);
+    		break;
+		} 
+	}
+	
+	if (found){
+		printf("ThIS DEVELOPER IS WORKING IN %s PROJECT\n", ListPro[pos].NamePro);
+		printf("SO WE CANNOT FIRE THEM\n");
+		return;
+	}
+    //==============KHÚC KIỂM TRA ĐIỀU KIỆN
 
     for(int i = index; i < *DevCount - 1; i++)
     {
@@ -148,40 +166,41 @@ void deleteDeveloper(Developer ListDev[], int *DevCount, char devID[])
 
     (*DevCount)--;
 
-     // cập nhật lại ID
-    for(int i = 0; i < *DevCount; i++)
-    {
-        sprintf(ListDev[i].ID, "DEV%03d", i + 1);
-    }
-
     printf("Developer deleted successfully!\n");
 }
-<<<<<<< HEAD
 
-void updateSalary(Developer ListDev[],int DevCount, char devID[])
+
+void updateSalary(Developer ListDev[],int DevCount, char ID[])
 {
-	int index=findDevByID(devID,ListDev,DevCount);
+	int index = findDevbyID(ListDev, DevCount, ID);
 	if (index < 0)
       {
         printf("ID not found!\n");
         return;
       }
-      printf("Current info: %s - salary: %.2f\n",ListDev[index].Name, ListDev[index].Salary);
+      
+    printf("CURRENT INFORMATION: %s - salary: %.2f\n", ListDev[index].Name, ListDev[index].Salary);
 
-    float newSalary;
+    double newSalary;
 
+    
+
+    do{
     printf("Enter new salary: ");
-    scanf("%f", &newSalary);
-
-    if (newSalary >= 1000)
-    {
-        ListDev[index].Salary = newSalary;
-        printf("Update successfully!\n");
+    scanf("%lf", &newSalary);
+    
+    if (newSalary >= 1000){
+    ListDev[index].Salary = newSalary;
+    printf("Update successfully!\n");
     }
-    else
-    {
+        
+    else{
         printf("Salary must be at least 1000!\n");
+        printf("The new Salary must be upper than 1000$. Enter again ^v^\n");
+        pauseSystem();
+        continue;
     }
+	}while (true);
 
 }
 
@@ -190,7 +209,7 @@ void updateSalary(Developer ListDev[],int DevCount, char devID[])
 // update Language
 void updateLanguage(Developer ListDev[],int DevCount,char devID[])
 {
-	int index=findDevByID(devID,ListDev,DevCount);
+	int index = findDevbyID(ListDev, DevCount, devID);
 	if (index < 0)
       {
         printf("ID not found!\n");
@@ -208,49 +227,72 @@ void updateLanguage(Developer ListDev[],int DevCount,char devID[])
 }
 
 // update Birthday
-void updateBirthday(Developer ListDev[],int DevCount,char devID[])
-{
-    int index = findDevByID(devID,ListDev,DevCount);
-	if (index < 0)
-      {
-        printf("ID not found!\n");
-        return;
-      }
-    printf("Current info: %s - ID: %s\n",ListDev[index].Name, ListDev[index].BirthDate);
-	
-	char newBirth[9];
-	scanf("%[\n]",newBirth);
-	getchar();	
-	
-	if (validBirthDay(newBirth))
-	{
-		strcpy(ListDev[index].BirthDate, newBirth);
-		getchar();
-		printf("Update Birthday successfully");
-	}
-}
+//void updateBirthday(Developer ListDev[],int DevCount,char devID[])
+//{
+//    int index = findDevbyID(ListDev, DevCount, devID);
+//	if (index < 0)
+//      {
+//        printf("ID not found!\n");
+//        return;
+//      }
+//    printf("Current info: %s - ID: %s\n",ListDev[index].Name, ListDev[index].BirthDate);
+//	
+//	printf("ENTER THE NEW BIRTHDAY (YYYYMMDD): ");
+//	char newBirth[9];
+//	scanf("%[\n]",newBirth);
+//	getchar();	
+//	
+//	if (validBirthDay(newBirth))
+//	{
+//		strcpy(ListDev[index].BirthDate, newBirth);
+//		getchar();
+//		printf("Update Birthday successfully");
+//	}
+//}
 
-void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPro[])
+void updateName(Developer ListDev[],int DevCount,char ID[])
 {
-	int index=findDevByID(ID,ListDev,DevCount);
+	int index = findDevbyID(ListDev, DevCount, ID);
 	if (index < 0)
       {
         printf("ID not found!\n");
         return;
       }
-      
-     ListDev[index].totalExp = 0;   // reset trước khi tính
-    for (int i=0;i<ProCount;i++)
+    printf("ID: %s - THE CURRENT NAME: %s\n",ListDev[index].ID, ListDev[index].Name);
+    
+    printf("ENTER THE NEW NAME: ");
+    char newName[7];
+    scanf("%[\n]",newName);
+    getchar();
+    
+    if (validateID(newName))
     {
-    	if (isDevInProject(ListPro,devID,proID,ProCount))
-    	{
-    	    ListDev[intdex].totalExp+=ListPro[i].Duration;
-		}
+    	strcpy(ListDev[index].Name,newName);
+    	printf("Update Name successfully !\n");
 	}
-	 printf("Total experience of Dev %s: %d month(s)\n",
-           ID, ListDev[index].totalExp);
+	else printf("Fail update Name\n");
+    
 }
-=======
+//void totalExperience(Developer ListDev[], int DevCount, char ID[], Project LisPro[], char proID[])
+//{
+//	int index = findDevByID(ID, ListDev, DevCount);
+//	if (index < 0)
+//      {
+//        printf("ID not found!\n");
+//        return;
+//      }
+//    
+//    for (int i = 0; i < ProCount; i++)
+//    {
+//    	if (isDevInProject(ListPro, ID, proID, ProCount))
+//    	{
+//    	    ListDev[index].totalExp += ListPro[i].Duration;
+//		}
+//	}
+//	 printf("Total experience of Dev %s: %d month(s)\n",
+//           ID, ListDev[index].totalExp);
+//}
+
 //
 //void updateSalary(Developer ListDev[],int DevCount, char ID[])
 //{
@@ -355,4 +397,4 @@ void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPr
 ////        return;
 ////      }
 ////}
->>>>>>> f8c0fe49b384e7b65d23a43ba00eb34db9d04cae
+
