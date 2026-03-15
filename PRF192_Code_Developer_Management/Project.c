@@ -40,17 +40,17 @@
 	
 }
 
-int findNameProject(char str[], Project ListPro[]){
+int findNameProject(char proName[], Project ListPro[]){
 	for (int i = 0; i< ProCount; i++){
-		if (strcmp(str, ListPro[i].NamePro) == 0) return i;
+		if (strcmp(proName, ListPro[i].NamePro) == 0) return i;
 	}
 	
 	return -1;
 }
 
-int findIDProject(char str[], Project ListPro[]) {
-	for (int i = 0; i< ProCount; i++){
-		if (strcmp(str, ListPro[i].IDPro) == 0) return i;
+int findIDProject(char proID[], Project ListPro[],int ProCount) {
+	for (int i = 0; i<ProCount; i++){
+		if (strcmp(proID, ListPro[i].IDPro) == 0) return i;
 	}
 	
 	return -1;
@@ -90,16 +90,24 @@ void addnewProject(Project ListPro[]){
 
 <<<<<<< HEAD
 // Ham kiem tra Dev đã có trong project chưa
-int isDevInProject(Project ListPro[], int proIndex, char devID[])  
+// su dung ham inputdevid va input proid ben operation de nhap
+int isDevInProject(Project ListPro[], char devID[],char proID[],int ProCount)  
 {
-	int proIndex=
+	int proIndex=findIDProject(proID,ListPro,ProCount);
+	
+    if (proIndex==-1)
+    {
+    	return 0;
+	}
     for(int i = 0; i < ListPro[proIndex].MemberCount; i++)
     {
-        if(strcmp(ListPro[proIndex].Members[i], devID) == 0)
+    	 if (strcmp(ListPro[proIndex].Members[i], devID) == 0)
         {
             return 1;
         }
-    }
+	}
+    return 0
+}
 =======
 >>>>>>> f8c0fe49b384e7b65d23a43ba00eb34db9d04cae
 
