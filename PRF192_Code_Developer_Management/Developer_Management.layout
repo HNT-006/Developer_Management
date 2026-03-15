@@ -2,7 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 Order=2,0,3,4,7,10,5,8,9,1,6,11
-Focused=7
+Focused=1
 =======
 Order=1,2,4,5,6,7,8,9,10,11,0
 Focused=6
@@ -50,9 +50,9 @@ TopLine=22
 LeftChar=1
 [Editor_1]
 <<<<<<< HEAD
-CursorCol=20
-CursorRow=4
-TopLine=15
+CursorCol=1
+CursorRow=30
+TopLine=13
 =======
 CursorCol=19
 CursorRow=8
@@ -80,7 +80,7 @@ LeftChar=1
 CursorCol=1
 <<<<<<< HEAD
 CursorRow=34
-TopLine=10
+TopLine=18
 =======
 CursorRow=16
 <<<<<<< HEAD
@@ -113,9 +113,9 @@ LeftChar=1
 [Editor_6]
 <<<<<<< HEAD
 <<<<<<< HEAD
-CursorCol=10
-CursorRow=259
-TopLine=262
+CursorCol=6
+CursorRow=177
+TopLine=163
 =======
 CursorCol=1
 CursorRow=33
@@ -131,7 +131,7 @@ LeftChar=1
 CursorCol=2
 <<<<<<< HEAD
 CursorRow=95
-TopLine=34
+TopLine=55
 =======
 CursorRow=42
 TopLine=17
@@ -158,7 +158,7 @@ LeftChar=1
 <<<<<<< HEAD
 CursorCol=25
 CursorRow=43
-TopLine=19
+TopLine=84
 LeftChar=1
 [Editor_11]
 <<<<<<< Updated upstream

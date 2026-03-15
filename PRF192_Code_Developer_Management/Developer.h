@@ -26,17 +26,15 @@ void displayAllDev(Developer ListDev[],int Devcount);
 void deleteDeveloper(Developer ListDev[], int *DevCount, char ID[]);
 
  /// UPDATE INFORMATION
-void updateSalary(Developer ListDev[],int DevCount, char ID[]);
+void updateSalary(Developer ListDev[],int DevCount, char devID[]);
 
-void updateName(Developer ListDev[],int DevCount,char ID[]);
+void updateLanguage(Developer ListDev[],int DevCount,char devID[]);
 
-void updateLanguage(Developer ListDev[],int DevCount,char ID[]);
-
-void updateBirthday(Developer ListDev[],int DevCount,char ID[]);
+void updateBirthday(Developer ListDev[],int DevCount,char devID[]);
 
 
     /// TOTAL EXPERIENCE
-void totalExperience(Developer ListDev[],int DevCount,char ID[]);
+void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPro[]);
 
 
 //================HAM FIND TAM THOI ==================
