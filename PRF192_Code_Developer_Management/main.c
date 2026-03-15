@@ -20,6 +20,9 @@ Project ListPro[MAX_PRO];
 int DevCount = 0;
 int ProCount = 0;
 
+//====================CONTINUE OR NOT: TIEP TUC HAY DUNG LAI===============================
+//tieptuc = ContinueOrNot();
+
 //==============MAIN====================
 int main(int argc, char *argv[]) {
 	bool maintain = true;
@@ -188,16 +191,21 @@ int main(int argc, char *argv[]) {
 							bool tieptuc = true;
 							do{
 								clearSystem();
- 	    	    			    printf("Add new Project\n");
+ 	    	    			    addnewProject(ListPro, &ProCount);
  	    	    			// Gan tieptuc cho ContinueOrNot
+ 	    	    			    clearBuffer();
 								tieptuc = ContinueOrNot();
 							} while (tieptuc);
 							break;
 						}
 						
 						case 2:{
-							printf("Assign Project\n");
-							pauseSystem();
+							bool tieptuc = true;
+							do{
+ 	    	    			assignProjecttoDev();
+ 	    	    			// Gan tieptuc cho ContinueOrNot
+							tieptuc = ContinueOrNot();
+							} while (tieptuc);
 							break;
 						}
 						
@@ -211,6 +219,7 @@ int main(int argc, char *argv[]) {
 						case 4:{
 							printf("Bye User ^v^\n");
 							pauseSystem();
+							maintain2 = false;
 							break;
 						}
 						

@@ -35,9 +35,7 @@ bool ContinueOrNot() {
     printf("Enter Yes (Y) or No (N)\n");
 
     while (true) {
-        
         readString(choice);
-        clearBuffer();
         toLowerCase(choice); // chuẩn hóa về chữ thường
         
         if (strcmp(choice, "y") == 0 || strcmp(choice, "yes") == 0) {
@@ -47,6 +45,7 @@ bool ContinueOrNot() {
         } else {
             printf("Your choice is invalid\n");
             printf("Please enter again\n");
+            pauseSystem();
             continue;
         }
     }
@@ -77,15 +76,16 @@ void printfID(char str[]){
 
 //======================IN KHUNG VA TIEU DE CHO DISPLAY DEVELOPER=================
 void bolder(){
-	printf("\n------------------------------------------------------------------------------------------------\n");
+	printf("\n-----------------------------------------------------------------------------------------------------\n");
 }
 void titile(){
-	printf("%-10s %-20s %-15s %-25s %-10s\n",
+	printf("%-10s %-20s %-15s %-25s %-10s %-12s\n",
                                                         "ID", 
 														"NAME DEVELOPER", 
 														"BIRTH DATE",
 														"PROGRAMMING LANGUAGE", 
-														"SALARY");
+														"SALARY",
+														"EXPERIMENT");
 }
 
 
