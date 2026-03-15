@@ -9,10 +9,10 @@
 #include <stdbool.h>
 
 
-/*========================= ValidName functions =========================*/
+/*========================= ValidateName functions =========================*/
 bool validateName (char name[]);
 
-/*========================= validByID function =========================*/
+/*========================= validateID function =========================*/
 int validateID(char ID[]);
 
 /*========================= validBirthDay function =========================*/
