@@ -9,6 +9,13 @@
 #include <stdbool.h>
 
 
+/*========================= input functions =========================*/
+/*------------------------- inputIdDev function -------------------------*/
+void inputIdDev (char ID[]);
+/*------------------------- inputIdPro function -------------------------*/
+void inputIdPro (char IDPro[]);
+
+
 /*========================= ValidateName functions =========================*/
 bool validateName (char name[]);
 
