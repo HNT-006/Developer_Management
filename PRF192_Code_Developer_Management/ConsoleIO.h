@@ -17,13 +17,21 @@ void clearBuffer();
 bool ContinueOrNot();
 void toLowerCase(char *str);
 
-
+//===============CAC HAM NHAP XUAT CO BAN====================
 int readInt();
 int printfChoice(); 
+
+char* readString(char str[]);
+void  printfID(char str[]);
+
+//=======================IN KHUNG CHO DISPLAY==========================
+void bolder();
+void titile();
 
 
 void MAIN_MENU();
 void SubMENU_DEV();
 void SubMENU_PROJECT();
 void SubMENU_UPDATE();
+void SubMENU_DISPLAY();
 #endif 

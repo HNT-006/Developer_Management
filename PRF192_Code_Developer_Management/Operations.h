@@ -6,14 +6,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdbool.h>
 
 
+/*========================= ValidateName functions =========================*/
+bool validateName (char name[]);
 
-/*========================= ValidName functions =========================*/
-int validName (char Name[]);
-
-/*========================= validByID function =========================*/
-int validID (char ID[]);
+/*========================= validateID function =========================*/
+int validateID(char ID[]);
 
 /*========================= validBirthDay function =========================*/
 int validBirthDay (char BirthDay[]);
@@ -22,7 +22,7 @@ int validBirthDay (char BirthDay[]);
 int findDevByName(char Name[], Developer ListDev[], int DevCount);
 
 /*========================= findDevByID function =========================*/
-int findDevByID (char ID[], Developer ListDev[], int DevCount);
+int findDevbyID(Developer ListDev[], int DevCount, char ID[]);
 
 /*========================= calculateTotalExperience function =========================*/
 int calculateTotalExperience (Project ListPro[], int ProCount);
