@@ -50,8 +50,8 @@ TopLine=22
 LeftChar=1
 [Editor_1]
 <<<<<<< HEAD
-CursorCol=1
-CursorRow=30
+CursorCol=70
+CursorRow=20
 TopLine=13
 =======
 CursorCol=19
@@ -80,7 +80,7 @@ LeftChar=1
 CursorCol=1
 <<<<<<< HEAD
 CursorRow=34
-TopLine=18
+TopLine=17
 =======
 CursorRow=16
 <<<<<<< HEAD
@@ -113,9 +113,9 @@ LeftChar=1
 [Editor_6]
 <<<<<<< HEAD
 <<<<<<< HEAD
-CursorCol=6
-CursorRow=177
-TopLine=163
+CursorCol=1
+CursorRow=97
+TopLine=94
 =======
 CursorCol=1
 CursorRow=33

@@ -17,7 +17,7 @@ void addDeveloper(Developer ListDev[],int *DevCount);
 
 
     /// DISPLAY INFORMATION
-void displayDeveloper(Developer ListDev[],int DevCount,char ID[]);
+void displayDeveloper(Developer ListDev[],int DevCount,char devID[]);
 
 void displayAllDev(Developer ListDev[],int Devcount);
 
