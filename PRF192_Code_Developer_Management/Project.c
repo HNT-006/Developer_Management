@@ -51,6 +51,7 @@ void addnewProject(){
 // Ham kiem tra Dev đã có trong project chưa
 int isDevInProject(Project ListPro[], int proIndex, char devID[])  
 {
+	int proIndex=
     for(int i = 0; i < ListPro[proIndex].MemberCount; i++)
     {
         if(strcmp(ListPro[proIndex].Members[i], devID) == 0)
@@ -62,6 +63,8 @@ int isDevInProject(Project ListPro[], int proIndex, char devID[])
     return 0;
 }
 
+
+  //// ASSIGN Project to Dev
 void assignProjecttoDev(){
     char devID[7];
     char proID[7];

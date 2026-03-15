@@ -42,7 +42,7 @@ void addDeveloper(Developer ListDev[],int *DevCount){
 }
 
 ////  nhap vao id
-void inputID(char ID[])
+void inputIdDev(char ID[])
 {
 	scanf("%[^\n]",ID);
 	getchar();
@@ -221,4 +221,5 @@ void totalExperience(Developer ListDev[],int DevCount,char ID[])
         printf("ID not found!\n");
         return;
       }
+    for (int i=0;i<)
 }
