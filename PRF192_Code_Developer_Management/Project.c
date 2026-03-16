@@ -60,6 +60,41 @@ int findProjectbyID(char proID[], Project ListPro[]) {
 
 
 
+<<<<<<< HEAD
+
+
+void addnewProject(Project ListPro[]){
+	if ((ProCount) >= MAX_PRO){
+		printf("THE NUMBER OF PROJECT IN LIST PROJECT IS FULL (MAXIMUM 50) -_-\n");
+		return;
+	}
+	
+	demPro++; 
+
+	snprintf(ListPro[ProCount].IDPro, sizeof(ListPro[ProCount].IDPro), "PRO%03d", demPro);
+
+	Project* p = &ListPro[ProCount];
+	
+	snprintf(p->IDPro, sizeof(p->IDPro), "PRO%03d", demPro);
+	
+	printf("Enter Name Project: ");
+    strcpy(ListPro[ProCount].NamePro, readString(ListPro[ProCount].NamePro));
+	
+	printf("Enter Duration (THE NUMBER OF MONTH, DEV HAVE TO FINISH PROJECT): ");
+	ListPro[ProCount].Duration = readInt(ListPro[ProCount].Duration);
+	
+	printf("Enter StartDate (DATE, DEV START TO WORK): ");
+    strcpy(ListPro[ProCount].StartDate, readString(ListPro[ProCount].StartDate));
+	
+    ListPro[ProCount].MemberCount = 0;
+	printf("Add new Project Successfully ^v^\n");
+	
+	ProCount++;
+}
+
+
+=======
+>>>>>>> b235272930b7833d84163ed2ad6ee994bfa5a65b
 // Ham kiem tra Dev đã có trong project chưa
 // su dung ham inputdevid va input proid ben operation de nhap
 int isDevInProject(Project ListPro[], char devID[], char proID[],int ProCount)  
@@ -159,6 +194,9 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
 	
 }
 
+<<<<<<< HEAD
+
+=======
  
 //void assignProjecttoDev(){
 //    char devID[7];
@@ -207,8 +245,26 @@ void addnewProject(Project ListPro[], int *ProCount){
 }
 
  //// ==============ASSIGN PROJECT TO DEVELOPER====================
+>>>>>>> b235272930b7833d84163ed2ad6ee994bfa5a65b
 
 void assignProjecttoDev(){
+<<<<<<< HEAD
+    char devID[7];
+    char proID[7];
+
+    printf("Enter Developer ID: ");
+    scanf("%6s", devID);
+
+    int devIndex = findDevByID(devID, ListDev, DevCount);
+
+    if(devIndex < 0)
+    {
+        printf("Developer not found!\n");
+        return;
+
+void assignProjecttoDev(Project ListPro[], char IdDev[]){
+=======
+>>>>>>> b235272930b7833d84163ed2ad6ee994bfa5a65b
 	int index = LuaChon_assignProjecttoDev(ListPro);
 	if (index == -1 || index == 0){
 		return;
@@ -218,6 +274,10 @@ void assignProjecttoDev(){
        printf("Project is full\n");
        pauseSystem();
        return;
+<<<<<<< HEAD
+
+=======
+>>>>>>> b235272930b7833d84163ed2ad6ee994bfa5a65b
     }
 	//===========ĐOẠN TRÊN XÉT TÍNH ĐÚNG SAI TRƯỚC KHI VÀO=========
 	
