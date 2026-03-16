@@ -8,14 +8,34 @@
 #include <ctype.h>
 #include <stdbool.h>
 
+/*========================= CAC HAM INPUT =========================*/
 
+/*========================= input NameDev function =========================*/
+void inputNameDev(char name[]);
+/*========================= input NameProJECT function =========================*/
+void inputNamePro(char name[]);
 /*========================= input functions =========================*/
-void inputIdDev (char devID[]);
-/*------------------------- inputIdDev function -------------------------*/
 void inputIdDev (char devID[]);
 /*------------------------- inputIdPro function -------------------------*/
 void inputIdPro (char proID[]);
 
+
+
+
+
+/*========================= DINH DANG FORMAT =========================*/
+void formatNameDev(char name[]);
+void formatNamePro(char name[]);
+void formatIdDev(char name[]);
+void formatIdPro(char name[]);
+void formatLanguage(char name[]);
+void formatBirthDate(char name[] );
+
+
+
+
+
+/*========================= KIEM TRA GIA TRI=========================*/
 
 /*========================= ValidateName functions =========================*/
 bool validateName (char name[]);
@@ -31,12 +51,24 @@ int validateBirthDay (char BirthDay[]);
 /*========================= validLanguage function =========================*/
 int validateLanguage (char Language[]);
 
+
+
+
+
+/*========================= TIM KIEM=========================*/
+
 /*========================= findDevByName function =========================*/
 int findDevByName(char Name[], Developer ListDev[], int DevCount);
 
 /*========================= findDevByID function =========================*/
 int findDevbyID(Developer ListDev[], int DevCount, char ID[]);
 
+
+
+
+
+
+/*========================= SAP XEP=========================*/
 
 /*========================= Sort =========================*/
 void swap(Developer *a, Developer *b);

@@ -30,7 +30,7 @@ void updateSalary(Developer ListDev[],int DevCount, char devID[]);
 
 void updateLanguage(Developer ListDev[],int DevCount,char devID[]);
 
-void updateBirthday(Developer ListDev[],int DevCount,char devID[]);
+void updateBirthdate(Developer ListDev[],int DevCount,char devID[]);
 
 
     /// TOTAL EXPERIENCE
