@@ -1,100 +1,113 @@
+#include "Operations.h"
+#include "Common.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
 //===================SaveDevToFile======================//
-#include<stdio.h>
-#include"common.h"
+
 void SaveDevtofile(){
 
-FILE*fp = fopen("developers.txt","w");
-if (fp=NULL){
-	printf ("can not created file\n");
-	return ;
-}
-for (int i ; i<DevCount;i++){
-	fprintf (fp,"%s %s %s %s %.2lf\n",ListDev[i].ID,ListDev[i].Name,ListDev[i].BirthDate,ListDev[i].Language,ListDev[i].Salary);
-	
-}
-fclose(fp); 
- printf("Saved developers successfully!\n");
+    FILE* fp = fopen("developers.txt","w");
+
+    if (fp == NULL){
+        printf("Can not create file\n");
+        return;
+    }
+
+    for (int i = 0; i < DevCount; i++){
+        fprintf(fp,"%s %s %s %s %lf\n",
+        ListDev[i].ID,
+        ListDev[i].Name,
+        ListDev[i].BirthDate,
+        ListDev[i].Language,
+        ListDev[i].Salary);
+    }
+
+    fclose(fp);
+
+    printf("Saved developers successfully!\n");
 }
 
 
-// =============== LoadingDevToFile=================//
+//=================LoadingDevToFile=================
 
-#include<stdio.h>
-#include"common.h"
 void LoadingDevToFlie(){
-	FILE*fp=fopen("developers.txt","w");
-	if (fp=NULL){
-		printf ("no date file found \n");
-		return;
-	}
-	DevCount = 0;
-	while(DevCount<MAX_DEV&&fscanf(fp,"%s %s %s %s %.2lf",ListDev[DevCount].ID,ListDev[DevCount].Name,ListDev[DevCount].BirthDate,ListDev[DevCount].Language,&ListDev[DevCount].Salary)!=EOF);
 
+    FILE* fp = fopen("developers.txt","r");
 
-{
+    if (fp == NULL){
+        printf("No data file found\n");
+        return;
+    }
 
-	DevCount++;
-	
+    DevCount = 0;
+
+    while(DevCount < MAX_DEV &&
+          fscanf(fp,"%s %s %s %s %lf",
+          ListDev[DevCount].ID,
+          ListDev[DevCount].Name,
+          ListDev[DevCount].BirthDate,
+          ListDev[DevCount].Language,
+          &ListDev[DevCount].Salary) != EOF)
+    {
+        DevCount++;
+    }
+
+    fclose(fp);
 }
-}
 
-//================SaveProJectToFile==================//
 
-#include <stdio.h>
-#include "common.h"
+//================SaveProjectToFile==================//
+
 void SaveProToFile(){
-	FILE* fp =fopen("projects.txt","w");
-	if(fp=NULL){
-		printf ("can not created file /n");
-		return;
-	}
-	for(int i;i<ProCount;i++){
-		fprintf (fp,"%s %s %s %s %.2lf",ListPro[i].IDPro, ListPro[i].NamePro, ListPro[i].Duration, ListPro[i].StartDate );
-	}
-	fclose(fp);
-	printf ("Save project successfully!\n");
+
+    FILE* fp = fopen("projects.txt","w");
+
+    if(fp == NULL){
+        printf("Can not create file\n");
+        return;
+    }
+
+    for(int i = 0; i < ProCount; i++){
+        fprintf(fp,"%s %s %s %s\n",
+        ListPro[i].IDPro,
+        ListPro[i].NamePro,
+        ListPro[i].Duration,
+        ListPro[i].StartDate);
+    }
+
+    fclose(fp);
+
+    printf("Save project successfully!\n");
 }
-//==================LoadingProJectToFlie===============//
-#include<stdio.h>
-#include"common.h"
+
+
+//================LoadingProjectToFile===============//
+
 void LoadingProToFile(){
-	FILE*fp=fopen("project.txt","w");
-	if (fp=NULL){
-		printf ("can not file found /n");
-		return;
-	}
-	while (ProCount<MAX_PRO&&fscanf(fp,"%s %s %s %s %.2lf",ListPro[ProCount].IDPro, ListPro[ProCount].NamePro, ListPro[ProCount].Duration, &ListDev[ProCount].BirthDate)!=EOF)
-	{
-		ProCount++;
-	}
+
+    FILE* fp = fopen("projects.txt","r");
+
+    if (fp == NULL){
+        printf("Can not find file\n");
+        return;
+    }
+
+    ProCount = 0;
+
+    while (ProCount < MAX_PRO &&
+           fscanf(fp,"%s %s %s %s",
+           ListPro[ProCount].IDPro,
+           ListPro[ProCount].NamePro,
+           ListPro[ProCount].Duration,
+           ListPro[ProCount].StartDate) != EOF)
+    {
+        ProCount++;
+    }
+
+    fclose(fp);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
