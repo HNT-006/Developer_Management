@@ -52,7 +52,7 @@ int validateSalary (double Salary);
 int validateID(char ID[]);
 
 /*========================= validBirthDay function =========================*/
-int validateBirthDay (char BirthDay[]);
+int validateBirthDate (char BirthDay[]);
 /*========================= validLanguage function =========================*/
 int validateLanguage (char Language[]);
 

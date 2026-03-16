@@ -47,7 +47,7 @@ void addDeveloper(Developer ListDev[], int *DevCount){
     printf("Enter Birth Date (YYYYMMDD): ");
     scanf("%8[^\n]", ListDev[*DevCount].BirthDate);
     getchar();
-    if (!validateBirthDay(ListDev[*DevCount].BirthDate))
+    if (!validateBirthDate(ListDev[*DevCount].BirthDate))
     {
     	printf("\tTHIS BIRTH DAY IS INVALID -_- \n");
     	continue;
@@ -235,7 +235,7 @@ void updateBirthdate(Developer ListDev[],int DevCount,char devID[])
 	scanf("%[\n]",newBirth);
 	getchar();	
 
-	if (validateBirthDay(newBirth))
+	if (validateBirthDate(newBirth))
 	{
 		strcpy(ListDev[index].BirthDate, newBirth);
 		getchar();
