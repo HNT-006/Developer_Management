@@ -8,10 +8,10 @@
 #define MAX_PRO 50
 #define MAX_MEM 20
 typedef struct{
-	char ID[7];
-	char Name[20];
-	char BirthDate[9];
-	char Language[20];
+	char ID[10];
+	char Name[50];
+	char BirthDate[50];
+	char Language[50];
 	double Salary;
 	
 	int totalExp;
@@ -21,10 +21,10 @@ typedef struct{
 
 
 typedef struct{
-	char IDPro[7];
-	char NamePro[20];
+	char IDPro[10];
+	char NamePro[100];
     int Duration;  //So thang hoan thanh Project
-    char StartDate[9];  // Ngay thang nam bat dau
+    char StartDate[30];  // Ngay thang nam bat dau
     
     char Members[MAX_DEV][7];  //Luu so luong ID DEV thuc hien + Do dai cua ID DEV
     int MemberCount;

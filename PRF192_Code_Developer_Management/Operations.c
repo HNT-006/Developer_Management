@@ -365,3 +365,19 @@ void sortBySalary(Developer ListDev[], int DevCount) {
 }
 
 
+//=======================CÁC NORMALIZE NAME, BIRTHDATE VÀ STRING=======================
+
+void normalizeBirthDate(char birthday[]){
+    char day[3], month[3], year[5];
+
+    strncpy(day, birthday, 2);
+    day[2] = '\0';
+
+    strncpy(month, birthday + 2, 2);
+    month[2] = '\0';
+
+    strncpy(year, birthday + 4, 4);
+    year[4] = '\0';
+
+    sprintf(birthday, "%s - %s - %s", day, month, year);
+}

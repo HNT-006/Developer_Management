@@ -7,7 +7,7 @@
 #include "Common.h"
 #include "Operations.h"
 #include "Project.h"
-
+#include "ConsoleIO.h"
 
 //==================CODE CAC HAM TAM THOI. SAU DO CO THE BO SANG OPERATIONS.C.H=======================
 
@@ -20,8 +20,7 @@ void addDeveloper(Developer ListDev[], int *DevCount){
         return;
     }
 
-    getchar();
-
+    clearBuffer();
     demDev++;
     snprintf(ListDev[*DevCount].ID, sizeof(ListDev[*DevCount].ID), "DEV%03d", demDev);
 
@@ -29,7 +28,7 @@ void addDeveloper(Developer ListDev[], int *DevCount){
     do{
     printf("Enter Name: ");
     scanf("%19[^\n]", ListDev[*DevCount].Name);
-    getchar();
+    clearBuffer();
     if (!validateName(ListDev[*DevCount].Name)){
 	
     printf("\tTHIS NAME IS INVALID -_- \n");
@@ -44,19 +43,18 @@ void addDeveloper(Developer ListDev[], int *DevCount){
     
     maintain=true;
     do{
-    printf("Enter Birth Date (YYYYMMDD): ");
+    printf("Enter Birth Date (DDMMYYYY): ");
     scanf("%8[^\n]", ListDev[*DevCount].BirthDate);
-    getchar();
+    clearBuffer();
     if (!validateBirthDate(ListDev[*DevCount].BirthDate))
     {
     	printf("\tTHIS BIRTH DAY IS INVALID -_- \n");
     	continue;
 	} else 
 	{
-		formatBirthDate(ListDev[*DevCount].BirthDate);
+		normalizeBirthDate(ListDev[*DevCount].BirthDate);
 		maintain=false;}
 	} while(maintain);
-	
 	
 
     maintain=true;
@@ -65,10 +63,10 @@ void addDeveloper(Developer ListDev[], int *DevCount){
 	
     printf("Enter Language: ");
     scanf("%19[^\n]", ListDev[*DevCount].Language);
-    getchar();
+    clearBuffer();
     if (!validateLanguage(ListDev[*DevCount].Language))
     {
-    	printf("\tTHIS LANGUAGE IS INVALID -_- \n");
+    	printf("\tTHE LANGUAGE MUST IN C++, JS, JAVA, AND HTML/CSS\n");
     	continue;
 	} else
 	{
@@ -83,10 +81,9 @@ void addDeveloper(Developer ListDev[], int *DevCount){
     {
     printf("Enter Salary: ");
     scanf("%lf", &ListDev[*DevCount].Salary);
-    getchar();
     if (!validateSalary(ListDev[*DevCount].Salary))
     {
-    printf("\tTHIS SALARY IS INVALID -_- \n");
+    printf("\tTHE SALARY MUST HIGHER THAN $1000 \n");
     	continue;
 	} else
 	{
@@ -119,7 +116,7 @@ void displayDeveloper(Developer ListDev[],int DevCount,char devID[])
     		return;
 		}
 		
-		printf("%-10s %-20s %-15s %-25s %-10.2lf %-20d\n", ListDev[index].ID,
+		printf("%-10s %-20s %-15s %-25s $%-10.2lf %-20d\n", ListDev[index].ID,
 												ListDev[index].Name,
 												ListDev[index].BirthDate,
 												ListDev[index].Language,

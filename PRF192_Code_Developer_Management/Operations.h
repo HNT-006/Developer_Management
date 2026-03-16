@@ -84,6 +84,7 @@ void sortByID(Developer ListDev[], int DevCount);
 void sortBySalary(Developer ListDev[], int DevCount);
 
 
-
+//=====================NORMALIZE BIRTH DATE===========================
+void normalizeBirthDate(char birthday[]);
 #endif 
 

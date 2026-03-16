@@ -12,8 +12,9 @@ int findProjectbyID(char proID[], Project ListPro[]);
 int isDevInProject(Project ListPro[], char devID[], char proID[],int ProCount); //====> HÀM XÁC NHẬN DEV ĐÓ CÓ TRONG LIST MEMBERS CỦA PROJECT KO 
 //===================CAC HAM PROJECT CO BAN ====================
 void addnewProject(Project ListPro[], int *ProCount);
-void assignProjecttoDev();
-
+bool assignProjecttoDev();
+void displayProject(Project ListPro[], int ProCount, char proID[]);
+void displayAllProject(Project ListPro[], int ProCount);
 //==================CAC HAM ĐƯA RA LỰA CHỌN CƠ BẢN========================
 
 int LuaChon_1or2();
