@@ -1,2 +1,16 @@
-*.layout
+# Build files
+*.exe
+*.o
+*.obj
 
+# IDE files
+*.layout
+*.dev
+*.workspace
+
+# Documents (optional)
+*.docx
+
+# OS files
+.DS_Store
+Thumbs.db

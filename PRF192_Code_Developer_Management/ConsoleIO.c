@@ -16,7 +16,8 @@ void clearSystem(){
 }
 
 void clearBuffer() {
-    while (getchar() != '\n'); 
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
 
@@ -30,14 +31,13 @@ void toLowerCase(char *str) {
 bool ContinueOrNot() {
     char choice[20];
 
-    printf("Do you want to continue to ADD?\n");
+    printf("Do you want to continue?\n");
     printf("Enter Yes (Y) or No (N)\n");
 
     while (true) {
-        clearBuffer();
-        scanf("%[^\n]", choice);
+        readString(choice);
         toLowerCase(choice); // chuẩn hóa về chữ thường
-
+        
         if (strcmp(choice, "y") == 0 || strcmp(choice, "yes") == 0) {
             return true;
         } else if (strcmp(choice, "n") == 0 || strcmp(choice, "no") == 0) {
@@ -45,11 +45,13 @@ bool ContinueOrNot() {
         } else {
             printf("Your choice is invalid\n");
             printf("Please enter again\n");
+            pauseSystem();
             continue;
         }
     }
 }
 
+//======================CAC HAM NHAP THONG TIN GOM INTERGER VA STRING========================
 int readInt(int n){
 	scanf("%d", &n);
 	
@@ -62,11 +64,37 @@ int printfChoice(){
 	return readInt(choice);
 }
 
+
+char* readString(char str[]){
+	scanf("%[^\n]", str);
+	return str;
+}
+void printfID(char str[]){
+	printf("Enter ID: ");
+	str = readString(str);
+}
+
+//======================IN KHUNG VA TIEU DE CHO DISPLAY DEVELOPER=================
+void bolder(){
+	printf("\n-----------------------------------------------------------------------------------------------------\n");
+}
+void titile(){
+	printf("%-10s %-20s %-15s %-25s %-10s %-12s\n",
+                                                        "ID", 
+														"NAME DEVELOPER", 
+														"BIRTH DATE",
+														"PROGRAMMING LANGUAGE", 
+														"SALARY",
+														"EXPERIMENT");
+}
+
+
+
 void MAIN_MENU(){
-	printf("\t=============MAIN MENU=============\n");
-	printf("\t1. Developer Services\n");
-	printf("\t2. Project Services\n");
-	printf("\t3. Exit.\n");
+	printf("\t======================MAIN MENU======================\n");
+	printf("1. Developer Services\n");
+	printf("2. Project Services\n");
+	printf("3. Exit.\n");
 }
 
 void SubMENU_DEV(){
@@ -87,5 +115,20 @@ void SubMENU_PROJECT(){
 	printf("4. Exit\n");
 }
 
+void SubMENU_UPDATE(){
+	printf("\t=============UPDATE SERVICE===============\n");
+	printf("1. Update Name Developert\n");
+	printf("2. Update Programming Lanaguage Developer\n");
+	printf("3. Update the Birth day for Developer\n");
+	printf("4. Update Salary for Developer\n");
+	printf("5. Exit\n");
+}
+
+void SubMENU_DISPLAY(){
+	printf("\t=============DISPLAY SERVICES=============\n");
+	printf("1. Display Developer\n");
+	printf("2. Display all Developer in List Developer\n");
+	printf("3. Exit\n");
+}
 
 

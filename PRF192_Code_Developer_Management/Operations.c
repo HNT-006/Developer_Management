@@ -4,13 +4,66 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+
+
+/*========================= ValidateName function =========================*/
+bool validateName(char name[]) {
+    int length = strlen(name);
+    int spaceCount = 0;
+
+    if (length == 0) return false;
+
+    for (int i = 0; i < length; i++) {
+        if (name[i] == ' ') {
+            spaceCount++;
+        }
+    }
+
+    if (spaceCount >= 1) {
+        return true;
+    }
+
+    return false;
+}
+
+
+/*========================= validateID function =========================*/
+int validateID(char ID[]) {
+    if (strlen(ID) != 6)
+        return 0;
+
+    // Check first 3 characters
+    if (ID[0] != 'D' || ID[1] != 'E' || ID[2] != 'V')
+        return 0;
+
+    // Check last 3 characters are digits
+    if (!isdigit(ID[3]) || 
+        !isdigit(ID[4]) || 
+        !isdigit(ID[5]))
+        return 0;
+
+    return 1;
+}
+
+
+/*========================= validBirthDay function =========================*/
+int validBirthDay (char BirthDay[]);
+
+
+
+
+
+
+
+
 
 /*========================= findDevByName function =========================*/
 // Trả về: index nếu tìm thấy | -1 nếu không tìm thấy | -2 nếu Name không hợp lệ
 int findDevByName(char Name[], Developer ListDev[], int DevCount)
 {
     // Kiểm tra format tên
-//    if (!validName(Name))
+    if (!validateName(Name))
     {
         return -2; // Name không hợp lệ
     }
@@ -28,137 +81,19 @@ int findDevByName(char Name[], Developer ListDev[], int DevCount)
 
 
 /*========================= findDevByID function =========================*/
-
 // Trả về: index nếu tìm thấy | -1 nếu không tìm thấy | -2 nếu ID không hợp lệ
-int findDevByID(char ID[], Developer ListDev[], int DevCount)
-{
-    // Kiểm tra format ID
-//    if (!validID(ID))
-    {
-        return -2; // ID không hợp lệ
-    }
-
-    // Duyệt mảng từ 0 -> DevCount - 1
-    for (int i = 0; i < DevCount; i++)
-    {
-        if (strcmp(ListDev[i].ID, ID) == 0)
-        {
-            return i; // Tìm thấy, trả về vị trí
-        }
-    }
-
-    return -1; // Không tìm thấy
-}
-
-/*========================= validBirthDay function =========================*/
-
-int validBirthDay (char BirthDay[]) {
-	// Kiểm tra xem độ dài có đúng 8 kí tự hay chưa
-	if (strlen(BirthDay) != 8) {
-		return 0;
-	}
-	// Kiểm tra xem các kí tự đó có phải là số hay không?
-	for (int i=0; i<8; i++) {
-		if (BirthDay[i]<'0' || BirthDay[i]>'9')
-			return 0;
-	}
-	// Tách DDMMYY ra từ chuỗi
-	char tmpD[3]={BirthDay[0], BirthDay[1], '\0'};
-	char tmpM[3]={BirthDay[2], BirthDay[3], '\0'};
-	char tmpY[5]={BirthDay[4], BirthDay[5], BirthDay[6], BirthDay[7], '\0'};
-	// chuyển chuỗi thành sô
-	int d=atoi(tmpD);
-	int m=atoi(tmpM);
-	int y=atoi(tmpY);
+int findDevbyID(Developer ListDev[], int DevCount, char ID[]){
+	if (!validateID(ID)){
+		return -1;
+	} 
 	
-	// Kiểm tra năm (ví dụ Developer phải từ 18 tuổi -> 56 tuổi)
-	if (y<1970 || y>2008) {
-		return 0;
-	}
-	// Kiểm tra tháng
-	if (m<1 || m>12) {
-		return 0;
-	}
-	// Kiểm tra ngày
-	int maxDays = 31; // Mặc định là ngày 31
-	if (m==4 || m==6 || m==9 || m==11) {
-		maxDays = 30;
-	}
-	else if (m==2) {
-		// Kiểm tra năm nhuận cho tháng 2
-		if ((y%400==0)||(y%4==0 && y%100!=0)) {
-			maxDays=29;
-		}
-		else maxDays=28;
-	}
-	if (d<1 || d>maxDays) {
-		return 0;
-	}
-	return 1; // Chương trình chạy đến return 1 là kết quả hợp lệ
-}
-
-/*========================= validID function =========================*/
-
-int validID(char ID[]) {
-    
-    // Remove newline if using fgets
-    ID[strcspn(ID, "\n")] = '\0';
-//In fact: DEV100 is saved with form 'D' 'E' 'V' '1' '0' '0' '\n' '\0' 
-//If don't remove '\n' -> length = 7 -> next step is wrong -> always wrong
-
-    // Check length
-    if (strlen(ID) != 6)
-        return 0;
-
-    // Check first 3 characters
-    if (ID[0] != 'D' || ID[1] != 'E' || ID[2] != 'V')
-        return 0;
-
-    // Check last 3 characters are digits
-    if (!isdigit(ID[3]) || !isdigit(ID[4]) || !isdigit(ID[5]))
-        return 0;
-
-    return 1;
-}
-
-/*========================= validName function =========================*/
-
-int validName(char Name[]) {
-	// Check empty name?
-	if (Name==NULL || strlen(Name)==0) {
-		return 0;
-	}
-	// Check length of Name?
-	if (strlen(Name)>19) {
-		return 0;
-	}
-	// Check alphabet Name?
-	int i=0;
-	while (Name[i] != '\0') {
-		if (!isalpha(Name[i]) && (Name[i]!=' ')) {
-			return 0;
-		}
-		i++;
-	
+	for (int i = 0; i < DevCount; i++){
+		if (strcmp(ID, ListDev[i].ID) == 0) return i;
 	}
 	
-	// Check Name
-    i = 0;
-    int wordCount = 0;
-
-    while (Name[i] != '\0') {
-        
-        if (Name[i] != ' ' && (i == 0 || Name[i - 1] == ' ')) {
-            wordCount++;
-        }
-        i++;
-    }
-
-    if (wordCount >= 2)
-        return 1;
-    else
-        return 0;
+	return -1;
 }
+
 
 /*========================= calculateTotalExperience function =========================*/
 int calculateTotalExperience (Project ListPro[], int ProCount) {
@@ -171,7 +106,8 @@ int calculateTotalExperience (Project ListPro[], int ProCount) {
 	return total;
 }
 
-/*========================= sortByID functions =========================*/
+
+/*========================= sortByID function =========================*/
 /*------------------------- swap function -------------------------*/
 void swap(Developer *a, Developer *b)
 {
@@ -179,14 +115,15 @@ void swap(Developer *a, Developer *b)
     *a = *b;
     *b = tmp;
 }
+
 /*------------------------- partition function -------------------------*/
 int partition(Developer ListDev[], int l, int r)
 {
     char pivot[7];
-    strcpy(pivot, ListDev[r].ID); // Đúng tên mảng
+    strcpy(pivot, ListDev[r].ID);
 
     int i = l - 1;
-    for (int j = l; j < r; j++) // j bắt đầu từ l
+    for (int j = l; j < r; j++)
     {
         if (strcmp(ListDev[j].ID, pivot) < 0)
         {
@@ -198,6 +135,7 @@ int partition(Developer ListDev[], int l, int r)
     swap(&ListDev[i], &ListDev[r]);
     return i;
 }
+
 /*------------------------- quicksort function -------------------------*/
 void quicksort(Developer ListDev[], int l, int r)
 {
@@ -207,6 +145,7 @@ void quicksort(Developer ListDev[], int l, int r)
     quicksort(ListDev, l, p - 1);
     quicksort(ListDev, p + 1, r);
 }
+
 /*------------------------- sortByID function -------------------------*/
 void sortByID(Developer ListDev[], int DevCount)
 {
@@ -215,39 +154,10 @@ void sortByID(Developer ListDev[], int DevCount)
     quicksort(ListDev, 0, DevCount - 1);
 }
 
-/*========================= sortBySalary functions =========================*/
-/*------------------------- partitionBySalary function -------------------------*/
-int partitionBySalary(Developer ListDev[], int l, int r)
-{
-    double pivot = ListDev[r].Salary; // ✅ double, không phải int
-    int i = l - 1;
-    for (int j = l; j < r; j++)
-    {
-        if (ListDev[j].Salary < pivot)
-        {
-            i++;
-            swap(&ListDev[i], &ListDev[j]); // ✅ đúng tên mảng
-        }
-    }
-    i++;
-    swap(&ListDev[i], &ListDev[r]);
-    return i;
-}
-/*------------------------- quicksortBySalary function -------------------------*/
-void quicksortBySalary(Developer ListDev[], int l, int r)
-{
-    if (l >= r) return;
-    int p = partitionBySalary(ListDev, l, r);
-    quicksortBySalary(ListDev, l, p - 1);
-    quicksortBySalary(ListDev, p + 1, r);
-}
-/*------------------------- sortBySalary function -------------------------*/
-void sortBySalary(Developer ListDev[], int DevCount)
-{
-    if (DevCount <= 1) return;
-    quicksortBySalary(ListDev, 0, DevCount - 1);
-}
 
+
+
+/*========================= sortBySalary functions =========================*/
 
 
 

@@ -20,6 +20,9 @@ Project ListPro[MAX_PRO];
 int DevCount = 0;
 int ProCount = 0;
 
+//====================CONTINUE OR NOT: TIEP TUC HAY DUNG LAI===============================
+//tieptuc = ContinueOrNot();
+
 //==============MAIN====================
 int main(int argc, char *argv[]) {
 	bool maintain = true;
@@ -44,7 +47,9 @@ int main(int argc, char *argv[]) {
  	    	    			bool tieptuc = true;
 							do{
 								clearSystem();
- 	    	    			    printf("Add new Developer Successfully\n");
+								printf("\t================ADD NEW DEVELOPER================\n");
+								addDeveloper(ListDev, &DevCount);
+ 	    	    			    printf("\t================Add new Developer Successfully================\n\n");
  	    	    			// Gan tieptuc cho ContinueOrNot
 								tieptuc = ContinueOrNot();
 							} while (tieptuc);
@@ -61,15 +66,13 @@ int main(int argc, char *argv[]) {
 								
 								switch(update_choice){
 									case 1: {
+										printf("\t================UPDATE NAME FOR DEVELOPER================\n");
+										
 										printf("Update Name Developer Successfully\n");
 										pauseSystem();
 										break;
 									}
-//    printf("1. Update Name Developert\n");
-//	printf("2. Update Programming Lanaguage Developer\n");
-//	printf("3. Update the Birth day for Developer\n");
-//	printf("4. Update Salary for Developer\n");
-//	printf("5. Exit\n");
+
 									case 2: {
 										printf("Update Programming Lanaguage Developer Successfully\n");
 										pauseSystem();
@@ -100,14 +103,49 @@ int main(int argc, char *argv[]) {
 						}
 						
 						case 3: {   //Delete Developer  --> Co Ham se nhap sau
-							printf("Delete A Dev\n");
-							printf("Delete Successfully\n");
+						    clearSystem();
+						    printf("===================DELETE SERVICES==================\n");
+						    clearBuffer();
+						    char ID[10];
+						    printfID(ID);
+						    clearBuffer();
+						    deleteDeveloper(ListDev, &DevCount, ID);
 							pauseSystem();
 							break;
 						}
 						
 						case 4: { //Display -> mot he thong khac nua
-							pauseSystem();
+						    bool tieptuc = true;
+							do{
+								clearSystem();
+								SubMENU_DISPLAY();
+								int choice = printfChoice(choice);
+								clearBuffer();
+								switch(choice){
+									case 1:{
+										char ID[7];
+										printfID(ID);
+										//NHAP XONG ID
+										
+										bolder();
+                                        titile();
+                                        bolder();
+										displayDeveloper(ListDev, DevCount, ID);
+										break;
+									}
+									
+									case 2:{
+										bolder();
+                                        titile();
+                                        bolder();
+										displayAllDev(ListDev, DevCount);
+										break;
+									}
+								}
+ 	    	    			// Gan tieptuc cho ContinueOrNot
+								tieptuc = ContinueOrNot();
+							} while (tieptuc);
+						    
 							break;
 						}
 						
@@ -153,25 +191,27 @@ int main(int argc, char *argv[]) {
 							bool tieptuc = true;
 							do{
 								clearSystem();
- 	    	    			    printf("Add new Project\n");
+ 	    	    			    addnewProject(ListPro, &ProCount);
  	    	    			// Gan tieptuc cho ContinueOrNot
+ 	    	    			    clearBuffer();
 								tieptuc = ContinueOrNot();
 							} while (tieptuc);
 							break;
 						}
 						
 						case 2:{
-							printf("Assign Project\n");
-							pauseSystem();
+							bool tieptuc = true;
+							do{
+ 	    	    			assignProjecttoDev();
+ 	    	    			// Gan tieptuc cho ContinueOrNot
+							tieptuc = ContinueOrNot();
+							} while (tieptuc);
 							break;
 						}
 						
 						case 3:{ 
-<<<<<<< HEAD
+
 						    printf("Display\n");
-=======
-						    
->>>>>>> d5048850c9accad2b2f982585f98a085f80f14f3
 							pauseSystem();
 							break;
 						}
@@ -179,6 +219,7 @@ int main(int argc, char *argv[]) {
 						case 4:{
 							printf("Bye User ^v^\n");
 							pauseSystem();
+							maintain2 = false;
 							break;
 						}
 						
