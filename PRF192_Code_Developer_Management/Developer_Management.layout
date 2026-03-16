@@ -169,8 +169,13 @@ CursorRow=91
 TopLine=13
 LeftChar=1
 [Editor_8]
+<<<<<<< HEAD
 CursorCol=14
 CursorRow=7
+=======
+CursorCol=20
+CursorRow=5
+>>>>>>> 2a795c1815206d72929c2affe028fab17f616648
 TopLine=1
 LeftChar=1
 [Editor_9]
@@ -184,9 +189,15 @@ LeftChar=1
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 CursorCol=25
 CursorRow=73
 TopLine=251
+=======
+CursorCol=21
+CursorRow=7
+TopLine=91
+>>>>>>> 2a795c1815206d72929c2affe028fab17f616648
 LeftChar=1
 [Editor_11]
 <<<<<<< Updated upstream
