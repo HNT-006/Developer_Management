@@ -12,7 +12,11 @@ CXXINCS  = -I"D:/SE201125_Duy/Chuyen_nganh_1/PRF192/Dev-Cpp/TDM-GCC-64/include" 
 BIN      = Developer_Management.exe
 CXXFLAGS = $(CXXINCS) -m32 -g3
 CFLAGS   = $(INCS) -m32 -g3
+<<<<<<< HEAD
 DEL      = D:\SE201125_Duy\Chuyen_nganh_1\PRF192\Dev-Cpp\devcpp.exe INTERNAL_DEL
+=======
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
+>>>>>>> d2382fbadba86f178d7fba6c28ae8b926912761f
 
 .PHONY: all all-before all-after clean clean-custom
 
