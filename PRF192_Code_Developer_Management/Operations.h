@@ -23,7 +23,7 @@ bool validateName (char name[]);
 int validateID(char ID[]);
 
 /*========================= validBirthDay function =========================*/
-int validBirthDay (char BirthDay[]);
+int validateBirthDay (char BirthDay[]);
 
 /*========================= findDevByName function =========================*/
 int findDevByName(char Name[], Developer ListDev[], int DevCount);
