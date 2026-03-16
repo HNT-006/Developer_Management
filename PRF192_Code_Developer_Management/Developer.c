@@ -53,49 +53,17 @@ void addDeveloper(Developer ListDev[], int *DevCount){
     (*DevCount)++;
 }
 //
-//////  nhap vao id
-
-<<<<<<< HEAD
-////  nhap vao id
-//void inputIdDev(char ID[])
-//{                              ben operation dax lam
-//	scanf("%[^\n]",ID);
-//	getchar();
-//}
 
 
 
-////// kiem tra xem ID co hop le hay khong
-
-// ham nay operation da viet
-/*
-int validateID(char ID[]) {
-    if (strlen(ID) != 6)
-        return 0;
-
-    // Check first 3 characters
-    if (ID[0] != 'D' || ID[1] != 'E' || ID[2] != 'V')
-        return 0;
-
-    // Check last 3 characters are digits
-    if (!isdigit(ID[3]) || 
-        !isdigit(ID[4]) || 
-        !isdigit(ID[5]))
-        return 0;
-
-    return 1;
-}
-*/
 //////// hien thi ra man hinh thong tin cua dev sau khi nhap ID
-void displaydev(Developer ListDev[],int DevCount,char devID[])
-=======
+
 //
 //
 //////// kiem tra xem ID co hop le hay khong
 //
 ////////// hien thi ra man hinh thong tin cua dev sau khi nhap ID
 void displayDeveloper(Developer ListDev[],int DevCount,char devID[])
->>>>>>> f8c0fe49b384e7b65d23a43ba00eb34db9d04cae
 {
     if (validateID(devID))
     {
@@ -156,7 +124,6 @@ void deleteDeveloper(Developer ListDev[], int *DevCount, char devID[])
 
     printf("Developer deleted successfully!\n");
 }
-<<<<<<< HEAD
 
 void updateSalary(Developer ListDev[],int DevCount, char devID[])
 {
@@ -173,7 +140,7 @@ void updateSalary(Developer ListDev[],int DevCount, char devID[])
     printf("Enter new salary: ");
     scanf("%f", &newSalary);
 
-    if (newSalary >= 1000.0)
+    if (validateSalary(newSalary))
     {
         ListDev[index].Salary = newSalary;
         printf("Update successfully!\n");
@@ -201,7 +168,7 @@ void updateLanguage(Developer ListDev[],int DevCount,char devID[])
     char newLanguage[20];
     scanf("%[\n]",newLanguage);
     getchar();
-    
+    if (validateLanguage(newLanguage)!=1) return;
     strcpy(ListDev[index].Language,newLanguage);
     printf("Update Language successfully !");
     
@@ -221,8 +188,8 @@ void updateBirthday(Developer ListDev[],int DevCount,char devID[])
 	char newBirth[9];
 	scanf("%[\n]",newBirth);
 	getchar();	
-	if(validateBirthDay(newBrith)!=1) return;
-	if (validBirthDay(newBirth))
+
+	if (validateBirthDay(newBirth))
 	{
 		strcpy(ListDev[index].BirthDate, newBirth);
 		getchar();
@@ -355,4 +322,3 @@ void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPr
 ////        return;
 ////      }
 ////}
->>>>>>> f8c0fe49b384e7b65d23a43ba00eb34db9d04cae
