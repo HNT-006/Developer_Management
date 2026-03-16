@@ -9,14 +9,26 @@
 #include <stdbool.h>
 
 
-/*========================= ValidName functions =========================*/
+/*========================= input functions =========================*/
+/*------------------------- inputIdDev function -------------------------*/
+void inputIdDev (char devID[]);
+/*------------------------- inputIdPro function -------------------------*/
+void inputIdPro (char proID[]);
+
+
+/*========================= ValidateName functions =========================*/
 bool validateName (char name[]);
 
-/*========================= validByID function =========================*/
+/*========================= ValidateID functions =========================*/
+int validateSalary (double Salary);
+
+/*========================= validateID function =========================*/
 int validateID(char ID[]);
 
 /*========================= validBirthDay function =========================*/
-int validBirthDay (char BirthDay[]);
+int validateBirthDay (char BirthDay[]);
+/*========================= validLanguage function =========================*/
+int validateLanguage (char Language[]);
 
 /*========================= findDevByName function =========================*/
 int findDevByName(char Name[], Developer ListDev[], int DevCount);
@@ -24,9 +36,9 @@ int findDevByName(char Name[], Developer ListDev[], int DevCount);
 /*========================= findDevByID function =========================*/
 int findDevbyID(Developer ListDev[], int DevCount, char ID[]);
 
-/*========================= calculateTotalExperience function =========================*/
-int calculateTotalExperience (Project ListPro[], int ProCount);
 
+/*========================= Sort =========================*/
+void swap(Developer *a, Developer *b);
 /*========================= sortByID function =========================*/
 void sortByID(Developer ListDev[], int DevCount);
 

@@ -13,6 +13,10 @@ typedef struct{
 	char BirthDate[9];
 	char Language[20];
 	double Salary;
+	
+	int totalExp;
+	int totalPro;
+	
 } Developer;
 
 
