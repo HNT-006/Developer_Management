@@ -37,6 +37,52 @@ void inputIdPro (char proID[])
 
 
 /*========================= CAC HAM DINH DANG FORMAT =========================*/
+void lTrim(char str[]) {
+    int i = 0;
+    while (str[i] == ' ') i++;
+
+    int j = 0;
+    while (str[i] != '\0') {
+        str[j] = str[i];
+        i++; j++;
+    }
+    str[j] = '\0';
+}
+
+void rTrim(char str[]) {
+    int len = strlen(str) - 1;
+    while (len >= 0 && str[len] == ' ') {
+        str[len] = '\0';
+        len--;
+    }
+}
+
+void trim(char str[]) {
+    int i = 0, j = 0;
+    while (str[i] != '\0') {
+        if (str[i] != ' ') {
+            str[j++] = str[i];
+        } else if (j > 0 && str[j-1] != ' ') {
+            str[j++] = ' ';
+        }
+        i++;
+    }
+    str[j] = '\0';
+}
+
+void nameStr(char str[]) {
+    int i = 0;
+    while (str[i] != '\0') {
+        if (i == 0 || str[i-1] == ' ')
+            str[i] = toupper(str[i]);
+        else
+            str[i] = tolower(str[i]);
+        i++;
+    }
+}
+
+
+
 
 
 void formatNameDev(char name[])

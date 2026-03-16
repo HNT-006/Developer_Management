@@ -24,6 +24,11 @@ void inputIdPro (char proID[]);
 
 
 /*========================= DINH DANG FORMAT =========================*/
+void lTrim(char str[]);
+void rTrim(char str[]);
+void trim(char str[]);
+void nameStr(char str[]);
+
 void formatNameDev(char name[]);
 void formatNamePro(char name[]);
 void formatIdDev(char name[]);
@@ -38,7 +43,7 @@ void formatBirthDate(char name[] );
 /*========================= KIEM TRA GIA TRI=========================*/
 
 /*========================= ValidateName functions =========================*/
-bool validateName (char name[]);
+int validateName (char name[]);
 
 /*========================= ValidateID functions =========================*/
 int validateSalary (double Salary);
