@@ -34,8 +34,7 @@ void updateBirthday(Developer ListDev[],int DevCount,char devID[]);
 
 
     /// TOTAL EXPERIENCE
-void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPro[]);
-
+void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPro[], char proID[]);
 
 //================HAM FIND TAM THOI ==================
 

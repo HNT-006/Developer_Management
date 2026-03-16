@@ -23,7 +23,7 @@ bool validateName (char name[]);
 int validateID(char ID[]);
 
 /*========================= validBirthDay function =========================*/
-int validBirthDay (char BirthDay[]);
+int validateBirthDay (char BirthDay[]);
 
 /*========================= findDevByName function =========================*/
 int findDevByName(char Name[], Developer ListDev[], int DevCount);
@@ -31,9 +31,9 @@ int findDevByName(char Name[], Developer ListDev[], int DevCount);
 /*========================= findDevByID function =========================*/
 int findDevbyID(Developer ListDev[], int DevCount, char ID[]);
 
-/*========================= calculateTotalExperience function =========================*/
-int calculateTotalExperience (Project ListPro[], int ProCount);
 
+/*========================= Sort =========================*/
+void swap(Developer *a, Developer *b);
 /*========================= sortByID function =========================*/
 void sortByID(Developer ListDev[], int DevCount);
 

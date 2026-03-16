@@ -173,7 +173,7 @@ void updateSalary(Developer ListDev[],int DevCount, char devID[])
     printf("Enter new salary: ");
     scanf("%f", &newSalary);
 
-    if (newSalary >= 1000)
+    if (newSalary >= 1000.0)
     {
         ListDev[index].Salary = newSalary;
         printf("Update successfully!\n");
@@ -221,7 +221,7 @@ void updateBirthday(Developer ListDev[],int DevCount,char devID[])
 	char newBirth[9];
 	scanf("%[\n]",newBirth);
 	getchar();	
-	
+	if(validateBirthDay(newBrith)!=1) return;
 	if (validBirthDay(newBirth))
 	{
 		strcpy(ListDev[index].BirthDate, newBirth);
