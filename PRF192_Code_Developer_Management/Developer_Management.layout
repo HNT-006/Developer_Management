@@ -189,9 +189,9 @@ CursorRow=1
 TopLine=1
 LeftChar=1
 [Editor_8]
-CursorCol=2
-CursorRow=70
-TopLine=1
+CursorCol=36
+CursorRow=22
+TopLine=8
 LeftChar=1
 [Editor_9]
 CursorCol=18
@@ -227,8 +227,8 @@ LeftChar=1
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-CursorCol=1
-CursorRow=9
+CursorCol=20
+CursorRow=75
 TopLine=1
 =======
 CursorCol=1
@@ -237,10 +237,10 @@ TopLine=1
 LeftChar=1
 [Editor_11]
 <<<<<<< Updated upstream
-CursorCol=5
-CursorRow=28
+CursorCol=8
+CursorRow=15
 <<<<<<< HEAD
-TopLine=4
+TopLine=1
 =======
 =======
 <<<<<<< HEAD
