@@ -10,6 +10,7 @@
 
 
 /*========================= input functions =========================*/
+void inputIdDev (char devID[]);
 /*------------------------- inputIdDev function -------------------------*/
 void inputIdDev (char devID[]);
 /*------------------------- inputIdPro function -------------------------*/
