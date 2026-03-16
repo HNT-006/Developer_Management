@@ -6,7 +6,18 @@
 #include <string.h>
 #include <stdbool.h>
 
-
+/*========================= input devID function =========================*/
+void inputIdDev (char devID[])
+{
+	scanf("%[^\n]",devID);
+	getchar();
+}
+/*========================= input proID function =========================*/
+void inputIdPro (char proID[])
+{
+	scanf("%[^\n]",proID);
+	getchar();
+}
 /*========================= ValidateName function =========================*/
 bool validateName(char name[]) {
     int length = strlen(name);
@@ -27,7 +38,12 @@ bool validateName(char name[]) {
     return false;
 }
 
-
+/*========================= ValidateSalary function =========================*/
+int validateSalary (double Salary) {
+    if (Salary >= 1000 && Salary <= 100000)
+        return 1;
+    return 0;
+}
 /*========================= validateID function =========================*/
 int validateID(char ID[]) {
     if (strlen(ID) != 6)
@@ -90,7 +106,21 @@ int validateBirthDay (char BirthDay[]) {
 	}
 	return 1; // Chương trình chạy đến return 1 là kết quả hợp lệ
 }
-
+/*========================= validate Language =========================*/
+int validateLanguage (char Language[]) {
+	// Check string
+	if (Language==NULL || strlen(Language)==0)
+		return 0;
+	// List of language of system
+	char *LanguageS []= {"C++", "Java", "JS", "HTML/CSS"};
+	int totalLanguae=4;
+	for (int i=0; i<totalLanguae; i++) {
+		if (strcmp(Language, LanguageS[i])==0)
+			return 1;
+	}
+	return 0;
+	
+}
 /*========================= findDevByName function =========================*/
 // Trả về: index nếu tìm thấy | -1 nếu không tìm thấy | -2 nếu Name không hợp lệ
 int findDevByName(char Name[], Developer ListDev[], int DevCount)

@@ -11,19 +11,24 @@
 
 /*========================= input functions =========================*/
 /*------------------------- inputIdDev function -------------------------*/
-void inputIdDev (char ID[]);
+void inputIdDev (char devID[]);
 /*------------------------- inputIdPro function -------------------------*/
-void inputIdPro (char IDPro[]);
+void inputIdPro (char proID[]);
 
 
 /*========================= ValidateName functions =========================*/
 bool validateName (char name[]);
+
+/*========================= ValidateID functions =========================*/
+int validateSalary (double Salary);
 
 /*========================= validateID function =========================*/
 int validateID(char ID[]);
 
 /*========================= validBirthDay function =========================*/
 int validateBirthDay (char BirthDay[]);
+/*========================= validLanguage function =========================*/
+int validateLanguage (char Language[]);
 
 /*========================= findDevByName function =========================*/
 int findDevByName(char Name[], Developer ListDev[], int DevCount);
