@@ -73,19 +73,21 @@ void addnewProject(Project ListPro[], int *ProCount){
 	
 	snprintf(p->IDPro, sizeof(p->IDPro), "PRO%03d", demPro);
 	
+	clearBuffer();
 	printf("Enter Name Project: ");
     strcpy(ListPro[*ProCount].NamePro, readString(ListPro[*ProCount].NamePro));
 	
 	printf("Enter Duration (THE NUMBER OF MONTH, DEV HAVE TO FINISH PROJECT): ");
 	ListPro[*ProCount].Duration = readInt(ListPro[*ProCount].Duration);
 	
+	clearBuffer();
 	printf("Enter StartDate (DATE, DEV START TO WORK): ");
     strcpy(ListPro[*ProCount].StartDate, readString(ListPro[*ProCount].StartDate));
 	
     ListPro[*ProCount].MemberCount = 0;
 	printf("Add new Project Successfully ^v^\n");
 	
-	ProCount++;
+	(*ProCount)++;
 }
 
 
