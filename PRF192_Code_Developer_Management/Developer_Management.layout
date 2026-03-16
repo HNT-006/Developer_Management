@@ -170,12 +170,17 @@ TopLine=79
 LeftChar=1
 [Editor_8]
 <<<<<<< HEAD
+CursorCol=56
+CursorRow=87
+=======
+<<<<<<< HEAD
 CursorCol=21
 CursorRow=6
 =======
 CursorCol=20
 CursorRow=5
 >>>>>>> 2a795c1815206d72929c2affe028fab17f616648
+>>>>>>> 8b53927d22342abd0a805f4b476ed26295548080
 TopLine=1
 LeftChar=1
 [Editor_9]
