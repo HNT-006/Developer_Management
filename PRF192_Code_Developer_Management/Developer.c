@@ -12,8 +12,7 @@
 
 //==================CODE CAC HAM TAM THOI. SAU DO CO THE BO SANG OPERATIONS.C.H=======================
 
-//=====================================================================================
-
+//====================================ADD NEW DEVELOPER=================================================
 void addDeveloper(Developer ListDev[], int *DevCount){
 
     if(*DevCount >= MAX_DEV){
@@ -96,6 +95,7 @@ int validateID(char ID[]) {
 //////// kiem tra xem ID co hop le hay khong
 //
 ////////// hien thi ra man hinh thong tin cua dev sau khi nhap ID
+//===========================HÀM DISPLAY DEVELOPER======================
 void displayDeveloper(Developer ListDev[],int DevCount,char devID[]){
     if (validateID(devID))
     {
@@ -113,31 +113,29 @@ void displayDeveloper(Developer ListDev[],int DevCount,char devID[]){
 												ListDev[index].totalExp);
 	}
 }
-//
-//
+
 void displayAllDev(Developer ListDev[],int DevCount){
 	for(int i=0;i<DevCount;i++)
 	{
 	   displayDeveloper(ListDev, DevCount, ListDev[i].ID);
 	}
 }
-//
 
 
-////// =========================HAM DELETE========================
+// =========================HAM DELETE DEVELOPER========================
 void deleteDeveloper(Developer ListDev[], int *DevCount, char devID[])
 {
 
     if(!validateID(devID))
     {
-        printf("Invalid ID format!\n");
+        printf("THE %s IS INVALID FORMAT. THE FORMAT ID IS DEVxxx\n", devID);
         return;
     }
     
     int index = findDevbyID(ListDev, *DevCount, devID);
     if(index == -1)
     {
-        printf("Developer not found!\n");
+        printf("DEVELOPER %s IS NOT FOUND!\n", devID);
         return;
     }
     

@@ -34,4 +34,5 @@ void SubMENU_DEV();
 void SubMENU_PROJECT();
 void SubMENU_UPDATE();
 void SubMENU_DISPLAY();
+void showDeveloperID(Developer ListDev[], int DevCount);
 #endif 

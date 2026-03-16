@@ -131,4 +131,12 @@ void SubMENU_DISPLAY(){
 	printf("3. Exit\n");
 }
 
-
+void showDeveloperID(Developer ListDev[], int DevCount)
+{
+    printf("\n===== CURRENT DEVELOPERS =====\n");
+    for(int i = 0; i < DevCount; i++)
+    {
+        printf("%s\n", ListDev[i].ID);
+    }
+    printf("==============================\n");
+}
