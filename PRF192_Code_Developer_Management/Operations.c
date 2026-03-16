@@ -48,15 +48,48 @@ int validateID(char ID[]) {
 
 
 /*========================= validBirthDay function =========================*/
-int validBirthDay (char BirthDay[]);
+int validateBirthDay (char BirthDay[]) {
+	// Kiểm tra xem độ dài có đúng 8 kí tự hay chưa
+	if (strlen(BirthDay) != 8) {
+		return 0;
+	}
+	// Kiểm tra xem các kí tự đó có phải là số hay không?
+	for (int i=0; i<8; i++) {
+		if (BirthDay[i]<'0' || BirthDay[i]>'9')
+			return 0;
+	}
+	// Tách DDMMYY ra từ chuỗi
+	char tmpD[3]= {BirthDay[0], BirthDay[1], '\0'};
+	char tmpM[3]= {BirthDay[2], BirthDay[3], '\0'};
+	char tmpY[5]= {BirthDay[4], BirthDay[5], BirthDay[6], BirthDay[7], '\0'};
+	// chuyển chuỗi thành sô
+	int d=atoi(tmpD);
+	int m=atoi(tmpM);
+	int y=atoi(tmpY);
 
-
-
-
-
-
-
-
+	// Kiểm tra năm (ví dụ Developer phải từ 18 tuổi -> 56 tuổi)
+	if (y<1970 || y>2008) {
+		return 0;
+	}
+	// Kiểm tra tháng
+	if (m<1 || m>12) {
+		return 0;
+	}
+	// Kiểm tra ngày
+	int maxDays = 31; // Mặc định là ngày 31
+	if (m==4 || m==6 || m==9 || m==11) {
+		maxDays = 30;
+	} else if (m==2) {
+		// Kiểm tra năm nhuận cho tháng 2
+		if ((y%400==0)||(y%4==0 && y%100!=0)) {
+			maxDays=29;
+		} else maxDays=28;
+	}
+	if (d<1 || d>maxDays) {
+		return 0;
+	}
+	return 1; // Chương trình chạy đến return 1 là kết quả hợp lệ
+}
 
 /*========================= findDevByName function =========================*/
 // Trả về: index nếu tìm thấy | -1 nếu không tìm thấy | -2 nếu Name không hợp lệ
@@ -95,16 +128,6 @@ int findDevbyID(Developer ListDev[], int DevCount, char ID[]){
 }
 
 
-/*========================= calculateTotalExperience function =========================*/
-int calculateTotalExperience (Project ListPro[], int ProCount) {
-	if (ProCount==0) return 0;
-	
-	int total =0;
-	for (int i=0; i<ProCount; i++) {
-		total=total+ListPro[i].Duration;
-	}
-	return total;
-}
 
 
 /*========================= sortByID function =========================*/
@@ -156,8 +179,34 @@ void sortByID(Developer ListDev[], int DevCount)
 
 
 
-
 /*========================= sortBySalary functions =========================*/
+/*------------------------- partitionBySalary function -------------------------*/
+int partitionBySalary(Developer ListDev[], int l, int r) {
+	double pivot = ListDev[r].Salary; // 
+	int i = l - 1;
+	for (int j = l; j < r; j++) {
+		if (ListDev[j].Salary < pivot) {
+			i++;
+			swap(&ListDev[i], &ListDev[j]); //  đúng tên mảng
+		}
+	}
+	i++;
+	swap(&ListDev[i], &ListDev[r]);
+	return i;
+}
 
+/*------------------------- quicksortBySalary function -------------------------*/
+void quicksortBySalary(Developer ListDev[], int l, int r) {
+	if (l >= r) return;
+	int p = partitionBySalary(ListDev, l, r);
+	quicksortBySalary(ListDev, l, p - 1);
+	quicksortBySalary(ListDev, p + 1, r);
+}
+
+/*------------------------- sortBySalary function -------------------------*/
+void sortBySalary(Developer ListDev[], int DevCount) {
+	if (DevCount <= 1) return;
+	quicksortBySalary(ListDev, 0, DevCount - 1);
+}
 
 
