@@ -50,7 +50,7 @@ void addDeveloper(Developer ListDev[], int *DevCount){
 
     printf("Enter Salary: ");
     scanf("%lf", &ListDev[*DevCount].Salary);
-    getchar();
+    
     
     ListDev[*DevCount].totalExp = 0;
     (*DevCount)++;
@@ -105,12 +105,14 @@ void displayDeveloper(Developer ListDev[],int DevCount,char devID[]){
     		return;
 		}
 		
-		printf("%-10s %-20s %-15s %-25s %-10.2lf %-12d\n", ListDev[index].ID,
+		printf("%-10s %-20s %-15s %-25s %-10.2lf %-20d\n", ListDev[index].ID,
 												ListDev[index].Name,
 												ListDev[index].BirthDate,
 												ListDev[index].Language,
 												ListDev[index].Salary,
 												ListDev[index].totalExp);
+	}else{
+		printf("The id form is not corect\n");
 	}
 }
 //

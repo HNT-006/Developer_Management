@@ -200,6 +200,7 @@ void addnewProject(Project ListPro[], int *ProCount){
 	printf("Enter StartDate (DATE, DEV START TO WORK): ");
     strcpy(ListPro[*ProCount].StartDate, readString(ListPro[*ProCount].StartDate));
 	
+	
     ListPro[*ProCount].MemberCount = 0;
 	printf("Add new Project Successfully ^v^\n");
 	
