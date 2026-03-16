@@ -47,7 +47,7 @@ void addDeveloper(Developer ListDev[], int *DevCount){
     printf("Enter Birth Date (YYYYMMDD): ");
     scanf("%8[^\n]", ListDev[*DevCount].BirthDate);
     getchar();
-    if (!validateBirthDay(ListDev[*DevCount].BirthDate))
+    if (!validateBirthDate(ListDev[*DevCount].BirthDate))
     {
     	printf("\tTHIS BIRTH DAY IS INVALID -_- \n");
     	continue;
@@ -94,7 +94,7 @@ void addDeveloper(Developer ListDev[], int *DevCount){
 	}while(maintain);	
 	
    
-    
+    ListDev[*DevCount].totalExp = 0;
 
     (*DevCount)++;
 }
@@ -119,11 +119,12 @@ void displayDeveloper(Developer ListDev[],int DevCount,char devID[])
     		return;
 		}
 		
-		printf("%-10s %-20s %-15s %-25s %-10.2lf\n", ListDev[index].ID,
+		printf("%-10s %-20s %-15s %-25s %-10.2lf %-20d\n", ListDev[index].ID,
 												ListDev[index].Name,
 												ListDev[index].BirthDate,
 												ListDev[index].Language,
-												ListDev[index].Salary);
+												ListDev[index].Salary,
+												ListDev[index].totalExp);
 	}
 }
 //
@@ -235,7 +236,7 @@ void updateBirthdate(Developer ListDev[],int DevCount,char devID[])
 	scanf("%[\n]",newBirth);
 	getchar();	
 
-	if (validateBirthDay(newBirth))
+	if (validateBirthDate(newBirth))
 	{
 		strcpy(ListDev[index].BirthDate, newBirth);
 		getchar();
