@@ -6,6 +6,21 @@
 #include <string.h>
 #include <stdbool.h>
 
+/*========================= HAM INPUT =========================*/
+
+/*========================= input NameDev function =========================*/
+void inputNameDev(char name[])
+{
+    scanf("%[^\n]",name);
+    getchar();
+}
+/*========================= input NameProJECT function =========================*/
+void inputNamePro(char name[])
+{
+	scanf("%[^\n]",name);
+	getchar();
+}
+
 /*========================= input devID function =========================*/
 void inputIdDev (char devID[])
 {
@@ -18,24 +33,82 @@ void inputIdPro (char proID[])
 	scanf("%[^\n]",proID);
 	getchar();
 }
+
+
+
+/*========================= CAC HAM DINH DANG FORMAT =========================*/
+
+
+void formatNameDev(char name[])
+{
+     lTrim(name);      // bỏ khoảng trắng đầu
+     rTrim(name);      // bỏ khoảng trắng cuối
+     trim(name);       // bỏ khoảng trắng dư giữa các từ
+     nameStr(name);    // viết hoa chữ cái đầu mỗi từ
+}
+
+void formatNamePro(char name[])
+{
+	 lTrim(name);      // bỏ khoảng trắng đầu
+     rTrim(name);      // bỏ khoảng trắng cuối
+     trim(name);       // bỏ khoảng trắng dư giữa các từ
+     nameStr(name);    // viết hoa chữ cái đầu mỗi từ
+}
+
+void formatIdDev(char name[])
+{
+	 lTrim(name);      // bỏ khoảng trắng đầu
+     rTrim(name);      // bỏ khoảng trắng cuối
+}
+
+void formatIdPro(char name[])
+{
+	 lTrim(name);      // bỏ khoảng trắng đầu
+     rTrim(name);      // bỏ khoảng trắng cuối
+}
+ 
+void formatLanguage(char name[])
+{
+	lTrim(name);      // bỏ khoảng trắng đầu
+    rTrim(name);      // bỏ khoảng trắng cuối
+}
+
+void formatBirthDate(char name[] )
+{
+		lTrim(name);      // bỏ khoảng trắng đầu
+    rTrim(name);      // bỏ khoảng trắng cuối
+}
+
+
+/*========================= HAM CHECK VALIDATE =========================*/
+
 /*========================= ValidateName function =========================*/
-bool validateName(char name[]) {
+int validateName(char name[])
+{
     int length = strlen(name);
     int spaceCount = 0;
 
-    if (length == 0) return false;
+    if (length == 0)
+        return 0;
 
-    for (int i = 0; i < length; i++) {
-        if (name[i] == ' ') {
+    if (name[0] == ' ' || name[length - 1] == ' ')
+        return 0;
+
+    for (int i = 0; i < length; i++)
+    {
+        if (name[i] == ' ')
+        {
             spaceCount++;
+
+            if (name[i + 1] == ' ')
+                return 0;
         }
     }
 
-    if (spaceCount >= 1) {
-        return true;
-    }
+    if (spaceCount >= 1)
+        return 1;
 
-    return false;
+    return 0;
 }
 
 /*========================= ValidateSalary function =========================*/
@@ -64,20 +137,20 @@ int validateID(char ID[]) {
 
 
 /*========================= validBirthDay function =========================*/
-int validateBirthDay (char BirthDay[]) {
+int validateBirthDate (char BirthDate[]) {
 	// Kiểm tra xem độ dài có đúng 8 kí tự hay chưa
-	if (strlen(BirthDay) != 8) {
+	if (strlen(BirthDate) != 8) {
 		return 0;
 	}
 	// Kiểm tra xem các kí tự đó có phải là số hay không?
 	for (int i=0; i<8; i++) {
-		if (BirthDay[i]<'0' || BirthDay[i]>'9')
+		if (BirthDate[i]<'0' || BirthDate[i]>'9')
 			return 0;
 	}
 	// Tách DDMMYY ra từ chuỗi
-	char tmpD[3]= {BirthDay[0], BirthDay[1], '\0'};
-	char tmpM[3]= {BirthDay[2], BirthDay[3], '\0'};
-	char tmpY[5]= {BirthDay[4], BirthDay[5], BirthDay[6], BirthDay[7], '\0'};
+	char tmpD[3]= {BirthDate[0], BirthDate[1], '\0'};
+	char tmpM[3]= {BirthDate[2], BirthDate[3], '\0'};
+	char tmpY[5]= {BirthDate[4], BirthDate[5], BirthDate[6], BirthDate[7], '\0'};
 	// chuyển chuỗi thành sô
 	int d=atoi(tmpD);
 	int m=atoi(tmpM);
@@ -106,6 +179,7 @@ int validateBirthDay (char BirthDay[]) {
 	}
 	return 1; // Chương trình chạy đến return 1 là kết quả hợp lệ
 }
+
 /*========================= validate Language =========================*/
 int validateLanguage (char Language[]) {
 	// Check string
@@ -121,6 +195,10 @@ int validateLanguage (char Language[]) {
 	return 0;
 	
 }
+
+
+
+/*========================= CAC HAM TIM KIEM =========================*/
 /*========================= findDevByName function =========================*/
 // Trả về: index nếu tìm thấy | -1 nếu không tìm thấy | -2 nếu Name không hợp lệ
 int findDevByName(char Name[], Developer ListDev[], int DevCount)
@@ -159,6 +237,7 @@ int findDevbyID(Developer ListDev[], int DevCount, char ID[]){
 
 
 
+/*========================= CAC HAM SAP XEP =========================*/
 
 /*========================= sortByID function =========================*/
 /*------------------------- swap function -------------------------*/

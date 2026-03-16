@@ -31,30 +31,69 @@ void addDeveloper(Developer ListDev[], int *DevCount){
     getchar();
     if (!validateName(ListDev[*DevCount].Name)){
 	
-    printf("THIS NAME IS INVALID -_- \n");
+    printf("\tTHIS NAME IS INVALID -_- \n");
     continue;
 	} else{
+		formatNameDev(ListDev[*DevCount].Name);
 		maintain = false;
 	}
     } while (maintain);
     
+    
+    
+    maintain=true;
+    do{
     printf("Enter Birth Date (YYYYMMDD): ");
     scanf("%8[^\n]", ListDev[*DevCount].BirthDate);
     getchar();
+    if (!validateBirthDay(ListDev[*DevCount].BirthDate))
+    {
+    	printf("\tTHIS BIRTH DAY IS INVALID -_- \n");
+    	continue;
+	} else 
+	{
+		formatBirthDate(ListDev[*DevCount].BirthDate);
+		maintain=false;
+	} while(maintain);
+	
+	
 
+    maintain=true;
+    do
+    {
+	
     printf("Enter Language: ");
     scanf("%19[^\n]", ListDev[*DevCount].Language);
     getchar();
+    if (!validateLanguage(ListDev[*DevCount].Language))
+    {
+    	printf("\tTHIS LANGUAGE IS INVALID -_- \n");
+    	continue;
+	} else
+	{
+		formatLanguage(ListDev[*DevCount].Language);
+		maintain=false;
+	}while(maintain);
 
+
+
+    maintain=true;
+    do
+    {
     printf("Enter Salary: ");
     scanf("%lf", &ListDev[*DevCount].Salary);
-
-    
-    
-    ListDev[*DevCount].totalExp = 0;
-
     getchar();
-
+    if (!validateSalary(ListDev[*DevCount].Salary))
+    {
+    printf("\tTHIS SALARY IS INVALID -_- \n");
+    	continue;
+	} else
+	{
+		maintain=false;
+	}while(maintain);	
+	
+   
+    
 
     (*DevCount)++;
 }
@@ -79,17 +118,11 @@ void displayDeveloper(Developer ListDev[],int DevCount,char devID[])
     		return;
 		}
 		
-
-		printf("%-10s %-20s %-15s %-25s %-10.2lf %-20d\n", ListDev[index].ID,
+		printf("%-10s %-20s %-15s %-25s %-10.2lf\n", ListDev[index].ID,
 												ListDev[index].Name,
 												ListDev[index].BirthDate,
 												ListDev[index].Language,
-												ListDev[index].Salary,
-												ListDev[index].totalExp);
-	}else{
-		
-
-	printf("The id form is not corect\n");
+												ListDev[index].Salary);
 	}
 }
 //
@@ -139,11 +172,7 @@ void deleteDeveloper(Developer ListDev[], int *DevCount, char devID[])
 
 void updateSalary(Developer ListDev[],int DevCount, char devID[])
 {
-<<<<<<< HEAD
 	int index=findDevbyID(ListDev,DevCount,devID);
-=======
-	int index=findDevbyID(ListDev, DevCount, devID);
->>>>>>> a49c1797e930fc91eb74372c1f1934115772ef91
 	if (index < 0)
       {
         printf("ID not found!\n");
@@ -173,11 +202,7 @@ void updateSalary(Developer ListDev[],int DevCount, char devID[])
 // update Language
 void updateLanguage(Developer ListDev[],int DevCount,char devID[])
 {
-<<<<<<< HEAD
 	int index=findDevByID(ListDev,DevCount,devID);
-=======
-	int index=findDevbyID(ListDev, DevCount, devID);
->>>>>>> a49c1797e930fc91eb74372c1f1934115772ef91
 	if (index < 0)
       {
         printf("ID not found!\n");
@@ -195,7 +220,7 @@ void updateLanguage(Developer ListDev[],int DevCount,char devID[])
 }
 
 // update Birthday
-void updateBirthday(Developer ListDev[],int DevCount,char devID[])
+void updateBirthdate(Developer ListDev[],int DevCount,char devID[])
 {
     int index = findDevByID(ListDev,DevCount,devID);
 	if (index < 0)
@@ -217,13 +242,9 @@ void updateBirthday(Developer ListDev[],int DevCount,char devID[])
 	}
 }
 
-void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPro[], char proID[])
+void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPro[])
 {
-<<<<<<< HEAD
 	int index=findDevByID(ListDev,DevCount,devID);
-=======
-	int index=findDevByID(devID,ListDev,DevCount);
->>>>>>> a49c1797e930fc91eb74372c1f1934115772ef91
 	if (index < 0)
       {
         printf("ID not found!\n");
@@ -235,11 +256,11 @@ void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPr
     {
     	if (isDevInProject(ListPro,devID,proID,ProCount))
     	{
-    	    ListDev[index].totalExp+=ListPro[i].Duration;
+    	    ListDev[intdex].totalExp+=ListPro[i].Duration;
 		}
 	}
 	 printf("Total experience of Dev %s: %d month(s)\n",
-           devID, ListDev[index].totalExp);
+           ID, ListDev[index].totalExp);
 }
 
 //
