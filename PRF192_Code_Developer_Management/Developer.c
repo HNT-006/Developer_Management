@@ -127,7 +127,7 @@ void deleteDeveloper(Developer ListDev[], int *DevCount, char devID[])
 
 void updateSalary(Developer ListDev[],int DevCount, char devID[])
 {
-	int index=findDevByID(devID,ListDev,DevCount);
+	int index=findDevbyID(ListDev,DevCount,devID);
 	if (index < 0)
       {
         printf("ID not found!\n");
@@ -135,7 +135,7 @@ void updateSalary(Developer ListDev[],int DevCount, char devID[])
       }
       printf("Current info: %s - salary: %.2f\n",ListDev[index].Name, ListDev[index].Salary);
 
-    float newSalary;
+    double newSalary;
 
     printf("Enter new salary: ");
     scanf("%f", &newSalary);
@@ -157,7 +157,7 @@ void updateSalary(Developer ListDev[],int DevCount, char devID[])
 // update Language
 void updateLanguage(Developer ListDev[],int DevCount,char devID[])
 {
-	int index=findDevByID(devID,ListDev,DevCount);
+	int index=findDevByID(ListDev,DevCount,devID);
 	if (index < 0)
       {
         printf("ID not found!\n");
@@ -177,7 +177,7 @@ void updateLanguage(Developer ListDev[],int DevCount,char devID[])
 // update Birthday
 void updateBirthday(Developer ListDev[],int DevCount,char devID[])
 {
-    int index = findDevByID(devID,ListDev,DevCount);
+    int index = findDevByID(ListDev,DevCount,devID);
 	if (index < 0)
       {
         printf("ID not found!\n");
@@ -199,7 +199,7 @@ void updateBirthday(Developer ListDev[],int DevCount,char devID[])
 
 void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPro[])
 {
-	int index=findDevByID(ID,ListDev,DevCount);
+	int index=findDevByID(ListDev,DevCount,devID);
 	if (index < 0)
       {
         printf("ID not found!\n");
