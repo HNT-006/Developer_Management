@@ -48,7 +48,13 @@ void addDeveloper(Developer ListDev[], int *DevCount){
 
     printf("Enter Salary: ");
     scanf("%lf", &ListDev[*DevCount].Salary);
+
+    
+    
+    ListDev[*DevCount].totalExp = 0;
+
     getchar();
+
 
     (*DevCount)++;
 }
@@ -73,11 +79,17 @@ void displayDeveloper(Developer ListDev[],int DevCount,char devID[])
     		return;
 		}
 		
-		printf("%-10s %-20s %-15s %-25s %-10.2lf\n", ListDev[index].ID,
+
+		printf("%-10s %-20s %-15s %-25s %-10.2lf %-20d\n", ListDev[index].ID,
 												ListDev[index].Name,
 												ListDev[index].BirthDate,
 												ListDev[index].Language,
-												ListDev[index].Salary);
+												ListDev[index].Salary,
+												ListDev[index].totalExp);
+	}else{
+		
+
+	printf("The id form is not corect\n");
 	}
 }
 //
@@ -127,7 +139,7 @@ void deleteDeveloper(Developer ListDev[], int *DevCount, char devID[])
 
 void updateSalary(Developer ListDev[],int DevCount, char devID[])
 {
-	int index=findDevByID(devID,ListDev,DevCount);
+	int index=findDevbyID(ListDev, DevCount, devID);
 	if (index < 0)
       {
         printf("ID not found!\n");
@@ -157,7 +169,7 @@ void updateSalary(Developer ListDev[],int DevCount, char devID[])
 // update Language
 void updateLanguage(Developer ListDev[],int DevCount,char devID[])
 {
-	int index=findDevByID(devID,ListDev,DevCount);
+	int index=findDevbyID(ListDev, DevCount, devID);
 	if (index < 0)
       {
         printf("ID not found!\n");
@@ -197,9 +209,9 @@ void updateBirthday(Developer ListDev[],int DevCount,char devID[])
 	}
 }
 
-void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPro[])
+void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPro[], char proID[])
 {
-	int index=findDevByID(ID,ListDev,DevCount);
+	int index=findDevByID(devID,ListDev,DevCount);
 	if (index < 0)
       {
         printf("ID not found!\n");
@@ -211,11 +223,11 @@ void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPr
     {
     	if (isDevInProject(ListPro,devID,proID,ProCount))
     	{
-    	    ListDev[intdex].totalExp+=ListPro[i].Duration;
+    	    ListDev[index].totalExp+=ListPro[i].Duration;
 		}
 	}
 	 printf("Total experience of Dev %s: %d month(s)\n",
-           ID, ListDev[index].totalExp);
+           devID, ListDev[index].totalExp);
 }
 
 //
