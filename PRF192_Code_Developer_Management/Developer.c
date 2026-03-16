@@ -250,7 +250,7 @@ void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPr
 	 printf("Total experience of Dev %s: %d month(s)\n",
            ID, ListDev[index].totalExp);
 }
-=======
+
 //
 //void updateSalary(Developer ListDev[],int DevCount, char ID[])
 //{

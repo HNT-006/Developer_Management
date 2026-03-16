@@ -88,7 +88,7 @@ void addnewProject(Project ListPro[]){
 	ProCount++;
 }
 
-<<<<<<< HEAD
+
 // Ham kiem tra Dev đã có trong project chưa
 // su dung ham inputdevid va input proid ben operation de nhap
 int isDevInProject(Project ListPro[], char devID[],char proID[],int ProCount)  
@@ -108,8 +108,7 @@ int isDevInProject(Project ListPro[], char devID[],char proID[],int ProCount)
 	}
     return 0
 }
-=======
->>>>>>> f8c0fe49b384e7b65d23a43ba00eb34db9d04cae
+
 
 int LuaChon_assignProjecttoDev(Project ListPro[]){
 	
@@ -182,7 +181,7 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
 	
 }
 
-<<<<<<< HEAD
+
 
   //// ASSIGN Project to Dev
 void assignProjecttoDev(){
@@ -198,7 +197,7 @@ void assignProjecttoDev(){
     {
         printf("Developer not found!\n");
         return;
-=======
+
 void assignProjecttoDev(Project ListPro[], char IdDev[]){
 	int index = LuaChon_assignProjecttoDev(ListPro);
 	if (index == -1){
@@ -209,7 +208,7 @@ void assignProjecttoDev(Project ListPro[], char IdDev[]){
        printf("Project is full\n");
        pauseSystem();
        return;
->>>>>>> f8c0fe49b384e7b65d23a43ba00eb34db9d04cae
+
     }
 	
 	int pos = ListPro[index].MemberCount;
