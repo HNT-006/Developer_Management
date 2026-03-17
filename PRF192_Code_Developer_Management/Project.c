@@ -22,7 +22,6 @@
 //====================CAC HAM NHAP XUAT CO BAN ====================
 
 
-
 //==================CAC HAM FIND ID PROJECT VÀ FIND NAME PROJECT=================
 int findProjectbyName(char proName[], Project ListPro[]){
 	for (int i = 0; i< ProCount; i++){
