@@ -4,6 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <windows.h>
 
 //=================KHAI BAO HEADER FILES ==================
 #include "Common.h"
@@ -95,14 +96,11 @@ int main(int argc, char *argv[]) {
 						}
 
 						case 3: {   // Delete Developer ==>CHOT
-
 							 DELETE_DEVELOPER();
-
 							break;
 						}
 
 						case 4: { // DISPLAY DEVELOPERS ==>CHỐT
-
 							DISPLAY_DEVELOPER();
 							break;
 						}
@@ -113,25 +111,16 @@ int main(int argc, char *argv[]) {
 						}
 
 						case 6: { // Thoat Khoi subMenu_DEV
-							printf("Goodbye ^v^\n");
+						    clearSystem();
+							printf("\nGOODBYE ^v^\n");
 							maintain1 = false;
 							pauseSystem();
 							break;
 						}
-
+						
 						default: {
-							clearSystem();
-
-							printf("\n=================================\n");
-							printf("              ERROR              \n");
-							printf("=================================\n");
-							printf(" Invalid choice!\n");
-							printf(" Please enter a valid option.\n");
-							printf("=================================\n");
-
-							pauseSystem();
-							clearBuffer();
-							continue;
+							DEFAULT_CASE();
+				            break;
 						}
 					}
 				} while (maintain1);
@@ -139,11 +128,6 @@ int main(int argc, char *argv[]) {
 			}
 
 			case 2: {
-//	printf("\t=============PROJECT SERVICES=============\n");
-//	printf("1. Add new Project\n");
-//	printf("2. Assign Project to Developer\n");
-//	printf("3. Display (Project or List Project)\n");
-//	printf("4. Exit\n");
 				int choice2;
 				bool maintain2 = true;
 				do {
@@ -163,24 +147,20 @@ int main(int argc, char *argv[]) {
 						}
 
 						case 3: {
-
-							printf("Display\n");
-							pauseSystem();
+							DISPLAY_PROJECT();
 							break;
 						}
 
 						case 4: {
-							printf("Bye User ^v^\n");
+							clearSystem();
+							printf("\nBUY USER ^v^\n");
 							pauseSystem();
 							maintain2 = false;
 							break;
 						}
 
 						default: {
-							printf("Your choice is invalide \"_- !!\n");
-							printf("You should enter again -3- \n");
-							pauseSystem();
-							continue;
+						    DEFAULT_CASE();
 							break;
 						}
 					}
@@ -190,25 +170,16 @@ int main(int argc, char *argv[]) {
 			}
 
 			case 3: {
-				printf("See you later ^v^\n");
+				clearSystem();
+				printf("\nSEE YOU LATER ^v^\n");
 				pauseSystem();
 				maintain = false;
 				break;
 			}
 
 			default: {
-				clearSystem();
-
-				printf("\n=================================\n");
-				printf("              ERROR              \n");
-				printf("=================================\n");
-				printf(" Invalid choice!\n");
-				printf(" Please choose from the menu.\n");
-				printf("=================================\n");
-
-				pauseSystem();
-				clearBuffer();
-				continue;
+				 DEFAULT_CASE();
+				 continue;
 			}
 		}
 	} while (maintain);

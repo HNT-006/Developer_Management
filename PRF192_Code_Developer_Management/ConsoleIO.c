@@ -10,7 +10,7 @@
 
 //============SYSTEM FUNCTIONS ==============
 void pauseSystem() {
-	system("pause");
+	system("pause > nul");
 }
 void clearSystem() {
 	system("cls");
@@ -81,7 +81,7 @@ void printfID(char str[]) {
 void bolder() {
 	printf("\n-----------------------------------------------------------------------------------------------------\n");
 }
-void title() {
+void title_Developer() {
 	printf("%-10s %-20s %-15s %-25s %-10s %-12s\n",
 	       "ID",
 	       "NAME DEVELOPER",
@@ -91,7 +91,14 @@ void title() {
 	       "EXPERIMENT");
 }
 
-
+void title_Project(){
+	printf("%-10s %-20s %-15s %-25s %-10s\n", 
+	         "ID",
+		    "NAME PROJECT",
+			"DURATION",
+			"START DATE",
+		     "MEMBER COUNT");
+}
 
 void MAIN_MENU() {
 	printf("\t======================MAIN MENU======================\n");
@@ -105,7 +112,7 @@ void SubMENU_DEV() {
 	printf("1. Add new Developer\n");
 	printf("2. Update Developer\n");
 	printf("3. Delete Developer\n");
-	printf("4. Display (Developer or List Developer)\n");
+	printf("4. Display List Developer\n");
 	printf("5. Find Developer\n");
 	printf("6. Exit\n");
 }
@@ -147,7 +154,20 @@ void showDeveloperID(Developer ListDev[], int DevCount) {
 
 
 //===================CAC CASE TRONG CAC MUC CHINH TRONG MAIN MENU================
+void DEFAULT_CASE() {
+	clearSystem();
 
+	printf("\n=================================\n");
+	printf("              ERROR              \n");
+	printf("=================================\n");
+	printf(" Invalid choice! -_- \n");
+	printf(" Please choose from the menu. \'3\' \n");
+	printf("=================================\n");
+
+	pauseSystem();
+	clearBuffer();
+
+}
 //===================CAC CASE TRONG DEVELOPER SERVICE=================
 void ADD_NEW_DEVELOPER() {
 	bool tieptuc = true;
@@ -162,96 +182,112 @@ void ADD_NEW_DEVELOPER() {
 	} while (tieptuc);
 }
 
-void DELETE_DEVELOPER(){
+void DELETE_DEVELOPER() {
 	clearSystem();
-							printf("===================DELETE SERVICES==================\n");
+	printf("===================DELETE SERVICES==================\n");
 
-							char ID[10];
-							bool tieptuc = true;
-
-							while (tieptuc) {
-
-								showDeveloperID(ListDev, DevCount);   // hiển thị bảng Dev
-
-								printfID(ID);
-
-								clearBuffer();
-
-								deleteDeveloper(ListDev, &DevCount, ID);
-
-								tieptuc = ContinueOrNot();  // hỏi user có tiếp tục không
-							}
-}
-void DISPLAY_DEVELOPER(){
+	char ID[10];
 	bool tieptuc = true;
 
-							do {
-								clearSystem();
+	while (tieptuc) {
 
-								bolder();
-								title();
-								bolder();
+		showDeveloperID(ListDev, DevCount);   // hiển thị bảng Dev
 
-								displayAllDev(ListDev, DevCount);
+		printfID(ID);
+
+		clearBuffer();
+
+		deleteDeveloper(ListDev, &DevCount, ID);
+
+		tieptuc = ContinueOrNot();  // hỏi user có tiếp tục không
+	}
+}
+void DISPLAY_DEVELOPER() {
+	bool tieptuc = true;
+
+	do {
+		clearSystem();
+
+		bolder();
+		title_Developer();
+		bolder();
+
+		displayAllDev(ListDev, DevCount);
 
 
-								tieptuc = ContinueOrNot();
+		tieptuc = ContinueOrNot();
 
-							} while (tieptuc);
+	} while (tieptuc);
 
 }
 
-void FIND_DEVELOPER(){
+void FIND_DEVELOPER() {
 	bool tieptuc = true;
 
-							while (tieptuc) {
+	while (tieptuc) {
 
-								clearSystem();
-								printf("============== FIND DEVELOPER ==============\n");
+		clearSystem();
+		printf("============== FIND DEVELOPER ==============\n");
 
-								char ID[20];
+		char ID[20];
 
-								showDeveloperID(ListDev, DevCount);   // hiển thị danh sách ID
+		showDeveloperID(ListDev, DevCount);   // hiển thị danh sách ID
 
-								clearBuffer();
-								printfID(ID);                         // nhập ID
-								clearBuffer();
+		clearBuffer();
+		printfID(ID);                         // nhập ID
+		clearBuffer();
 
-								clearSystem();
+		clearSystem();
 
-								if (findDevbyID(ListDev, DevCount, ID) >= 0) {
-									bolder();
-									title();
-									bolder();
-								}
+		if (findDevbyID(ListDev, DevCount, ID) >= 0) {
+			bolder();
+			title_Developer();
+			bolder();
+		}
 
-								displayDeveloper(ListDev, DevCount, ID);   // hiển thị developer tìm được
+		displayDeveloper(ListDev, DevCount, ID);   // hiển thị developer tìm được
 
 
-								tieptuc = ContinueOrNot();                 // hỏi có tìm tiếp không
-							}
+		tieptuc = ContinueOrNot();                 // hỏi có tìm tiếp không
+	}
 }
 //void UPDATE_DEVELOPER();
 
 
 ////===================CAC CASE TRONG PROJECT SERVICE=================
-void ADD_NEW_PROJECT(){
+void ADD_NEW_PROJECT() {
 	bool tieptuc = true;
-							do {
-								clearSystem();
-								printf("========================ADD NEW PROJECT========================\n");
-								addnewProject(ListPro, &ProCount);
-								// Gan tieptuc cho ContinueOrNot
-								tieptuc = ContinueOrNot();
-							} while (tieptuc);
+	do {
+		clearSystem();
+		printf("========================ADD NEW PROJECT========================\n");
+		addnewProject(ListPro, &ProCount);
+		// Gan tieptuc cho ContinueOrNot
+		tieptuc = ContinueOrNot();
+	} while (tieptuc);
 }
-void ASSIGN_PPOJECT_TO_DEV(){
+void ASSIGN_PPOJECT_TO_DEV() {
 	bool tieptuc = true;
-							do {
-								assignProjecttoDev();
-								// Gan tieptuc cho ContinueOrNot
-								tieptuc = ContinueOrNot();
-							} while (tieptuc);
+	do {
+		clearSystem();
+
+		// Gan tieptuc cho ContinueOrNot
+		if (!assignProjecttoDev()) {
+			tieptuc = false;
+		} else {
+			tieptuc = ContinueOrNot();
+		}
+
+	} while (tieptuc);
 }
 
 
+void DISPLAY_PROJECT(){
+	clearSystem();
+							
+							bolder();
+							title_Project();
+							bolder();
+							
+						    displayAllProject(ListPro, ProCount);
+							pauseSystem();
+}

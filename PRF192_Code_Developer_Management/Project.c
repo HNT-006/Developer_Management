@@ -44,13 +44,16 @@ int findProjectbyID(char proID[], Project ListPro[]) {
 	int chon;
 	
 	do{
+	printf("Enter your choice: ");
 	scanf("%d", &chon);
+	clearBuffer();
+	printf("\n");
 	if (chon == 1 || chon == 2) return chon;
 	else{
 		printf("Your  choice is Invalid -_-. YOU JUST CHOOSE 1 OR 2, PLEASE\n");
 		printf("IF YOU UNDERSTAND, CHOOSE AGAIN\n");
 		pauseSystem();
-		
+		clearSystem();
 		continue;
 	}
 }while(true);
@@ -121,11 +124,11 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
 		return 0;   //==========================KHONG CO BAT KI MOT PROJECT NAO THI RA VE 0
 	}
 	clearBuffer();
-	printf("Enter Name Project or ID Project to Assign with ID Dev: ");
+	printf("=====================CHOOSING THE METHOD TO ENTER===================== \n");
 	printf("\t1. Enter Name Project\n");
 	printf("\t2. Enter ID Project\n");
     int luachon_forAssign = LuaChon_1or2();
-    
+    clearBuffer();
     if (luachon_forAssign == 1){
     	do{
     		printf("Enter Name Project: ");
@@ -139,18 +142,21 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
     		    printf("\t1. Exit\n");
     		    printf("\t2. Continue ^v^\n");
     		    int choice = LuaChon_1or2();
-    		    
+    		    clearBuffer();
     		    if (choice == 1){
     		    	printf("Thank you and Bye Bye ^^\n");
+    		    	pauseSystem();
     		    	return -1;
 				} else{
 					printf("Great choice. Continue now\n");
 					pauseSystem();
+					clearSystem();
 					continue;
 				}
 		    } else{
 		    	printf("Greate. Continue now\n");
 		    	pauseSystem();
+		    	clearSystem();
 		    	return indexN;
 			}
 		} while (true);
@@ -168,19 +174,22 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
     		    printf("Do you want to out or continue? \n");
     		    printf("\t1. Exit\n");
     		    printf("\t2. Continue ^v^\n");
-    		    char choice = LuaChon_1or2();
-    		    
+    		    int choice = LuaChon_1or2();
+    		    clearBuffer();
     		    if (choice == 1){
     		    	printf("Thank you and Bye Bye ^^\n");
+    		    	pauseSystem();
     		    	return -1;
 				} else{
 					printf("Great choice. Continue now\n");
 					pauseSystem();
+					clearSystem();
 					continue;
 				}
 		    } else{
 		    	printf("Greate. Continue now\n");
 		    	pauseSystem();
+		    	clearSystem();
 		    	return indexI;
 			}
 		} while (true);
@@ -190,37 +199,19 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
 	
 }
 
-
-
- 
-//void assignProjecttoDev(){
-//    char devID[7];
-//    char proID[7];
-//
-//    printf("Enter Developer ID: ");
-//    scanf("%6s", devID);
-//
-//    int devIndex = findDevByID(devID, ListDev, DevCount);
-//
-//    if(devIndex < 0)
-//    {
-//        printf("Developer not found!\n");
-//        return;
-
-
  //// ==============ASSIGN PROJECT TO DEVELOPER====================
 
-void assignProjecttoDev(Project ListPro[], char IdDev[]){
+bool assignProjecttoDev(Project ListPro[], char IdDev[]){
 
 	int index = LuaChon_assignProjecttoDev(ListPro);
-	if (index == -1 || index == 0){
-		return;
+	if (index == -1 || index == 0){ //=======0 KHI LISTPRO = EMPTY, -1 KHI MUON THOAT KHOI ASSIGN
+		return false;
 	}
 	
 	if(ListPro[index].MemberCount >= MAX_MEM){
        printf("Project is full\n");
        pauseSystem();
-       return;
+       return false;
 
     }
 	//===========ĐOẠN TRÊN XÉT TÍNH ĐÚNG SAI TRƯỚC KHI VÀO=========
@@ -234,4 +225,42 @@ void assignProjecttoDev(Project ListPro[], char IdDev[]){
 	ListPro[index].MemberCount++;
 	
 	printf("Assign Dev Successfully ^v^ \n");
+	return true;
+}
+
+
+//==================DISPLAY PROJECTS=======================
+void displayProject(Project ListPro[], int ProCount, char proID[])
+{
+    int index = -1;
+
+    for(int i = 0; i < ProCount; i++)
+    {
+        if(strcmp(ListPro[i].IDPro, proID) == 0)
+        {
+            index = i;
+            break;
+        }
+    }
+
+    if(index == -1)
+    {
+        printf("THIS PROJECT ID IS NOT FOUND -_-\n");
+        return;
+    }
+
+    printf("%-10s %-20s %-15d %-25s %-15d\n",
+            ListPro[index].IDPro,
+            ListPro[index].NamePro,
+            ListPro[index].Duration,
+            ListPro[index].StartDate,
+            ListPro[index].MemberCount);
+}
+
+void displayAllProject(Project ListPro[], int ProCount)
+{
+    for(int i = 0; i < ProCount; i++)
+    {
+        displayProject(ListPro, ProCount, ListPro[i].IDPro);
+    }
 }
