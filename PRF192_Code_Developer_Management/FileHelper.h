@@ -1,12 +1,14 @@
-#ifnded FILE_HELPER_H
-#define FILE_HELPER_H
+#ifndef FILEHELPER_H
+#define FILEHELPER_H
 
-#include"global.h"
-
+#include "Developer.h"
+#include "Project.h"
+#include "Common.h"
+#include "Operations.h"
 //===================== DEVELOPER FILE HANDLING =====================
 
 // Save all developers to file
-void saveDevelopersToFile();
+void saveDevToFile();
 
 // Load developers from file
 void loadDevelopersFromFile();

@@ -12,7 +12,7 @@
 #include "Developer.h"
 #include "Project.h"
 #include "ConsoleIO.h"
-
+#include "FileHelper.h"
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 //==============KHAI BAO BIEN =====================
@@ -46,6 +46,7 @@ int main(int argc, char *argv[]) {
 						case 1: {  // Add new  Developer  ==>CHỐT
 
 							ADD_NEW_DEVELOPER();
+							SaveDevtofile();
 							break;
 						}
 
