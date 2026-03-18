@@ -1,5 +1,5 @@
-#ifndef OPERATION_H
-#define OPERATION_H
+#ifndef OPERATIONS_H
+#define OPERATIONS_H
 #include "Common.h"
 #include "Operations.h"
 #include <stdio.h>

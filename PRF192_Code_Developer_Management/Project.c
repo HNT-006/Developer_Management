@@ -8,22 +8,11 @@
 #include "Operations.h"
 #include "Project.h"
 #include "ConsoleIO.h"
-//typedef struct{
-//	char IDPro[7];
-//	char NamePro[20];
-//    int Duration;  //So thang hoan thanh Project
-//    char StartDate[9];  // Ngay thang nam bat dau
-//    
-//    char Members[MAX_DEV][7];  //Luu so luong ID DEV thuc hien + Do dai cua ID DEV
-//    int MemberCount;
-//
-//} Project;
-
 //====================CAC HAM NHAP XUAT CO BAN ====================
 
-
+static int demPro = 0;
 //==================CAC HAM FIND ID PROJECT VÀ FIND NAME PROJECT=================
-int findProjectbyName(char proName[], Project ListPro[]){
+int findProjectbyName(char proName[], Project ListPro[], int ProCount){
 	for (int i = 0; i< ProCount; i++){
 		if (strcmp(proName, ListPro[i].NamePro) == 0) return i;
 	}
@@ -31,7 +20,7 @@ int findProjectbyName(char proName[], Project ListPro[]){
 	return -1;
 }
 
-int findProjectbyID(char proID[], Project ListPro[]) {
+int findProjectbyID(char proID[], Project ListPro[], int ProCount){
 	for (int i = 0; i<ProCount; i++){
 		if (strcmp(proID, ListPro[i].IDPro) == 0) return i;
 	}
@@ -98,7 +87,7 @@ void addnewProject(Project ListPro[], int *ProCount){
 // su dung ham inputdevid va input proid ben operation de nhap
 int isDevInProject(Project ListPro[], char devID[], char proID[],int ProCount)  
 {
-	int proIndex = findProjectbyID(proID, ListPro);
+	int proIndex = findProjectbyID(proID, ListPro, ProCount);
 	
     if (proIndex == -1)
     {
@@ -135,7 +124,7 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
     	    char nameProject[100];
     	    strcpy(nameProject, readString(nameProject));
     	
-    	    int indexN = findProjectbyName(nameProject, ListPro);
+    	    int indexN = findProjectbyName(nameProject, ListPro, ProCount);
     	    if (indexN == -1){
     		    printf("Not found This Project -_-\n");
     		    printf("Do you want to out or continue? \n");
@@ -168,7 +157,7 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
     	    char  IDProject[100];
     	    strcpy(IDProject, readString(IDProject));
     	
-    	    int indexI = findProjectbyID(IDProject, ListPro);
+    	    int indexI = findProjectbyID(IDProject, ListPro, ProCount);
     	    if (indexI == -1){
     		    printf("Not found This Project -_-\n");
     		    printf("Do you want to out or continue? \n");
@@ -201,32 +190,74 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
 
  //// ==============ASSIGN PROJECT TO DEVELOPER====================
 
-bool assignProjecttoDev(Project ListPro[], char IdDev[]){
+bool assignProjecttoDev(Project ListPro[], char IdDev[]) {
 
-	int index = LuaChon_assignProjecttoDev(ListPro);
-	if (index == -1 || index == 0){ //=======0 KHI LISTPRO = EMPTY, -1 KHI MUON THOAT KHOI ASSIGN
-		return false;
-	}
-	
-	if(ListPro[index].MemberCount >= MAX_MEM){
-       printf("Project is full\n");
-       pauseSystem();
-       return false;
+    int index = LuaChon_assignProjecttoDev(ListPro);
 
+    if (index == -1) {
+        return false;
     }
-	//===========ĐOẠN TRÊN XÉT TÍNH ĐÚNG SAI TRƯỚC KHI VÀO=========
-	
-	int pos = ListPro[index].MemberCount;
-	
-	strcpy(ListPro[index].Members[pos], ListDev[index].ID);
-		//=====SAU KHI GAN XONG THI SE TINH EXP CHO DEV
-	ListDev[findDevbyID(ListDev, DevCount, ListDev[index].ID)].totalExp += ListPro[index].Duration;
-      //==========SAU ĐÓ MEMBERCOUNT SẼ TĂNG LEN 1 ĐƠN VỊ
-	ListPro[index].MemberCount++;
-	
-	printf("Assign Dev Successfully ^v^ \n");
-	return true;
+
+    if (ListPro[index].MemberCount >= MAX_MEM) {
+        printf("Project is full\n");
+        pauseSystem();
+        return false;
+    }
+
+    // check dev tồn tại
+    int devIndex = findDevbyID(ListDev, DevCount, IdDev);
+    if (devIndex == -1) {
+        printf("Developer not found!\n");
+        return false;
+    }
+
+    int pos = ListPro[index].MemberCount;
+
+    strcpy(ListPro[index].Members[pos], IdDev);
+
+    // cộng exp đúng dev
+    ListDev[devIndex].totalExp += ListPro[index].Duration;
+
+    ListPro[index].MemberCount++;
+
+    printf("Assign Dev Successfully ^v^\n");
+    return true;
 }
+
+//bool assignProjecttoDev(Project ListPro[], char IdDev[]){
+//
+//	int index = LuaChon_assignProjecttoDev(ListPro);
+//if (index == -1){ //=======0 KHI LISTPRO = EMPTY, -1 KHI MUON THOAT KHOI ASSIGN
+//		return false;
+//	}
+//	
+//	if(ListPro[index].MemberCount >= MAX_MEM){
+//       printf("Project is full\n");
+//       pauseSystem();
+//       return false;
+//
+//    }
+//	//===========ĐOẠN TRÊN XÉT TÍNH ĐÚNG SAI TRƯỚC KHI VÀO=========
+//	
+//	int pos = ListPro[index].MemberCount;
+//	
+//	strcpy(ListPro[index].Members[pos], IdDev);
+//
+//		//=====SAU KHI GAN XONG THI SE TINH EXP CHO DEV
+//	int devIndex = findDevbyID(ListDev, DevCount, IdDev);
+//if (devIndex == -1) {
+//    printf("Developer not found!\n");
+//    return false;
+//}
+//
+//ListDev[devIndex].totalExp += ListPro[index].Duration;
+//
+//      //==========SAU ĐÓ MEMBERCOUNT SẼ TĂNG LEN 1 ĐƠN VỊ
+//	ListPro[index].MemberCount++;
+//	
+//	printf("Assign Dev Successfully ^v^ \n");
+//	return true;
+//}
 
 
 //==================DISPLAY PROJECTS=======================

@@ -7,7 +7,7 @@
 
 //===================SaveDevToFile======================//
 
-void SaveDevtofile(){
+void  saveDevToFile(){
 
     FILE* fp = fopen("developers.txt","w");
 
@@ -17,7 +17,7 @@ void SaveDevtofile(){
     }
 
     for (int i = 0; i < DevCount; i++){
-        fprintf(fp,"%s %s %s %s %lf\n",
+        fprintf(fp,"%s| %s| %s| %s| %lf\n",
         ListDev[i].ID,
         ListDev[i].Name,
         ListDev[i].BirthDate,
@@ -33,7 +33,7 @@ void SaveDevtofile(){
 
 //=================LoadingDevToFile=================
 
-void LoadingDevToFlie(){
+void loadDevelopersFromFile(){
 
     FILE* fp = fopen("developers.txt","r");
 
@@ -45,12 +45,12 @@ void LoadingDevToFlie(){
     DevCount = 0;
 
     while(DevCount < MAX_DEV &&
-          fscanf(fp,"%s %s %s %s %lf",
+          fscanf(fp,"%[^|]|%[^|]|%[^|]|%[^|]|%lf\n",
           ListDev[DevCount].ID,
           ListDev[DevCount].Name,
           ListDev[DevCount].BirthDate,
           ListDev[DevCount].Language,
-          &ListDev[DevCount].Salary) != EOF)
+          &ListDev[DevCount].Salary) == 5)
     {
         DevCount++;
     }
@@ -61,7 +61,7 @@ void LoadingDevToFlie(){
 
 //================SaveProjectToFile==================//
 
-void SaveProToFile(){
+void saveProjectsToFile(){
 
     FILE* fp = fopen("projects.txt","w");
 
@@ -71,10 +71,10 @@ void SaveProToFile(){
     }
 
     for(int i = 0; i < ProCount; i++){
-        fprintf(fp,"%s %s %s %s\n",
+        fprintf(fp,"%s| %s| %d| %s\n",
         ListPro[i].IDPro,
         ListPro[i].NamePro,
-        ListPro[i].Duration,
+        &ListPro[ProCount].Duration,
         ListPro[i].StartDate);
     }
 
@@ -86,7 +86,7 @@ void SaveProToFile(){
 
 //================LoadingProjectToFile===============//
 
-void LoadingProToFile(){
+void  loadProjectsFromFile(){
 
     FILE* fp = fopen("projects.txt","r");
 
@@ -98,11 +98,11 @@ void LoadingProToFile(){
     ProCount = 0;
 
     while (ProCount < MAX_PRO &&
-           fscanf(fp,"%s %s %s %s",
+           fscanf(fp,"%s| %s| %d| %s",
            ListPro[ProCount].IDPro,
            ListPro[ProCount].NamePro,
            ListPro[ProCount].Duration,
-           ListPro[ProCount].StartDate) != EOF)
+           ListPro[ProCount].StartDate) == 4)
     {
         ProCount++;
     }

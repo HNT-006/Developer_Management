@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-static int demDev = 0;
+
 
 
 

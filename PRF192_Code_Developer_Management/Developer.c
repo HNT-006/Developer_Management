@@ -9,6 +9,7 @@
 #include "Project.h"
 #include "ConsoleIO.h"
 
+static int demDev = 0;
 //==================CODE CAC HAM TAM THOI. SAU DO CO THE BO SANG OPERATIONS.C.H=======================
 
 //=====================================================================================
@@ -128,7 +129,7 @@ void displayDeveloper(Developer ListDev[],int DevCount,char devID[])
 //
 void displayAllDev(Developer ListDev[],int DevCount)
 {
-	for(int i=0;i<DevCount;i++)
+	for(int i=0;i < DevCount;i++)
 	{
 	   displayDeveloper(ListDev, DevCount, ListDev[i].ID);
 	}
@@ -160,12 +161,6 @@ void deleteDeveloper(Developer ListDev[], int *DevCount, char devID[])
 
     (*DevCount)--;
 
-     // cập nhật lại ID
-    for(int i = 0; i < *DevCount; i++)
-    {
-        sprintf(ListDev[i].ID, "DEV%03d", i + 1);
-    }
-
     printf("Developer deleted successfully!\n");
 }
 
@@ -182,7 +177,8 @@ void updateSalary(Developer ListDev[],int DevCount, char devID[])
     double newSalary;
 
     printf("Enter new salary: ");
-    scanf("%f", &newSalary);
+   scanf("%lf", &newSalary);
+
 
     if (validateSalary(newSalary))
     {
@@ -210,7 +206,7 @@ void updateLanguage(Developer ListDev[],int DevCount,char devID[])
     printf("Current info: %s - ID: %s\n",ListDev[index].Name, ListDev[index].Language);
     
     char newLanguage[20];
-    scanf("%[\n]",newLanguage);
+    scanf("%[^\n]", newLanguage);
     getchar();
     if (validateLanguage(newLanguage)!=1) return;
     strcpy(ListDev[index].Language,newLanguage);
@@ -219,27 +215,30 @@ void updateLanguage(Developer ListDev[],int DevCount,char devID[])
 }
 
 // update Birthday
-void updateBirthdate(Developer ListDev[],int DevCount,char devID[])
-{
-    int index = findDevbyID(ListDev,DevCount,devID);
-	if (index < 0)
-      {
+void updateBirthdate(Developer ListDev[], int DevCount, char devID[]) {
+    int index = findDevbyID(ListDev, DevCount, devID);
+
+    if (index < 0) {
         printf("ID not found!\n");
         return;
-      }
-    printf("Current info: %s - ID: %s\n",ListDev[index].Name, ListDev[index].BirthDate);
-	
-	char newBirth[9];
-	scanf("%[\n]",newBirth);
-	getchar();	
+    }
 
-	if (validateBirthDate(newBirth))
-	{
-		strcpy(ListDev[index].BirthDate, newBirth);
-		getchar();
-		printf("Update Birthday successfully");
-	}
+    printf("Current BirthDate: %s\n", ListDev[index].BirthDate);
+
+    char newBirth[9];
+
+    printf("Enter new BirthDate (DDMMYYYY): ");
+    scanf("%8[^\n]", newBirth);
+    clearBuffer();
+
+    if (validateBirthDate(newBirth)) {
+        strcpy(ListDev[index].BirthDate, newBirth);
+        printf("Update Birthday successfully\n");
+    } else {
+        printf("Invalid BirthDate!\n");
+    }
 }
+
 
 void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPro[],char proID[])
 {

@@ -26,6 +26,8 @@ int ProCount = 0;
 
 //==============MAIN====================
 int main(int argc, char *argv[]) {
+	loadDevelopersFromFile();
+	loadProjectsFromFile();
 	bool maintain = true;
 	int choice;
 	do {
@@ -46,13 +48,19 @@ int main(int argc, char *argv[]) {
 						case 1: {  // Add new  Developer  ==>CHỐT
 
 							ADD_NEW_DEVELOPER();
-							SaveDevtofile();
+							saveDevToFile();
 							break;
 						}
 
 						case 2: { // Update Developer --> Xuat ra menu cua Update Dev Options
-							bool tieptuc = true;
+							char devID[10];
+
+							showDeveloperID(ListDev, DevCount);
+							printfID(devID);
+							clearBuffer();
+
 							int update_choice;
+							bool tieptuc = true;
 							do {
 								clearSystem();
 								SubMENU_UPDATE();
@@ -60,27 +68,37 @@ int main(int argc, char *argv[]) {
 
 								switch(update_choice) {
 									case 1: {
+										clearSystem();										
 										printf("\t================UPDATE NAME FOR DEVELOPER================\n");
-
-										printf("Update Name Developer Successfully\n");
+										
+										printf("UPDATE NAME IS NOT IMPLEMENTED YET\n");
 										pauseSystem();
 										break;
 									}
 
 									case 2: {
-										printf("Update Programming Lanaguage Developer Successfully\n");
+									clearSystem();
+									printf("\t================UPDATE LANGUAGE FOR DEVELOPER================\n");
+									 updateLanguage(ListDev, DevCount, devID);
+										
 										pauseSystem();
 										break;
 									}
 
 									case 3: {
-										printf("Update the Birth day for Developer Successfully\n");
+										clearSystem();
+										printf("\t================UPDATE BIRTH DATE FOR DEVELOPER================\n");
+										updateLanguage(ListDev, DevCount, devID);
+										
 										pauseSystem();
 										break;
 									}
 
 									case 4: {
-										printf("Update Salary for Developer Successfully\n");
+										clearSystem();
+										printf("\t================UPDATE SALARY FOR DEVELOPER================\n");
+										 updateSalary(ListDev, DevCount, devID);
+										
 										pauseSystem();
 										break;
 									}
@@ -97,7 +115,7 @@ int main(int argc, char *argv[]) {
 						}
 
 						case 3: {   // Delete Developer ==>CHOT
-							 DELETE_DEVELOPER();
+							DELETE_DEVELOPER();
 							break;
 						}
 
@@ -112,16 +130,16 @@ int main(int argc, char *argv[]) {
 						}
 
 						case 6: { // Thoat Khoi subMenu_DEV
-						    clearSystem();
+							clearSystem();
 							printf("\nGOODBYE ^v^\n");
 							maintain1 = false;
 							pauseSystem();
 							break;
 						}
-						
+
 						default: {
 							DEFAULT_CASE();
-				            break;
+							break;
 						}
 					}
 				} while (maintain1);
@@ -139,11 +157,13 @@ int main(int argc, char *argv[]) {
 					switch(choice2) {
 						case 1: { //========CHỐT
 							ADD_NEW_PROJECT();
+							saveProjectsToFile();
 							break;
 						}
 
 						case 2: { //==>CHOT
 							ASSIGN_PPOJECT_TO_DEV();
+							saveProjectsToFile();
 							break;
 						}
 
@@ -161,7 +181,7 @@ int main(int argc, char *argv[]) {
 						}
 
 						default: {
-						    DEFAULT_CASE();
+							DEFAULT_CASE();
 							break;
 						}
 					}
@@ -172,15 +192,22 @@ int main(int argc, char *argv[]) {
 
 			case 3: {
 				clearSystem();
-				printf("\nSEE YOU LATER ^v^\n");
+				printf("Saving data...\n");
+
+				saveDevToFile();
+				saveProjectsToFile();
+
+				printf("SEE YOU LATER ^v^\n");
 				pauseSystem();
+
 				maintain = false;
+				break;
 				break;
 			}
 
 			default: {
-				 DEFAULT_CASE();
-				 continue;
+				DEFAULT_CASE();
+				continue;
 			}
 		}
 	} while (maintain);
