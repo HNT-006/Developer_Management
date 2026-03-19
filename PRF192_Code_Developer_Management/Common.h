@@ -1,5 +1,5 @@
-#ifndef GLOBAL_H
-#define GLOBAL_H
+#ifndef COMMON_H
+#define COMMON_H
 
 #include <stdio.h>
 #include <string.h>
@@ -10,7 +10,7 @@
 typedef struct{
 	char ID[7];
 	char Name[20];
-	char BirthDate[9];
+	char BirthDate[20];
 	char Language[20];
 	double Salary;
 	

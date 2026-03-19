@@ -55,21 +55,21 @@ bool ContinueOrNot() {
 }
 
 //======================CAC HAM NHAP THONG TIN GOM INTERGER VA STRING========================
-int readInt(int n) {
+int readInt() {
+	int n;
 	scanf("%d", &n);
-
 	return n;
 }
 
 int printfChoice() {
-	int choice;
 	printf("Enter your choice: ");
-	return readInt(choice);
+	return readInt();
 }
 
 
 char* readString(char str[]) {
-	scanf("%[^\n]", str);
+	fgets(str, 100, stdin);
+	str[strcspn(str, "\n")] = 0;
 	return str;
 }
 void printfID(char str[]) {
@@ -91,13 +91,13 @@ void title_Developer() {
 	       "EXPERIMENT");
 }
 
-void title_Project(){
-	printf("%-10s %-20s %-15s %-25s %-10s\n", 
-	         "ID",
-		    "NAME PROJECT",
-			"DURATION",
-			"START DATE",
-		     "MEMBER COUNT");
+void title_Project() {
+	printf("%-10s %-20s %-15s %-25s %-10s\n",
+	       "ID",
+	       "NAME PROJECT",
+	       "DURATION",
+	       "START DATE",
+	       "MEMBER COUNT");
 }
 
 void MAIN_MENU() {
@@ -235,10 +235,8 @@ void FIND_DEVELOPER() {
 
 		clearBuffer();
 		printfID(ID);                         // nhập ID
-		clearBuffer();
-
-		clearSystem();
-
+		
+        
 		if (findDevbyID(ListDev, DevCount, ID) >= 0) {
 			bolder();
 			title_Developer();
@@ -251,7 +249,6 @@ void FIND_DEVELOPER() {
 		tieptuc = ContinueOrNot();                 // hỏi có tìm tiếp không
 	}
 }
-//void UPDATE_DEVELOPER();
 
 
 ////===================CAC CASE TRONG PROJECT SERVICE=================
@@ -266,28 +263,34 @@ void ADD_NEW_PROJECT() {
 	} while (tieptuc);
 }
 void ASSIGN_PPOJECT_TO_DEV() {
-	bool tieptuc = true;
-	do {
-		clearSystem();
+    bool tieptuc = true;
+    char devID[10];
 
-		// Gan tieptuc cho ContinueOrNot
-		if (!assignProjecttoDev()) {
-			tieptuc = false;
-		} else {
-			tieptuc = ContinueOrNot();
-		}
+    do {
+        clearSystem();
 
-	} while (tieptuc);
+        showDeveloperID(ListDev, DevCount);
+
+        printfID(devID);
+        
+        clearBuffer();
+
+        if (!assignProjecttoDev(ListPro, devID)) {
+            tieptuc = false;
+        } else {
+            tieptuc = ContinueOrNot();
+        }
+        pauseSystem();
+    } while (tieptuc);
 }
 
-
-void DISPLAY_PROJECT(){
+void DISPLAY_PROJECT() {
 	clearSystem();
-							
-							bolder();
-							title_Project();
-							bolder();
-							
-						    displayAllProject(ListPro, ProCount);
-							pauseSystem();
+
+	bolder();
+	title_Project();
+	bolder();
+
+	displayAllProject( ListPro, ProCount);
+	pauseSystem();
 }

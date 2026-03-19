@@ -7,9 +7,9 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-static int demDev = 0;
 
 
+int getNextDevID();
 
 //================ADDING DEVELOPER==================
 void addDeveloper(Developer ListDev[],int *DevCount);
