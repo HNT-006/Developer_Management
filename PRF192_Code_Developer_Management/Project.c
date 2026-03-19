@@ -74,14 +74,14 @@ void addnewProject(Project ListPro[], int *ProCount){
 	
 	clearBuffer();
 	printf("Enter Name Project: ");
-    strcpy(ListPro[*ProCount].NamePro, readString(ListPro[*ProCount].NamePro));
+    strcpy(ListPro[*ProCount].NamePro, readString(ListPro[*ProCount].NamePro, 30));
 	
 	printf("Enter Duration (THE NUMBER OF MONTH, DEV HAVE TO FINISH PROJECT): ");
 	ListPro[*ProCount].Duration = readInt(ListPro[*ProCount].Duration);
 	
 	clearBuffer();
 	printf("Enter StartDate (DATE, DEV START TO WORK): ");
-    strcpy(ListPro[*ProCount].StartDate, readString(ListPro[*ProCount].StartDate));
+    strcpy(ListPro[*ProCount].StartDate, readString(ListPro[*ProCount].StartDate, 30));
 	
     ListPro[*ProCount].MemberCount = 0;
 	printf("Add new Project Successfully ^v^\n");
@@ -113,7 +113,7 @@ int isDevInProject(Project ListPro[], char devID[], char proID[],int ProCount)
 }
 
 
-int LuaChon_assignProjecttoDev(Project ListPro[]){
+int LuaChon_assignProjecttoDev(Project ListPro[], int ProCount){
 	
 	if (ProCount == 0){
 		printf("NO PROJECT IS NOW. YOU NEED TO ADD NEW PROJECT\n");
@@ -128,7 +128,7 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
     	do{
     		printf("Enter Name Project: ");
     	    char nameProject[100];
-    	    strcpy(nameProject, readString(nameProject));
+    	    strcpy(nameProject, readString(nameProject, 30));
     	
     	    int indexN = findProjectbyName(nameProject, ListPro, ProCount);
     	    if (indexN == -1){
@@ -161,7 +161,7 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
 		do{
     		printf("Enter ID Project: ");
     	    char  IDProject[100];
-    	    strcpy(IDProject, readString(IDProject));
+    	    strcpy(IDProject, readString(IDProject, 30));
     	
     	    int indexI = findProjectbyID(IDProject, ListPro, ProCount);
     	    if (indexI == -1){
@@ -196,9 +196,9 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
 
  //// ==============ASSIGN PROJECT TO DEVELOPER====================
 
-bool assignProjecttoDev(Project ListPro[], char IdDev[]) {
+bool assignProjecttoDev(Project ListPro[], int ProCount,Developer ListDev[], int DevCount, char IdDev[]) {
 
-    int index = LuaChon_assignProjecttoDev(ListPro);
+    int index = LuaChon_assignProjecttoDev(ListPro, ProCount);
 
     if (index == -1) {
         return false;

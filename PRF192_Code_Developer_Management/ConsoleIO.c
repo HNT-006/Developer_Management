@@ -2,6 +2,8 @@
 #include "Common.h"
 #include "Developer.h"
 #include "Project.h"
+#include "FileHelper.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -37,7 +39,7 @@ bool ContinueOrNot() {
 
 	while (true) {
 		clearBuffer();
-		readString(choice);
+		readString(choice, 10);
 		//THEM NORMALIZE_STRING O CÁC HÀM NHẬP STRING NHƯ NHẬP TÊN Ở ADDING HAY UPDATE HAY NHẬP SỰ LỰC CHỌN STRING YES NO
 		toLowerCase(choice); // chuẩn hóa về chữ thường
 
@@ -66,15 +68,14 @@ int printfChoice() {
 	return readInt();
 }
 
-
-char* readString(char str[]) {
-	fgets(str, 100, stdin);
-	str[strcspn(str, "\n")] = 0;
-	return str;
+char* readString(char str[], int size) {
+    fgets(str, size, stdin);
+    str[strcspn(str, "\n")] = 0;
+    return str;
 }
 void printfID(char str[]) {
-	printf("Enter ID: ");
-	str = readString(str);
+    printf("Enter ID: ");
+    readString(str, 20);  // bỏ gán
 }
 
 //======================IN KHUNG VA TIEU DE CHO DISPLAY DEVELOPER=================
@@ -114,7 +115,9 @@ void SubMENU_DEV() {
 	printf("3. Delete Developer\n");
 	printf("4. Display List Developer\n");
 	printf("5. Find Developer\n");
-	printf("6. Exit\n");
+	printf("6. Sort Developer by Salary\n");
+	printf("7. Sort Developer by ID\n");
+	printf("8. Exit\n");
 }
 
 void SubMENU_PROJECT() {
@@ -127,11 +130,10 @@ void SubMENU_PROJECT() {
 
 void SubMENU_UPDATE() {
 	printf("\t=============UPDATE SERVICE===============\n");
-	printf("1. Update Name Developert\n");
-	printf("2. Update Programming Lanaguage Developer\n");
-	printf("3. Update the Birth day for Developer\n");
-	printf("4. Update Salary for Developer\n");
-	printf("5. Exit\n");
+	printf("1. Update Programming Lanaguage Developer\n");
+	printf("2. Update the Birth day for Developer\n");
+	printf("3. Update Salary for Developer\n");
+	printf("4. Exit\n");
 }
 
 void SubMENU_DISPLAY() {
@@ -198,6 +200,7 @@ void DELETE_DEVELOPER() {
 		clearBuffer();
 
 		deleteDeveloper(ListDev, &DevCount, ID);
+		saveDevToFile(); 
 
 		tieptuc = ContinueOrNot();  // hỏi user có tiếp tục không
 	}
@@ -262,7 +265,7 @@ void ADD_NEW_PROJECT() {
 		tieptuc = ContinueOrNot();
 	} while (tieptuc);
 }
-void ASSIGN_PPOJECT_TO_DEV() {
+void ASSIGN_PPOJECT_TO_DEV(){
     bool tieptuc = true;
     char devID[10];
 
@@ -270,17 +273,19 @@ void ASSIGN_PPOJECT_TO_DEV() {
         clearSystem();
 
         showDeveloperID(ListDev, DevCount);
-
+clearBuffer();
         printfID(devID);
-        
-        clearBuffer();
 
-        if (!assignProjecttoDev(ListPro, devID)) {
-            tieptuc = false;
-        } else {
+        if (assignProjecttoDev(ListPro, ProCount, ListDev, DevCount, devID)) {
+            saveDevToFile();
+            saveProjectsToFile();
             tieptuc = ContinueOrNot();
+        } else {
+            tieptuc = false;
         }
+
         pauseSystem();
+
     } while (tieptuc);
 }
 

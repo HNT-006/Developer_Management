@@ -270,6 +270,7 @@ int findDevByName(char Name[], Developer ListDev[], int DevCount)
 /*========================= findDevByID function =========================*/
 // Trả về: index nếu tìm thấy | -1 nếu không tìm thấy | -2 nếu ID không hợp lệ
 int findDevbyID(Developer ListDev[], int DevCount, char ID[]){
+	formatIdDev(ID);
 	if (!validateID(ID)){
 		return -1;
 	} 

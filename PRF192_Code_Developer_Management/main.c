@@ -53,31 +53,30 @@ int main(int argc, char *argv[]) {
 						}
 
 						case 2: { // Update Developer --> Xuat ra menu cua Update Dev Options
-					        clearSystem();
-							char devID[10];
+							clearSystem();
+							char devID[20];
 
 							showDeveloperID(ListDev, DevCount);
+							clearBuffer();          
 							printfID(devID);
-							clearBuffer();
+
+							if (findDevbyID(ListDev, DevCount, devID) < 0) {
+								printf("ID not found\n");
+								system("pause");
+								break;
+							}
+							
 
 							int update_choice;
 							bool tieptuc = true;
 							do {
 								clearSystem();
 								SubMENU_UPDATE();
-								update_choice = printfChoice(update_choice);
+								update_choice = printfChoice();
 
 								switch(update_choice) {
+
 									case 1: {
-										clearSystem();
-										printf("\t================UPDATE NAME FOR DEVELOPER================\n");
-
-										printf("UPDATE NAME IS NOT IMPLEMENTED YET\n");
-										pauseSystem();
-										break;
-									}
-
-									case 2: {
 										clearSystem();
 										printf("\t================UPDATE LANGUAGE FOR DEVELOPER================\n");
 										updateLanguage(ListDev, DevCount, devID);
@@ -86,16 +85,16 @@ int main(int argc, char *argv[]) {
 										break;
 									}
 
-									case 3: {
+									case 2: {
 										clearSystem();
 										printf("\t================UPDATE BIRTH DATE FOR DEVELOPER================\n");
-										updateLanguage(ListDev, DevCount, devID);
+										updateBirthdate(ListDev, DevCount, devID);
 
 										pauseSystem();
 										break;
 									}
 
-									case 4: {
+									case 3: {
 										clearSystem();
 										printf("\t================UPDATE SALARY FOR DEVELOPER================\n");
 										updateSalary(ListDev, DevCount, devID);
@@ -104,7 +103,7 @@ int main(int argc, char *argv[]) {
 										break;
 									}
 
-									case 5: {
+									case 4: {
 										printf("Now go out of Dev Menu\n");
 										pauseSystem();
 										tieptuc = false;
@@ -112,6 +111,7 @@ int main(int argc, char *argv[]) {
 									}
 								}
 							} while(tieptuc);
+							saveDevToFile(); 
 							break;
 						}
 
@@ -129,8 +129,25 @@ int main(int argc, char *argv[]) {
 							FIND_DEVELOPER();
 							break;
 						}
+						case 6:{
+							clearSystem();
+							printf("====================SORT DEVELOPER BY SALARY====================\n");
+							sortBySalary(ListDev, DevCount);
+							displayAllDev(ListDev, DevCount);
+							pauseSystem();
+							break;
+						}
+						
+						case 7:{
+							clearSystem();
+							printf("====================SORT DEVELOPER BY ID====================\n");
+							sortByID(ListDev, DevCount);
+							displayAllDev(ListDev, DevCount);
+							pauseSystem();
+							break;
+						}
 
-						case 6: { // Thoat Khoi subMenu_DEV
+						case 8: { // Thoat Khoi subMenu_DEV
 							clearSystem();
 							printf("\nGOODBYE ^v^\n");
 							maintain1 = false;
