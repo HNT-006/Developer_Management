@@ -53,6 +53,7 @@ int main(int argc, char *argv[]) {
 						}
 
 						case 2: { // Update Developer --> Xuat ra menu cua Update Dev Options
+					        clearSystem();
 							char devID[10];
 
 							showDeveloperID(ListDev, DevCount);
@@ -68,19 +69,19 @@ int main(int argc, char *argv[]) {
 
 								switch(update_choice) {
 									case 1: {
-										clearSystem();										
+										clearSystem();
 										printf("\t================UPDATE NAME FOR DEVELOPER================\n");
-										
+
 										printf("UPDATE NAME IS NOT IMPLEMENTED YET\n");
 										pauseSystem();
 										break;
 									}
 
 									case 2: {
-									clearSystem();
-									printf("\t================UPDATE LANGUAGE FOR DEVELOPER================\n");
-									 updateLanguage(ListDev, DevCount, devID);
-										
+										clearSystem();
+										printf("\t================UPDATE LANGUAGE FOR DEVELOPER================\n");
+										updateLanguage(ListDev, DevCount, devID);
+
 										pauseSystem();
 										break;
 									}
@@ -89,7 +90,7 @@ int main(int argc, char *argv[]) {
 										clearSystem();
 										printf("\t================UPDATE BIRTH DATE FOR DEVELOPER================\n");
 										updateLanguage(ListDev, DevCount, devID);
-										
+
 										pauseSystem();
 										break;
 									}
@@ -97,8 +98,8 @@ int main(int argc, char *argv[]) {
 									case 4: {
 										clearSystem();
 										printf("\t================UPDATE SALARY FOR DEVELOPER================\n");
-										 updateSalary(ListDev, DevCount, devID);
-										
+										updateSalary(ListDev, DevCount, devID);
+
 										pauseSystem();
 										break;
 									}

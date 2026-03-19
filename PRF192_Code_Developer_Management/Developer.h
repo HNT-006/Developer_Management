@@ -9,7 +9,7 @@
 
 
 
-
+int getNextDevID();
 
 //================ADDING DEVELOPER==================
 void addDeveloper(Developer ListDev[],int *DevCount);

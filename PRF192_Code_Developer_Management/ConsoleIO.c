@@ -235,10 +235,8 @@ void FIND_DEVELOPER() {
 
 		clearBuffer();
 		printfID(ID);                         // nhập ID
-		clearBuffer();
-
-		clearSystem();
-
+		
+        
 		if (findDevbyID(ListDev, DevCount, ID) >= 0) {
 			bolder();
 			title_Developer();
@@ -251,7 +249,6 @@ void FIND_DEVELOPER() {
 		tieptuc = ContinueOrNot();                 // hỏi có tìm tiếp không
 	}
 }
-//void UPDATE_DEVELOPER();
 
 
 ////===================CAC CASE TRONG PROJECT SERVICE=================
@@ -275,6 +272,7 @@ void ASSIGN_PPOJECT_TO_DEV() {
         showDeveloperID(ListDev, DevCount);
 
         printfID(devID);
+        
         clearBuffer();
 
         if (!assignProjecttoDev(ListPro, devID)) {
@@ -282,28 +280,9 @@ void ASSIGN_PPOJECT_TO_DEV() {
         } else {
             tieptuc = ContinueOrNot();
         }
-
+        pauseSystem();
     } while (tieptuc);
 }
-
-//void ASSIGN_PPOJECT_TO_DEV() {
-//	bool tieptuc = true;
-//	do {
-//		clearSystem();
-//
-//		// Gan tieptuc cho ContinueOrNot
-//		char devID[10];
-//		printfID(devID);
-//
-//		if (!assignProjecttoDev(ListPro, devID)) {
-//			tieptuc = false;
-//		} else {
-//			tieptuc = ContinueOrNot();
-//		}
-//
-//	} while (tieptuc);
-//}
-
 
 void DISPLAY_PROJECT() {
 	clearSystem();

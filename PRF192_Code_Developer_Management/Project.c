@@ -10,7 +10,15 @@
 #include "ConsoleIO.h"
 //====================CAC HAM NHAP XUAT CO BAN ====================
 
-static int demPro = 0;
+int getNextProID() {
+    int maxID = 0;
+    for (int i = 0; i < ProCount; i++) {
+        int idNum;
+        sscanf(ListPro[i].IDPro, "PRO%d", &idNum);
+        if (idNum > maxID) maxID = idNum;
+    }
+    return maxID + 1;
+}
 //==================CAC HAM FIND ID PROJECT VÀ FIND NAME PROJECT=================
 int findProjectbyName(char proName[], Project ListPro[], int ProCount){
 	for (int i = 0; i< ProCount; i++){
@@ -56,13 +64,13 @@ void addnewProject(Project ListPro[], int *ProCount){
 		return;
 	}
 	
-	demPro++; 
+	int nextID = getNextProID();
 
-	snprintf(ListPro[*ProCount].IDPro, sizeof(ListPro[*ProCount].IDPro), "PRO%03d", demPro);
+	snprintf(ListPro[*ProCount].IDPro, sizeof(ListPro[*ProCount].IDPro), "PRO%03d", nextID);
 
 	Project* p = &ListPro[*ProCount];
 	
-	snprintf(p->IDPro, sizeof(p->IDPro), "PRO%03d", demPro);
+	snprintf(p->IDPro, sizeof(p->IDPro), "PRO%03d", nextID);
 	
 	clearBuffer();
 	printf("Enter Name Project: ");
@@ -112,12 +120,10 @@ int LuaChon_assignProjecttoDev(Project ListPro[]){
 		pauseSystem();
 		return 0;   //==========================KHONG CO BAT KI MOT PROJECT NAO THI RA VE 0
 	}
-	clearBuffer();
 	printf("=====================CHOOSING THE METHOD TO ENTER===================== \n");
 	printf("\t1. Enter Name Project\n");
 	printf("\t2. Enter ID Project\n");
     int luachon_forAssign = LuaChon_1or2();
-    clearBuffer();
     if (luachon_forAssign == 1){
     	do{
     		printf("Enter Name Project: ");
@@ -223,42 +229,6 @@ bool assignProjecttoDev(Project ListPro[], char IdDev[]) {
     printf("Assign Dev Successfully ^v^\n");
     return true;
 }
-
-//bool assignProjecttoDev(Project ListPro[], char IdDev[]){
-//
-//	int index = LuaChon_assignProjecttoDev(ListPro);
-//if (index == -1){ //=======0 KHI LISTPRO = EMPTY, -1 KHI MUON THOAT KHOI ASSIGN
-//		return false;
-//	}
-//	
-//	if(ListPro[index].MemberCount >= MAX_MEM){
-//       printf("Project is full\n");
-//       pauseSystem();
-//       return false;
-//
-//    }
-//	//===========ĐOẠN TRÊN XÉT TÍNH ĐÚNG SAI TRƯỚC KHI VÀO=========
-//	
-//	int pos = ListPro[index].MemberCount;
-//	
-//	strcpy(ListPro[index].Members[pos], IdDev);
-//
-//		//=====SAU KHI GAN XONG THI SE TINH EXP CHO DEV
-//	int devIndex = findDevbyID(ListDev, DevCount, IdDev);
-//if (devIndex == -1) {
-//    printf("Developer not found!\n");
-//    return false;
-//}
-//
-//ListDev[devIndex].totalExp += ListPro[index].Duration;
-//
-//      //==========SAU ĐÓ MEMBERCOUNT SẼ TĂNG LEN 1 ĐƠN VỊ
-//	ListPro[index].MemberCount++;
-//	
-//	printf("Assign Dev Successfully ^v^ \n");
-//	return true;
-//}
-
 
 //==================DISPLAY PROJECTS=======================
 void displayProject(Project ListPro[], int ProCount, char proID[])
