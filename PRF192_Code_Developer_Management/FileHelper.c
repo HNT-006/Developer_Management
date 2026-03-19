@@ -7,7 +7,7 @@
 
 //===================SaveDevToFile======================//
 
-void  saveDevToFile(){
+void saveDevToFile(){
 
     FILE* fp = fopen("developers.txt","w");
 

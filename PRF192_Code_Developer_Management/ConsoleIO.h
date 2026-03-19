@@ -21,7 +21,7 @@ void toLowerCase(char *str);
 int readInt();
 int printfChoice(); 
 
-char* readString(char str[]);
+char* readString(char str[], int size);
 void  printfID(char str[]);
 
 //=======================IN KHUNG CHO DISPLAY==========================
