@@ -41,12 +41,12 @@ void addDeveloper(Developer ListDev[], int *DevCount) {
 		printf("Enter Name: ");
 		scanf("%30[^\n]", ListDev[*DevCount].Name);
 		clearBuffer();
+		formatNameDev(ListDev[*DevCount].Name);
 		if (!validateName(ListDev[*DevCount].Name)) {
             
 			printf("\tTHIS NAME IS INVALID -_- \n");
 			continue;
 		} else {
-			formatNameDev(ListDev[*DevCount].Name);
 			maintain = false;
 		}
 	} while (maintain);
@@ -57,11 +57,12 @@ void addDeveloper(Developer ListDev[], int *DevCount) {
 		printf("Enter Birth Date (DDMMYYYY): ");
 		scanf("%20[^\n]", ListDev[*DevCount].BirthDate);
 		clearBuffer();
+			normalizeBirthDate(ListDev[*DevCount].BirthDate);
+			
 		if (!validateBirthDate(ListDev[*DevCount].BirthDate)) {
 			printf("\tTHIS BIRTH DAY IS INVALID -_- \n");
 			continue;
 		} else {
-			normalizeBirthDate(ListDev[*DevCount].BirthDate);
 			maintain=false;
 		}
 	} while(maintain);
@@ -71,7 +72,9 @@ void addDeveloper(Developer ListDev[], int *DevCount) {
 	do {
 		printf("Enter Language: ");
 		scanf("%19[^\n]", ListDev[*DevCount].Language);
-		
+	    getchar();
+	    	formatLanguage(ListDev[*DevCount].Language);
+	    	
 		if (!validateLanguage(ListDev[*DevCount].Language)) {
 			printf("\tTHE LANGUAGE MUST IN C++, JS, JAVA, AND HTML/CSS\n");
 			continue;
