@@ -131,13 +131,8 @@ void displayAllDev(Developer ListDev[],int DevCount) {
 ////// =========================HAM DELETE========================
 void deleteDeveloper(Developer ListDev[], int *DevCount, char devID[]) {
     formatIdDev(devID);
-	if(!validateID(devID)) {
-		printf("Invalid ID format!\n");
-		return;
-	}
-
 	int index = findDevbyID(ListDev, *DevCount, devID);
-	if(index == -1) {
+	if(index < 0) {
 		printf("Developer not found!\n");
 		return;
 	}
@@ -228,11 +223,13 @@ void updateBirthdate(Developer ListDev[], int DevCount, char devID[]) {
     while (1) {
         printf("Enter new BirthDate (DDMMYYYY): ");
         fgets(newBirth, sizeof(newBirth), stdin);
+        
         newBirth[strcspn(newBirth, "\n")] = 0;
 
         if (strlen(newBirth) == 8) break;
 
         printf("Invalid format! Must be 8 digits.\n");
+        normalizeBirthDate(newBirth);
     }
 
     if (validateBirthDate(newBirth)) {
