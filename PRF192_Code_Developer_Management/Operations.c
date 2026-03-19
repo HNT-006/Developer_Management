@@ -6,36 +6,6 @@
 #include <string.h>
 #include <stdbool.h>
 
-/*========================= HAM INPUT =========================*/
-
-/*========================= input NameDev function =========================*/
-void inputNameDev(char name[])
-{
-    scanf("%[^\n]",name);
-    getchar();
-}
-/*========================= input NameProJECT function =========================*/
-void inputNamePro(char name[])
-{
-	scanf("%[^\n]",name);
-	getchar();
-}
-
-/*========================= input devID function =========================*/
-void inputIdDev (char devID[])
-{
-	scanf("%[^\n]",devID);
-	getchar();
-}
-/*========================= input proID function =========================*/
-void inputIdPro (char proID[])
-{
-	scanf("%[^\n]",proID);
-	getchar();
-}
-
-
-
 /*========================= CAC HAM DINH DANG FORMAT =========================*/
 void lTrim(char str[]) {
     int i = 0;
@@ -124,6 +94,38 @@ void formatBirthDate(char name[] )
 		lTrim(name);      // bỏ khoảng trắng đầu
     rTrim(name);      // bỏ khoảng trắng cuối
 }
+
+
+
+
+/*========================= HAM INPUT =========================*/
+
+/*========================= input NameDev function =========================*/
+void inputNameDev(char name[])
+{
+    scanf("%[^\n]",name);
+    getchar();
+}
+/*========================= input NameProJECT function =========================*/
+void inputNamePro(char name[])
+{
+	scanf("%[^\n]",name);
+	getchar();
+}
+
+/*========================= input devID function =========================*/
+void inputIdDev (char devID[])
+{
+	scanf("%[^\n]",devID);
+	getchar();
+}
+/*========================= input proID function =========================*/
+void inputIdPro (char proID[])
+{
+	scanf("%[^\n]",proID);
+	getchar();
+}
+
 
 
 /*========================= HAM CHECK VALIDATE =========================*/
@@ -250,6 +252,8 @@ int validateLanguage (char Language[]) {
 int findDevByName(char Name[], Developer ListDev[], int DevCount)
 {
     // Kiểm tra format tên
+    formatNameDev(Name);
+    
     if (!validateName(Name))
     {
         return -2; // Name không hợp lệ

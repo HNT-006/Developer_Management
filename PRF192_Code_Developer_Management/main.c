@@ -219,7 +219,7 @@ int main(int argc, char *argv[]) {
 				pauseSystem();
 
 				maintain = false;
-				break;
+				
 				break;
 			}
 
