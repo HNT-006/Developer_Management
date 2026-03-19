@@ -8,18 +8,6 @@
 #include <ctype.h>
 #include <stdbool.h>
 
-/*========================= CAC HAM INPUT =========================*/
-
-/*========================= input NameDev function =========================*/
-void inputNameDev(char name[]);
-/*========================= input NameProJECT function =========================*/
-void inputNamePro(char name[]);
-/*========================= input functions =========================*/
-void inputIdDev (char devID[]);
-/*------------------------- inputIdPro function -------------------------*/
-void inputIdPro (char proID[]);
-
-
 
 
 
@@ -35,6 +23,22 @@ void formatIdDev(char name[]);
 void formatIdPro(char name[]);
 void formatLanguage(char name[]);
 void formatBirthDate(char name[] );
+
+
+
+
+/*========================= CAC HAM INPUT =========================*/
+
+/*========================= input NameDev function =========================*/
+void inputNameDev(char name[]);
+/*========================= input NameProJECT function =========================*/
+void inputNamePro(char name[]);
+/*========================= input functions =========================*/
+void inputIdDev (char devID[]);
+/*------------------------- inputIdPro function -------------------------*/
+void inputIdPro (char proID[]);
+
+
 
 
 

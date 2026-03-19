@@ -42,6 +42,7 @@ void addDeveloper(Developer ListDev[], int *DevCount) {
 		scanf("%30[^\n]", ListDev[*DevCount].Name);
 		clearBuffer();
 		formatNameDev(ListDev[*DevCount].Name);
+		
 		if (!validateName(ListDev[*DevCount].Name)) {
             
 			printf("\tTHIS NAME IS INVALID -_- \n");
@@ -79,7 +80,7 @@ void addDeveloper(Developer ListDev[], int *DevCount) {
 			printf("\tTHE LANGUAGE MUST IN C++, JS, JAVA, AND HTML/CSS\n");
 			continue;
 		} else {
-			formatLanguage(ListDev[*DevCount].Language);
+		
 			maintain=false;
 		}
 	} while(maintain);
@@ -113,6 +114,7 @@ void addDeveloper(Developer ListDev[], int *DevCount) {
 //
 ////////// hien thi ra man hinh thong tin cua dev sau khi nhap ID
 void displayDeveloper(Developer ListDev[],int DevCount,char devID[]) {
+	formatIdDev(devID);
 	if (validateID(devID)) {
 		int index = findDevbyID(ListDev, DevCount, devID);
 		if (index == -1) {
@@ -140,6 +142,7 @@ void displayAllDev(Developer ListDev[],int DevCount) {
 
 ////// =========================HAM DELETE========================
 void deleteDeveloper(Developer ListDev[], int *DevCount, char devID[]) {
+	formatIdDev(devID);
 
 	if(!validateID(devID)) {
 		printf("Invalid ID format!\n");
@@ -162,6 +165,7 @@ void deleteDeveloper(Developer ListDev[], int *DevCount, char devID[]) {
 }
 
 void updateSalary(Developer ListDev[],int DevCount, char devID[]) {
+	formatIdDev(devID);
 	int index=findDevbyID(ListDev,DevCount,devID);
 	if (index < 0) {
 		printf("ID not found!\n");
@@ -188,6 +192,7 @@ void updateSalary(Developer ListDev[],int DevCount, char devID[]) {
 
 // update Language
 void updateLanguage(Developer ListDev[],int DevCount,char devID[]) {
+	formatIdDev(devID);
 	int index=findDevbyID(ListDev,DevCount,devID);
 	if (index < 0) {
 		printf("ID not found!\n");
@@ -206,6 +211,7 @@ void updateLanguage(Developer ListDev[],int DevCount,char devID[]) {
 
 // update Birthday
 void updateBirthdate(Developer ListDev[], int DevCount, char devID[]) {
+	formatIdDev(devID);
 	int index = findDevbyID(ListDev, DevCount, devID);
 
 	if (index < 0) {
@@ -231,6 +237,8 @@ void updateBirthdate(Developer ListDev[], int DevCount, char devID[]) {
 
 
 void totalExperience(Developer ListDev[],int DevCount,char devID[],Project LisPro[],char proID[]) {
+	formatIdDev(devID);
+	formatIdPro(proID);
 	int index=findDevbyID(ListDev,DevCount,devID);
 	if (index < 0) {
 		printf("ID not found!\n");
